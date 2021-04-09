@@ -4,7 +4,7 @@
 /dist
 /tmp
 /out-tsc
-# Only exists if Bazel was run
+# only exists if Bazel was run
 /bazel-out
 
 # dependencies
@@ -44,3 +44,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# environment files
+.env
+environment.ts
+environment.prod.ts
