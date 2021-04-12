@@ -3,12 +3,11 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
-import { Recipe, healthLabels} from '../models/Recipe';
+import { ApiData } from '../models/api-data.model';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class RecipesService {
   private appKey: string;
   private appId: string;
@@ -21,12 +20,34 @@ export class RecipesService {
   }
 
   // get recipes
-  getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.apiUrl, {
-      params: new HttpParams()
+  // getRecipes() {
+  //   const params = new HttpParams()
+  //     .append('q', 'vegetarian')
+  //     .append('app_key', this.appKey)
+  //     .append('app_id', this.appId);
+  //   const test = this.http
+  //     .get(this.apiUrl, {
+  //       params: params,
+  //     })
+  //     .pipe(map((response) => response.hits.recipe));
+  //   console.log(params);
+  //   console.log(test);
+  //   return test;
+  // }
+
+  
+  // get recipes
+  getRecipes(): Observable<ApiData> {
+    const params = new HttpParams()
         .append('q', 'vegetarian')
         .append('app_key', this.appKey)
-        .append('app_id', this.appId),
+        .append('app_id', this.appId)
+        .append('limit', '2')
+    const test = this.http.get<ApiData>(this.apiUrl, {
+      params: params
     });
+    console.log(params);
+    console.log(test);
+    return test;
   }
 }
