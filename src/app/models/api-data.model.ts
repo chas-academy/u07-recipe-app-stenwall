@@ -1,5 +1,5 @@
 export interface ApiData {
-  hits: Array<Hit>;
+  hits: Hit[];
 }
 
 export interface Hit {
@@ -10,10 +10,10 @@ export interface Recipe {
   label: string; // recipe title
   image: string; // image url
   yield: number; // number of servings
-  ingredientLines: Array<string>;
-  healthLabels?: Array<string>;
-  cautions?: Array<string>;
-  cuisineType?: string;
-  mealType?: string;
-  dishType?: string;
+  ingredientLines: string[]; // each string = type + amount
+  healthLabels?: string[]; // eg milk-free, gluten-free
+  cautions?: string[]; // eg milk, soy, nuts
+  cuisineType?: string; // eg chinese, indian
+  mealType?: string; // eg  lunch, dinner, breakfast, snack
+  dishType?: string; // eg dessert, soup, salad, sandwich
 }

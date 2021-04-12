@@ -1,3 +1,3 @@
-<ul *ngFor="let recipe of recipes">
-    <li>{{ recipe.label }}</li>
+<ul>
+    <li *ngFor="let recipe of recipes" (click)="onSelect(recipe)">{{ recipe.label | titlecase }}</li>
 </ul>

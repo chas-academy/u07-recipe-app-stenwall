@@ -12,24 +12,23 @@ import { ApiData, Recipe } from '../../models/api-data.model';
 export class RecipesComponent implements OnInit {
   recipes: Recipe[] = [];
   apiData: ApiData;
+  selectedRecipe?: Recipe;
 
   constructor(private recipesService: RecipesService) {}
 
-  // ngOnInit(): void {
-  //   this.recipesService.getRecipes()
-  //   .subscribe((result: HttpResponse<Object>) => {
-  //       console.log(result);
-  //       // this.recipes = result.body;
-  //     });
-  // }
-
   ngOnInit(): void {
-    this.recipesService.getRecipes().subscribe(ApiData => {
+    // remove before production!
+    this.recipesService.getRecipes().subscribe((ApiData) => {
       this.apiData = ApiData;
       console.log(this.apiData);
     });
-    this.recipesService.getRecipes().subscribe(ApiData => {
-      this.recipes = ApiData.hits.map(hit => hit.recipe);
+
+    this.recipesService.getRecipes().subscribe((ApiData) => {
+      this.recipes = ApiData.hits.map((hit) => hit.recipe);
     });
+  }
+
+  onSelect(recipe: Recipe): void {
+    this.selectedRecipe = recipe;
   }
 }
