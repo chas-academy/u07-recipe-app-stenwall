@@ -18,23 +18,6 @@ export class RecipesService {
     this.appId = environment.APP_ID;
     this.apiUrl = environment.API_URL;
   }
-
-  // get recipes
-  // getRecipes() {
-  //   const params = new HttpParams()
-  //     .append('q', 'vegetarian')
-  //     .append('app_key', this.appKey)
-  //     .append('app_id', this.appId);
-  //   const test = this.http
-  //     .get(this.apiUrl, {
-  //       params: params,
-  //     })
-  //     .pipe(map((response) => response.hits.recipe));
-  //   console.log(params);
-  //   console.log(test);
-  //   return test;
-  // }
-
   
   // get recipes
   getRecipes(): Observable<ApiData> {
@@ -42,7 +25,6 @@ export class RecipesService {
         .append('q', 'vegetarian')
         .append('app_key', this.appKey)
         .append('app_id', this.appId)
-        .append('limit', '2')
     const test = this.http.get<ApiData>(this.apiUrl, {
       params: params
     });

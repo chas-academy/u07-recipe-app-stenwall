@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { RecipesService } from '../../services/recipes.service';
 
-import { Recipe } from '../../models/api-data.model';
+import { ApiData, Recipe } from '../../models/api-data.model';
 
 @Component({
   selector: 'app-recipes',
@@ -11,6 +11,7 @@ import { Recipe } from '../../models/api-data.model';
 })
 export class RecipesComponent implements OnInit {
   recipes: Recipe[] = [];
+  apiData: ApiData;
 
   constructor(private recipesService: RecipesService) {}
 
@@ -23,6 +24,10 @@ export class RecipesComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    this.recipesService.getRecipes().subscribe(ApiData => {
+      this.apiData = ApiData;
+      console.log(this.apiData);
+    });
     this.recipesService.getRecipes().subscribe(ApiData => {
       this.recipes = ApiData.hits.map(hit => hit.recipe);
     });

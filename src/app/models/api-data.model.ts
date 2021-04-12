@@ -10,9 +10,9 @@ export interface Recipe {
   label: string; // recipe title
   image: string; // image url
   yield: number; // number of servings
-  // ingredients: Ingredient[];
-  // healthLabels?: healthLabels; // enum
-  // cautions?: array[];
+  ingredientLines: Array<string>;
+  healthLabels?: Array<string>;
+  cautions?: Array<string>;
   cuisineType?: string;
   mealType?: string;
   dishType?: string;
