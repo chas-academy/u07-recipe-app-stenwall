@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
-import { ApiData } from '../models/api-data.model';
+import { EdamamApiData } from '../models/api-edamam.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,15 +18,15 @@ export class RecipesService {
     this.appId = environment.APP_ID;
     this.apiUrl = environment.API_URL;
   }
-  
+
   // get recipes
-  getRecipes(): Observable<ApiData> {
+  getRecipes(): Observable<EdamamApiData> {
     const params = new HttpParams()
-        .append('q', 'vegetarian')
-        .append('app_key', this.appKey)
-        .append('app_id', this.appId)
-    const test = this.http.get<ApiData>(this.apiUrl, {
-      params: params
+      .append('q', 'vegetarian')
+      .append('app_key', this.appKey)
+      .append('app_id', this.appId);
+    const test = this.http.get<EdamamApiData>(this.apiUrl, {
+      params: params,
     });
     console.log(params);
     console.log(test);

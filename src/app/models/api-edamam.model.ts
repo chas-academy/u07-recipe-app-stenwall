@@ -1,4 +1,4 @@
-export interface ApiData {
+export interface EdamamApiData {
   hits: Hit[];
 }
 
