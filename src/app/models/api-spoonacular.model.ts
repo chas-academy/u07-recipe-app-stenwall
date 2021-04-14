@@ -1,8 +1,8 @@
 export interface SpoonacularApiData {
-  recipes: Recipe[];
+  results: SpoonRecipe[];
 }
 
-export interface Recipe {
+export interface SpoonRecipe {
   id: number;
   title: string;
   readyInMinutes: number;

@@ -2,6 +2,10 @@
     <li *ngFor="let recipe of recipes" (click)="onSelect(recipe)">{{ recipe.label | titlecase }}</li>
 </ul>
 
+<ul>
+    <li *ngFor="let spoonRecipe of spoonRecipes">{{ spoonRecipe.title | titlecase }}</li>
+</ul>
+
 <div *ngIf="selectedRecipe">
 
     <h2>{{selectedRecipe.label | titlecase}}</h2>
@@ -11,6 +15,6 @@
         <li *ngFor="let ingredientLine of selectedRecipe.ingredientLines">{{ ingredientLine }}</li>
     </ul>
 
-    
+
 
 </div>

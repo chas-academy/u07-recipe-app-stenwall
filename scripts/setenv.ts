@@ -16,9 +16,13 @@ const targetPath = isProduction
 const environmentFileContent = `
 export const environment = {
    production: ${isProduction},
-   API_URL: "${process.env.API_URL}",
-   APP_KEY: "${process.env.APP_KEY}",
-   APP_ID: "${process.env.APP_ID}"
+
+   EDA_API_URL: "${process.env.EDA_API_URL}",
+   EDA_APP_KEY: "${process.env.EDA_APP_KEY}",
+   EDA_APP_ID: "${process.env.EDA_APP_ID}",
+
+   SPOON_API_URL: "${process.env.SPOON_API_URL}",
+   SPOON_API_KEY: "${process.env.SPOON_API_KEY}"
 };
 `;
 
