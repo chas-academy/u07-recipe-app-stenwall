@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import {
   SpoonacularApiData,
   SpoonacularRandomApiData,
+  Recipe
 } from '../models/api-spoonacular.model';
 
 @Injectable({
@@ -100,6 +101,14 @@ export class RecipesService {
           .append('apiKey', this.spoonApiKey),
       }
     );
+  }
+
+  getDetailedRecipe(id: number | string): Observable<Recipe> {
+    return this.http.get<Recipe>(
+      this.spoonApiUrl + id + '/information', {
+      params: new HttpParams()
+        .append('apiKey', this.spoonApiKey),
+    });
   }
 
   // get recipes from Edamam

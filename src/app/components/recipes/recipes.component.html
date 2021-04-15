@@ -6,8 +6,10 @@
 <div *ngIf="selectedBtn else random">
     <ul>
         <li *ngFor="let showRecipe of showRecipes">
-            {{ showRecipe.title }}
-            <img src="{{ showRecipe.image }}">
+            <a [routerLink]="['/recipe', showRecipe.id]">
+                {{ showRecipe.title }}
+                <img src="{{ showRecipe.image }}">
+            </a>
         </li>
     </ul>
 </div>
@@ -15,18 +17,10 @@
 <ng-template #random>
     <ul>
         <li *ngFor="let showRecipe of showRecipes">
-            {{ showRecipe.title }}
+            <a [routerLink]="['/recipe', showRecipe.id]">
+                {{ showRecipe.title }}
+                <img src="{{ showRecipe.image }}">
+            </a>
         </li>
     </ul>
 </ng-template>
-
-<!-- <div *ngIf="selectedRecipe">
-
-    <h2>{{selectedRecipe.label | titlecase}}</h2>
-
-    <h3>Ingredients</h3>
-    <ul>
-        <li *ngFor="let ingredientLine of selectedRecipe.ingredientLines">{{ ingredientLine }}</li>
-    </ul>
-
-</div> -->
