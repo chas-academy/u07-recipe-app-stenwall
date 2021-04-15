@@ -1,19 +1,17 @@
 export interface SpoonacularApiData {
-  results: SpoonRecipe[];
+  results: Recipe[];
 }
 
-export interface SpoonRecipe {
+export interface Recipe {
   id: number;
   title: string;
   readyInMinutes: number;
   servings: number;
   image: string;
-  vegetarian: boolean;
-  vegan: boolean;
-  glutenFree: boolean;
-  dairyFree: boolean;
-  cheap: boolean;
-  sustainable: boolean;
+  vegetarian?: boolean;
+  vegan?: boolean;
+  glutenFree?: boolean;
+  dairyFree?: boolean;
   sourceName: string;
   extendedIngredients: ExtendedIngredient[];
   summary: string;
@@ -22,17 +20,18 @@ export interface SpoonRecipe {
   diets?: string[];
   instructions: string;
   analyzedInstructions: AnalyzedInstruction[];
+  ingredientString: string[];
 }
 
 export interface ExtendedIngredient {
   id: number;
   aisle?: string;
   image: string;
-  name: string;
-  nameClean: string;
-  originalString: string;
+  name: string; // eg green cabbage
+  nameClean: string; // cabbage
+  originalString: string; // eg "15 oz can white beans, drained and rinsed"
   amount: number;
-  unit: string;
+  unit: string; // oz, g, tsb etc
   measures: Measures;
 }
 

@@ -1,12 +1,26 @@
-<ul>
-    <li *ngFor="let recipe of recipes" (click)="onSelect(recipe)">{{ recipe.label | titlecase }}</li>
-</ul>
+<button (click)="onSelect($event)" value="appz">Appetizers</button>
+<button (click)="onSelect($event)" value="mains">Mains</button>
+<button (click)="onSelect($event)" value="desserts">Desserts</button>
+<button (click)="onSelect($event)" value="sides">Sides</button>
 
-<ul>
-    <li *ngFor="let spoonRecipe of spoonRecipes">{{ spoonRecipe.title | titlecase }}</li>
-</ul>
+<div *ngIf="selectedBtn else random">
+    <ul>
+        <li *ngFor="let showRecipe of showRecipes">
+            {{ showRecipe.title }}
+            <img src="{{ showRecipe.image }}">
+        </li>
+    </ul>
+</div>
 
-<div *ngIf="selectedRecipe">
+<ng-template #random>
+    <ul>
+        <li *ngFor="let showRecipe of showRecipes">
+            {{ showRecipe.title }}
+        </li>
+    </ul>
+</ng-template>
+
+<!-- <div *ngIf="selectedRecipe">
 
     <h2>{{selectedRecipe.label | titlecase}}</h2>
 
@@ -15,6 +29,4 @@
         <li *ngFor="let ingredientLine of selectedRecipe.ingredientLines">{{ ingredientLine }}</li>
     </ul>
 
-
-
-</div>
+</div> -->
