@@ -2,6 +2,10 @@ export interface SpoonacularApiData {
   results: Recipe[];
 }
 
+export interface SpoonacularRandomApiData {
+  recipes: Recipe[];
+}
+
 export interface Recipe {
   id: number;
   title: string;

@@ -4,7 +4,10 @@ import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 // import { EdamamApiData } from '../models/api-edamam.model';
-import { SpoonacularApiData, Recipe } from '../models/api-spoonacular.model';
+import {
+  SpoonacularApiData,
+  SpoonacularRandomApiData,
+} from '../models/api-spoonacular.model';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +35,7 @@ export class RecipesService {
       this.spoonApiUrl + 'complexSearch',
       {
         params: new HttpParams()
+          .append('query', 'foodista')
           .append('diet', 'vegetarian')
           .append('type', 'main+course')
           .append('number', '30')
@@ -46,6 +50,7 @@ export class RecipesService {
       this.spoonApiUrl + 'complexSearch',
       {
         params: new HttpParams()
+          .append('query', 'foodista')
           .append('diet', 'vegetarian')
           .append('type', 'appetizer')
           .append('number', '30')
@@ -60,6 +65,7 @@ export class RecipesService {
       this.spoonApiUrl + 'complexSearch',
       {
         params: new HttpParams()
+          .append('query', 'foodista')
           .append('diet', 'vegetarian')
           .append('type', 'dessert')
           .append('number', '30')
@@ -74,6 +80,7 @@ export class RecipesService {
       this.spoonApiUrl + 'complexSearch',
       {
         params: new HttpParams()
+          .append('query', 'foodista')
           .append('diet', 'vegetarian')
           .append('type', 'side+dish')
           .append('number', '30')
@@ -82,11 +89,12 @@ export class RecipesService {
     );
   }
 
-  getRandomRecipesSpoon(): Observable<SpoonacularApiData> {
-    return this.http.get<SpoonacularApiData>(
+  getRandomRecipesSpoon(): Observable<SpoonacularRandomApiData> {
+    return this.http.get<SpoonacularRandomApiData>(
       this.spoonApiUrl + 'random',
       {
         params: new HttpParams()
+          .append('query', 'foodista')
           .append('tags', 'vegetarian')
           .append('number', '30')
           .append('apiKey', this.spoonApiKey),
