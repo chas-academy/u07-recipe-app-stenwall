@@ -1,1 +1,99 @@
-/* You can add global styles to this file, and also import other style files */
+// import library functions for theme creation
+@import "~@angular/material/theming";
+// (plus imports for other components in your app)
+
+// include non-theme styles for core
+// be sure to only ever include this mixin once
+@include mat-core();
+
+// import custom fonts
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Montserrat:wght@400;500;600&display=swap");
+
+// define the applications custom theme
+$app-primary: mat-palette($mat-teal, 500, 100, 900);
+$app-accent: mat-palette($mat-amber, 800, 600, 900);
+$app-warn: mat-palette($mat-deep-orange, 900);
+
+// custom background and foreground colors
+$custom-background-color: map_get($mat-lime, 50);
+$custom-foreground-color: map_get($mat-teal, 900);
+
+// update the $mat-light-theme-background and -foreground palette
+// with custom background before creating the new theme
+$mat-light-theme-background: map_merge(
+  $mat-light-theme-background,
+  (
+    background: $custom-background-color,
+    card: $custom-background-color,
+    dialog: $custom-background-color,
+    app-bar: $custom-background-color,
+    color: $custom-background-color,
+  )
+);
+
+$mat-light-theme-foreground: map_merge(
+  $mat-light-theme-foreground,
+  (
+    base: $custom-foreground-color,
+    text: $custom-foreground-color,
+    icon: $custom-foreground-color,
+    icons: $custom-foreground-color,
+    divider: $custom-foreground-color,
+    dividers: $custom-foreground-color,
+  )
+);
+
+$light-primary-text: $custom-background-color;
+$light-secondary-text: $custom-background-color;
+$light-disabled-text: $custom-background-color;
+$light-dividers: $custom-background-color;
+$light-focused: $custom-background-color;
+
+// define the applications custom typography
+$roboto-mono: '"Roboto Mono", monospace';
+$montserrat: "Montserrat, sans-serif";
+
+// override the typography config
+$custom-typography: mat-typography-config(
+  $font-family: $montserrat,
+  $display-4: mat-typography-level(112px, 112px, 700, $montserrat, $letter-spacing: -0.06em),
+  $display-3: mat-typography-level(56px, 56px, 700, $montserrat, $letter-spacing: -0.02em),
+  $display-2: mat-typography-level(45px, 48px, 400, $roboto-mono, $letter-spacing: -0.005em),
+  $display-1: mat-typography-level(34px, 40px, 400, $roboto-mono),
+  $headline: mat-typography-level(4rem, 4rem, 600, $montserrat),
+  $title: mat-typography-level(2rem, 2rem, 500, $montserrat),
+  $subheading-2: mat-typography-level(1.2rem, 1.2rem, 400, $roboto-mono),
+  $subheading-1: mat-typography-level(1.5rem, 1.5, 400, $roboto-mono),
+  $body-2: mat-typography-level(14px, 24px, 600, $montserrat),
+  $body-1: mat-typography-level(16px, 24px, 400, $montserrat),
+  $caption: mat-typography-level(12px, 20px, 400, $montserrat),
+  $button: mat-typography-level(1rem, 1rem, 600, $montserrat),
+);
+
+// h1 = headline
+// h2 = title
+// h3 = subheading-2
+// h4 = subheading-1
+// .mat-body-strong = body-2
+// .mat-body = body-1
+// .mat-small, .mat-caption = caption
+// .mat-list-item = subheading-2/body-1
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as color or typography
+$recipe-theme: mat-light-theme(
+  (
+    color: (
+      primary: $app-primary,
+      accent: $app-accent,
+      warn: $app-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($recipe-theme);
+@include angular-material-color($recipe-theme);
+@include angular-material-typography($custom-typography);
