@@ -97,3 +97,6 @@ $recipe-theme: mat-light-theme(
 @include angular-material-theme($recipe-theme);
 @include angular-material-color($recipe-theme);
 @include angular-material-typography($custom-typography);
+
+// import custom styling
+@import 'css/custom-styling';
