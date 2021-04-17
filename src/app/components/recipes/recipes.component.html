@@ -3,24 +3,25 @@
 <button (click)="onSelect($event)" value="desserts">Desserts</button>
 <button (click)="onSelect($event)" value="sides">Sides</button>
 
+<section>
 <div *ngIf="selectedBtn else random">
-    <ul>
-        <li *ngFor="let showRecipe of showRecipes">
-            <a [routerLink]="['/recipe', showRecipe.id]">
-                {{ showRecipe.title }}
-                <img src="{{ showRecipe.image }}">
-            </a>
-        </li>
-    </ul>
+    <mat-card class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]">
+        <img mat-card-image src="{{ showRecipe.image }}">
+        <mat-card-header>
+            <mat-card-title>{{ showRecipe.title }}</mat-card-title>
+        </mat-card-header>
+    </mat-card>
 </div>
 
 <ng-template #random>
-    <ul>
-        <li *ngFor="let showRecipe of showRecipes">
-            <a [routerLink]="['/recipe', showRecipe.id]">
-                {{ showRecipe.title }}
-                <img src="{{ showRecipe.image }}">
-            </a>
-        </li>
-    </ul>
+    <mat-card class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]">
+        <img mat-card-image src="{{ showRecipe.image }}">
+        <mat-card-header>
+            <mat-card-title>{{ showRecipe.title }}</mat-card-title>
+            <button mat-mini-fab color="primary">
+                <mat-icon>bookmark</mat-icon>
+            </button>
+        </mat-card-header>
+    </mat-card>
 </ng-template>
+</section>
