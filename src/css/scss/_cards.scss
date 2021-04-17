@@ -1,0 +1,12 @@
+.recipe-card {
+  max-width: 20rem;
+  cursor: pointer;
+  .mat-card-title {
+      color: map-get($app-accent, 900);
+      line-height: 2rem;
+      font-weight: 700;
+  }
+  .mat-mini-fab {
+      box-shadow: none;
+  }
+}
