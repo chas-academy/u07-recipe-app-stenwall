@@ -11,6 +11,8 @@ import { ApiInterceptor } from '../app/interceptors/api-interceptor.interceptor'
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
+import { HeaderComponent } from './components/header/header.component';
+import { NavTabBarComponent } from './components/nav-tab-bar/nav-tab-bar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
     RecipesComponent,
     RecipeComponent,
     PageNotFoundComponent,
+    HeaderComponent,
+    NavTabBarComponent,
   ],
   imports: [
     BrowserModule,
