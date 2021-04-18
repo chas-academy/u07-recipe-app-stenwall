@@ -13,6 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { NavTabBarComponent } from './components/nav-tab-bar/nav-tab-bar.component';
+import { AppetizersComponent } from './components/recipes/appetizers/appetizers.component';
+import { MainsComponent } from './components/recipes/mains/mains.component';
+import { DessertsComponent } from './components/recipes/desserts/desserts.component';
+import { SidesComponent } from './components/recipes/sides/sides.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,10 @@ import { NavTabBarComponent } from './components/nav-tab-bar/nav-tab-bar.compone
     PageNotFoundComponent,
     HeaderComponent,
     NavTabBarComponent,
+    AppetizersComponent,
+    MainsComponent,
+    DessertsComponent,
+    SidesComponent,
   ],
   imports: [
     BrowserModule,
