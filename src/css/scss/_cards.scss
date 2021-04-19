@@ -1,12 +1,25 @@
-.recipe-card {
-  max-width: 20rem;
-  cursor: pointer;
-  .mat-card-title {
-      color: map-get($app-accent, 900);
-      line-height: 2rem;
-      font-weight: 700;
-  }
-  .mat-mini-fab {
-      box-shadow: none;
+section {
+  .mat-card {
+    max-width: 20rem;
+    height: 100%;
+    cursor: pointer;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    .mat-card-image {
+      overflow: hidden;
+    }
+    .mat-card-header {
+      display: flex;
+      justify-content: space-between;
+      .mat-card-title {
+        color: map-get($app-accent, darker);
+        line-height: 1.5rem;
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+      .mat-mini-fab {
+        box-shadow: none;
+      }
+    }
   }
 }
