@@ -17,6 +17,7 @@ import { AppetizersComponent } from './components/recipes/appetizers/appetizers.
 import { MainsComponent } from './components/recipes/mains/mains.component';
 import { DessertsComponent } from './components/recipes/desserts/desserts.component';
 import { SidesComponent } from './components/recipes/sides/sides.component';
+import { BackHeaderComponent } from './components/recipe/back-header/back-header.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SidesComponent } from './components/recipes/sides/sides.component';
     MainsComponent,
     DessertsComponent,
     SidesComponent,
+    BackHeaderComponent,
   ],
   imports: [
     BrowserModule,
