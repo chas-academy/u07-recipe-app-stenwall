@@ -46,20 +46,13 @@ export class RecipesComponent implements OnInit {
   // --- snygga bilder
   // --- "sourceName": "Foodista"
   // --- "sourceName": "Pink When"
-  
+
 
   // get recipes from edamam
   // this.recipesService.getRecipesEda().subscribe((EdamamApiData) => {
   //   this.recipes = EdamamApiData.hits.map((hit) => hit.recipe);
   //   console.log(this.recipes);
   // });
-
-  // get recipes from spoonacular
-  //   this.recipesService.getRecipesSpoon().subscribe((SpoonacularApiData) => {
-  //     this.recipes = SpoonacularApiData.results;
-  //     })
-  //     console.log(this.recipes);
-  // }
 
   onSelect(event): any {
     this.selectedBtn = event.target.value;

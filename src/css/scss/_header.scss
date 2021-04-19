@@ -1,6 +1,16 @@
 a {
     text-decoration: none;
+  h1 {
     text-align: center;
     color: map-get($app-primary, darker);
     padding: 3rem;
+  }
+
+  &.mat-tab-link {
+    opacity: 0.8;
+    :hover {
+        color: map-get($app-primary, default);
+        opacity: 0.9;
+    }
+  }
 }
