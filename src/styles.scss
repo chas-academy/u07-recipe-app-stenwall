@@ -55,7 +55,7 @@ $montserrat: "Montserrat, sans-serif";
 
 // override the typography config
 $custom-typography: mat-typography-config(
-  $font-family: $montserrat,
+  $font-family: $roboto-mono,
   $display-4: mat-typography-level(112px, 112px, 700, $montserrat, $letter-spacing: -0.06em),
   $display-3: mat-typography-level(56px, 56px, 700, $montserrat, $letter-spacing: -0.02em),
   $display-2: mat-typography-level(45px, 48px, 400, $roboto-mono, $letter-spacing: -0.005em),
@@ -67,7 +67,7 @@ $custom-typography: mat-typography-config(
   $body-2: mat-typography-level(14px, 24px, 600, $montserrat),
   $body-1: mat-typography-level(16px, 24px, 400, $roboto-mono),
   $caption: mat-typography-level(12px, 20px, 400, $montserrat),
-  $button: mat-typography-level(1rem, 1rem, 600, $montserrat),
+  $button: mat-typography-level(1rem, 1rem, 700, $montserrat),
 );
 
 // h1 = headline

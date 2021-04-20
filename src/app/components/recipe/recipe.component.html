@@ -28,49 +28,54 @@
     </div>
 
     <div class="recipe-tabs">
-        <h4>Ingredients</h4>
-        <ul>
-            <!-- <li *ngFor="let extendedIngredient of extendedIngredients">{{ extendedIngredient.originalString }}</li> -->
-            <li>5 Cloves of Garlic</li>
-            <li>1 Red Chilli</li>
-            <li>Handful of Basil</li>
-            <li>4 Large Tomatoes</li>
-            <li>250g Cherry Tomatoes</li>
-            <li>1 Vegetable Stock Cube</li>
-            <li>500g Orzo</li>
-            <li>30g Parmesan</li>
-            <li>Salt</li>
-            <li>Pepper</li>
-            <li>Olive Oil</li>
-        </ul>
-
-        <h4>Instructions</h4>
-        <!-- <div [innerHTML]="recipe.instructions"></div> -->
-        <div>
-            Step 1.
-            Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large tomatoes.
-
-            Step 2.
-            Heat a little glug of olive oil in a frying pan. Add your sliced garlic and red chilli and gently fry for a
-            couple
-            of
-            mins until fragrant.
-
-            Step 3.
-            Tip your cherry tomatoes into the pan along with your quartered tomatoes and vegetable stock cube. Cook for
-            10
-            mins,
-            smooshing with the back of your spoon to break down the tomatoes.
-
-            Step 4.
-            Add your orzo and 800ml water. Give it a good stir, then simmer for 8 mins.
-
-            Step 5.
-            Season with salt and pepper, then add your basil and stir to combine.
-
-            Step 6.
-            Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.
-        </div>
+        <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="Ingredients">
+                <h4>Ingredients</h4>
+                <ul>
+                    <!-- <li *ngFor="let extendedIngredient of extendedIngredients">{{ extendedIngredient.originalString }}</li> -->
+                    <li>5 Cloves of Garlic</li>
+                    <li>1 Red Chilli</li>
+                    <li>Handful of Basil</li>
+                    <li>4 Large Tomatoes</li>
+                    <li>250g Cherry Tomatoes</li>
+                    <li>1 Vegetable Stock Cube</li>
+                    <li>500g Orzo</li>
+                    <li>30g Parmesan</li>
+                    <li>Salt</li>
+                    <li>Pepper</li>
+                    <li>Olive Oil</li>
+                </ul>
+            </mat-tab>
+            <mat-tab label="Instructions">
+                <h4>Instructions</h4>
+                <!-- <div [innerHTML]="recipe.instructions"></div> -->
+                <div>
+                    Step 1.
+                    Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large tomatoes.
+                
+                    Step 2.
+                    Heat a little glug of olive oil in a frying pan. Add your sliced garlic and red chilli and gently fry for a
+                    couple
+                    of
+                    mins until fragrant.
+                
+                    Step 3.
+                    Tip your cherry tomatoes into the pan along with your quartered tomatoes and vegetable stock cube. Cook for
+                    10
+                    mins,
+                    smooshing with the back of your spoon to break down the tomatoes.
+                
+                    Step 4.
+                    Add your orzo and 800ml water. Give it a good stir, then simmer for 8 mins.
+                
+                    Step 5.
+                    Season with salt and pepper, then add your basil and stir to combine.
+                
+                    Step 6.
+                    Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.
+                </div>
+            </mat-tab>
+        </mat-tab-group>
     </div>
 
 </main>
