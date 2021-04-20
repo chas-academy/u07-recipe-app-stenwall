@@ -16,6 +16,9 @@ export class RecipeComponent implements OnInit {
   id: number | string;
   extendedIngredients: ExtendedIngredient[] = [];
 
+  links = ['Ingredients', 'Instructions'];
+  activeLink = this.links[0];
+
   constructor(
     private route: ActivatedRoute,
     private recipesService: RecipesService
@@ -31,6 +34,5 @@ export class RecipeComponent implements OnInit {
         console.log(this.recipe);
         console.log(this.extendedIngredients);
       });
-    
   }
 }

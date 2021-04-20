@@ -35,3 +35,24 @@ img {
     font-size: 0.7rem;
   }
 }
+
+#back-title {
+  font-weight: 600;
+  padding: 1rem;
+  letter-spacing: 0.2rem;
+  font-size: 2rem;
+  line-height: 2rem;
+  margin-bottom: 0.5rem;
+
+  .material-icons {
+    font-size: 2rem;
+    font-weight: 500;
+    vertical-align: top;
+    margin: 0 0.5rem;
+  }
+}
+
+.mat-tab-nav-bar {
+   align-items: flex-end;
+   border-bottom: 0;
+}
