@@ -44,5 +44,6 @@ export class NavTabBarComponent implements OnInit {
   }
 }
 
-// source:
+// source to routing with angular material tabs:
+// -----------------------------------------------------------------------
 // https://nirajsonawane.github.io/2018/10/27/Angular-Material-Tabs-with-Router/
