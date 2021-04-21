@@ -9,7 +9,7 @@ main {
   padding: 2rem;
   display: grid;
   width: 100%;
-  justify-items: center;
+  // justify-items: center;
 }
 
 .header-wrapper {
@@ -27,7 +27,7 @@ main {
 // @media (min-width: 576px) { ... }
 
 // Medium devices (tablets, 768px and up)
-// @media (min-width: 768px) { ... }
+// @media (min-width: 768px) {}
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
@@ -46,6 +46,10 @@ main {
 @media (min-width: 1200px) {
   .recipe-wrapper {
     width: 1140px;
+    column-gap: 6rem;
+  }
+  .header-wrapper {
+    column-gap: 6rem;
   }
 }
 
@@ -53,5 +57,10 @@ main {
 @media (min-width: 1400px) {
   .recipe-wrapper {
     width: 1320px;
+  }
+  .header-wrapper {
+    max-width: 1400px;
+    justify-self: center;
+    margin: auto;
   }
 }
