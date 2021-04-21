@@ -52,7 +52,7 @@ img {
   }
 }
 
-.mat-tab-nav-bar {
-   align-items: flex-end;
-   border-bottom: 0;
+.mat-tab-group {
+  justify-content: flex-end;
+  border-bottom: none;
 }

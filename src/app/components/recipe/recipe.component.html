@@ -2,19 +2,37 @@
 <a [routerLink]="['/']">
     <h2 id="back-title">
         <span class="material-icons">arrow_back</span>
-        Parsley & Sage
+        {{ data.title }}
     </h2>
 </a>
 
 
-<nav mat-tab-nav-bar mat-align-tabs="center">
+<!-- <nav mat-tab-nav-bar mat-align-tabs="center">
     <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link" [active]="activeLink == link">
         {{link}}
     </a>
-</nav>
+</nav> -->
+
+<mat-tab-group mat-align-tabs="center" (selectedTabChange)="onChange($event)">
+    <mat-tab label="ingredients"></mat-tab>
+    <mat-tab label="instructions"></mat-tab>
+</mat-tab-group>
+
 </header>
 
 <mat-divider></mat-divider>
+
+    <!-- <div *ngIf="selectedTab">
+        <mat-card class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]">
+            <img mat-card-image src="{{ showRecipe.image }}">
+            <mat-card-header>
+                <mat-card-title>{{ showRecipe.title }}</mat-card-title>
+                <button mat-mini-fab color="primary">
+                    <mat-icon>bookmark</mat-icon>
+                </button>
+            </mat-card-header>
+        </mat-card>
+    </div> -->
 
 <main class="recipe-wrapper">
     <div class="recipe-info">
@@ -44,8 +62,7 @@
     </div>
 
     <div class="recipe-tabs">
-        <mat-tab-group mat-align-tabs="center">
-            <mat-tab label="Ingredients">
+        <div *ngIf="selectedTab === 'ingredients'">
                 <h4>Ingredients</h4>
                 <ul>
                     <!-- <li *ngFor="let extendedIngredient of extendedIngredients">{{ extendedIngredient.originalString }}</li> -->
@@ -61,8 +78,8 @@
                     <li>Pepper</li>
                     <li>Olive Oil</li>
                 </ul>
-            </mat-tab>
-            <mat-tab label="Instructions">
+        </div>
+        <div *ngIf="selectedTab === 'instructions'">
                 <h4>Instructions</h4>
                 <!-- <div [innerHTML]="recipe.instructions"></div> -->
                 <div>
@@ -90,8 +107,7 @@
                     Step 6.
                     Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.
                 </div>
-            </mat-tab>
-        </mat-tab-group>
+        </div>
     </div>
 
 </main>

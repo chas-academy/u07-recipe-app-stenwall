@@ -13,3 +13,7 @@ h2.recipe-title {
     color: map-get($app-primary, darker);
   }
 }
+
+.mat-tab-header {
+    border-bottom: none;
+}
