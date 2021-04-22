@@ -4,6 +4,11 @@ h2.recipe-title {
   margin: 1.5rem 0;
 }
 
+.mat-tab-labels {
+  background-color: $custom-background-color;
+  // border-top: solid 1px map-get($app-primary, darker);
+}
+
 .mat-tab-label {
   opacity: 0.8;
   letter-spacing: 0.08rem;
@@ -21,9 +26,19 @@ h2.recipe-title {
 // container that holds all the overlay
 // only reach up to right below the recipe header
 .cdk-overlay-container {
-  height: 100%;
-  top: 10%;
+  height: 100vh;
+  top: 0;
   bottom: 0;
+}
+
+.cdk-global-overlay-wrapper {
+  height: 100vh;
+  bottom: 0;
+  position: fixed;
+}
+
+.mat-bottom-sheet-container {
+  max-height: 92vh !important;
 }
 
 // make the overlay pane cover the whole wrapper/container

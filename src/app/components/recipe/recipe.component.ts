@@ -12,6 +12,8 @@ import {
   MatBottomSheetConfig,
 } from '@angular/material/bottom-sheet';
 import { Overlay } from '@angular/cdk/overlay';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+
 import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 
 @Component({
@@ -32,6 +34,7 @@ export class RecipeComponent implements OnInit {
     // backdropClass: ,
     direction: 'ltr',
   };
+  isLargeScreen: boolean;
 
   @ViewChild('templateBottomSheet') TemplateBottomSheet: TemplateRef<any>;
 
@@ -39,7 +42,8 @@ export class RecipeComponent implements OnInit {
     private route: ActivatedRoute,
     private recipesService: RecipesService,
     private bottomSheet: MatBottomSheet,
-    private overlay: Overlay
+    private overlay: Overlay,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
@@ -54,6 +58,8 @@ export class RecipeComponent implements OnInit {
       });
 
     this.onTabChange();
+
+    this.isLargeScreen = this.breakpointObserver.isMatched('(min-width: 992px)');
   }
 
   onChange(event) {
@@ -77,13 +83,12 @@ export class RecipeComponent implements OnInit {
 
   openTemplateSheetMenu() {
     const scrollStrategy = this.overlay.scrollStrategies.reposition();
-    this.bottomSheet.open(this.TemplateBottomSheet, {scrollStrategy});
+    this.bottomSheet.open(this.TemplateBottomSheet, { scrollStrategy });
   }
 
   closeTemplateSheetMenu() {
     this.bottomSheet.dismiss();
   }
-
 }
 
 // sources to tab selection solution:

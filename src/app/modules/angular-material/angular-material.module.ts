@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { PortalModule } from '@angular/cdk/portal';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {
@@ -76,6 +77,7 @@ const materialModules = [
   MatRadioModule,
   MatDatepickerModule,
   MatTooltipModule,
+  LayoutModule,
 ];
 
 @NgModule({

@@ -6,59 +6,36 @@
         </h2>
     </a>
 
-    <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onChange($event)">
-        <mat-tab label="ingredients"></mat-tab>
-        <mat-tab label="instructions"></mat-tab>
-    </mat-tab-group>
+    <ng-container *ngIf="isLargeScreen; then largeScreen; else smallScreen">
+    </ng-container>
+
+    <ng-template #largeScreen>
+        <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onChange($event)">
+            <mat-tab label="ingredients"></mat-tab>
+            <mat-tab label="instructions"></mat-tab>
+        </mat-tab-group>
+    </ng-template>
+    <ng-template #smallScreen>
+        <mat-tab-group class="test-tabs" mat-align-tabs="center" (selectedTabChange)="onChange($event)" (click)="openTemplateSheetMenu()" headerPosition="below">
+            <mat-tab label="ingredients"></mat-tab>
+            <mat-tab label="instructions"></mat-tab>
+        </mat-tab-group>
+    </ng-template>
+
+    
 
 </header>
 
 <mat-divider></mat-divider>
 
-<!-- <button mat-raised-button (click)="openBottomSheet()">Open Component Bottom Sheet</button> -->
+<!-- <button mat-raised-button (click)="openBottomSheet()">Open Component Bottom Sheet</button> 
+<button mat-raised-button (click)="openTemplateSheetMenu()">Open Template Bottom Sheet</button> -->
 
-<button mat-raised-button (click)="openTemplateSheetMenu()">Open Template Bottom Sheet</button>
 
-<mat-tab-group class="test-tabs" mat-align-tabs="center" (selectedTabChange)="onChange($event)" (click)="openTemplateSheetMenu()">
-    <mat-tab label="test 1"></mat-tab>
-    <mat-tab label="test 2"></mat-tab>
-</mat-tab-group>
 
 <ng-template let-bottomSheetRef="bottomSheetRef" #templateBottomSheet>
     <button mat-mini-fab (click)="closeTemplateSheetMenu()">X</button>
-    <div *ngIf="selectedTab === 'test 2'">
-    <h4>Instructions</h4>
-    <!-- <div [innerHTML]="recipe.instructions"></div> -->
-        Step 1.
-        Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large
-        tomatoes.
-
-        Step 2.
-        Heat a little glug of olive oil in a frying pan. Add your sliced garlic and red chilli and gently
-        fry
-        for a
-        couple
-        of
-        mins until fragrant.
-
-        Step 3.
-        Tip your cherry tomatoes into the pan along with your quartered tomatoes and vegetable stock cube.
-        Cook
-        for
-        10
-        mins,
-        smooshing with the back of your spoon to break down the tomatoes.
-
-        Step 4.
-        Add your orzo and 800ml water. Give it a good stir, then simmer for 8 mins.
-
-        Step 5.
-        Season with salt and pepper, then add your basil and stir to combine.
-
-        Step 6.
-        Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.
-    </div>
-    <div *ngIf="selectedTab === 'test 1'">
+    <div *ngIf="selectedTab === 'ingredients'">
         <h4>Ingredients</h4>
         <ul>
             <!-- <li *ngFor="let extendedIngredient of extendedIngredients">{{ extendedIngredient.originalString }}</li> -->
@@ -78,34 +55,28 @@
     <div *ngIf="selectedTab === 'instructions'">
         <h4>Instructions</h4>
         <!-- <div [innerHTML]="recipe.instructions"></div> -->
-        <div>
-            Step 1.
-            Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large
-            tomatoes.
-    
-            Step 2.
-            Heat a little glug of olive oil in a frying pan. Add your sliced garlic and red chilli and gently fry
-            for a
-            couple
-            of
-            mins until fragrant.
-    
-            Step 3.
-            Tip your cherry tomatoes into the pan along with your quartered tomatoes and vegetable stock cube. Cook
-            for
-            10
-            mins,
-            smooshing with the back of your spoon to break down the tomatoes.
-    
-            Step 4.
-            Add your orzo and 800ml water. Give it a good stir, then simmer for 8 mins.
-    
-            Step 5.
-            Season with salt and pepper, then add your basil and stir to combine.
-    
-            Step 6.
-            Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.
-        </div>
+        <h4>Step 1.</h4>
+        <p>Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large tomatoes.
+        </p>
+        <br>
+        <h4>Step 2.</h4>
+        <p>Heat a little glug of olive oil in a frying pan. Add your sliced garlic and red chilli and gently fry for a
+            couple of
+            mins until fragrant.</p>
+        <br>
+        <h4>Step 3.</h4>
+        <p>Tip your cherry tomatoes into the pan along with your quartered tomatoes and vegetable stock cube. Cook for
+            10 mins,
+            smooshing with the back of your spoon to break down the tomatoes.</p>
+        <br>
+        <h4>Step 4.</h4>
+        <p>Add your orzo and 800ml water. Give it a good stir, then simmer for 8 mins.</p>
+        <br>
+        <h4>Step 5.</h4>
+        <p>Season with salt and pepper, then add your basil and stir to combine.</p>
+        <br>
+        <h4>Step 6.</h4>
+        <p>Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.</p>
     </div>
 </ng-template>
 
@@ -158,34 +129,28 @@
         <div *ngIf="selectedTab === 'instructions'">
             <h4>Instructions</h4>
             <!-- <div [innerHTML]="recipe.instructions"></div> -->
-            <div>
-                Step 1.
-                Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large
-                tomatoes.
-
-                Step 2.
-                Heat a little glug of olive oil in a frying pan. Add your sliced garlic and red chilli and gently fry
-                for a
-                couple
-                of
-                mins until fragrant.
-
-                Step 3.
-                Tip your cherry tomatoes into the pan along with your quartered tomatoes and vegetable stock cube. Cook
-                for
-                10
-                mins,
-                smooshing with the back of your spoon to break down the tomatoes.
-
-                Step 4.
-                Add your orzo and 800ml water. Give it a good stir, then simmer for 8 mins.
-
-                Step 5.
-                Season with salt and pepper, then add your basil and stir to combine.
-
-                Step 6.
-                Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.
-            </div>
+            <h4>Step 1.</h4>
+            <p>Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large
+                tomatoes.</p>
+            <br>
+            <h4>Step 2.</h4>
+            <p>Heat a little glug of olive oil in a frying pan. Add your sliced garlic and red chilli and gently fry for
+                a couple of
+                mins until fragrant.</p>
+            <br>
+            <h4>Step 3.</h4>
+            <p>Tip your cherry tomatoes into the pan along with your quartered tomatoes and vegetable stock cube. Cook
+                for 10 mins,
+                smooshing with the back of your spoon to break down the tomatoes.</p>
+            <br>
+            <h4>Step 4.</h4>
+            <p>Add your orzo and 800ml water. Give it a good stir, then simmer for 8 mins.</p>
+            <br>
+            <h4>Step 5.</h4>
+            <p>Season with salt and pepper, then add your basil and stir to combine.</p>
+            <br>
+            <h4>Step 6.</h4>
+            <p>Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.</p>
         </div>
     </div>
 
