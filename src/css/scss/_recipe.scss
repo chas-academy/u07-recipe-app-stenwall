@@ -1,0 +1,19 @@
+h2.recipe-title {
+  color: map-get($app-accent, darker);
+  font-weight: 700;
+  margin: 1.5rem 0;
+}
+
+.mat-tab-label {
+  opacity: 0.8;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  &:hover {
+    opacity: 0.9;
+    color: map-get($app-primary, darker);
+  }
+}
+
+.mat-tab-header {
+    border-bottom: none;
+}

@@ -10,7 +10,11 @@ import { DessertsComponent } from './components/recipes/desserts/desserts.compon
 import { SidesComponent } from './components/recipes/sides/sides.component';
 
 const routes: Routes = [
-  { path: 'recipe/:id', component: RecipeComponent },
+  {
+    path: 'recipe/:id',
+    component: RecipeComponent,
+    data: { title: 'Parsley & Sage' },
+  },
   { path: '', component: RecipesComponent },
   { path: 'appetizers', component: AppetizersComponent },
   { path: 'mains', component: MainsComponent },

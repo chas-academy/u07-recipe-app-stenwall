@@ -28,8 +28,8 @@ export class ApiInterceptor implements HttpInterceptor {
   }
 }
 
-// Sources for this solution when using multiple API:s:
+// sources for this solution when using multiple API:s:
 // -----------------------------------------------------------------------
-// -- https://dev.to/leonardovff/angular-consuming-multiple-apis-with-angular-httpclient-in-a-beautiful-way-using-interceptors-3im1
+// https://dev.to/leonardovff/angular-consuming-multiple-apis-with-angular-httpclient-in-a-beautiful-way-using-interceptors-3im1
 // -----------------------------------------------------------------------
-// -- https://angular.io/guide/http#intercepting-requests-and-responses
+// https://angular.io/guide/http#intercepting-requests-and-responses

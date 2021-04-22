@@ -1,22 +1,26 @@
-<h3>{{ recipe.title }}</h3>
+<header class="header-wrapper">
+    <a [routerLink]="['/']">
+        <h2 id="back-title">
+            <span class="material-icons">arrow_back</span>
+            {{ data.title }}
+        </h2>
+    </a>
 
-<img src="{{ recipe.image }}">
 
-<button [routerLink]="['/']">Back to recipes</button>
+    <!-- <nav mat-tab-nav-bar mat-align-tabs="center">
+    <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link" [active]="activeLink == link">
+        {{link}}
+    </a>
+</nav> -->
 
-<p>Ready in: {{ recipe.readyInMinutes }} minutes</p>
     <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onChange($event)">
         <mat-tab label="ingredients"></mat-tab>
         <mat-tab label="instructions"></mat-tab>
     </mat-tab-group>
 
-<h4>Ingredients</h4>
-<ul>
-    <li *ngFor="let extendedIngredient of extendedIngredients">{{ extendedIngredient.originalString }}</li>
-</ul>
+</header>
 
-<h4>Instructions</h4>
-<div [innerHTML]="recipe.instructions"></div>
+<mat-divider></mat-divider>
 
 <button mat-raised-button (click)="openBottomSheet()">Open Component Bottom Sheet</button>
 
