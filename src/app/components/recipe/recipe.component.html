@@ -15,6 +15,7 @@
             <mat-tab label="instructions"></mat-tab>
         </mat-tab-group>
     </ng-template>
+
     <ng-template #smallScreen>
         <mat-tab-group class="test-tabs" mat-align-tabs="center" (selectedTabChange)="onChange($event)" (click)="openTemplateSheetMenu()" headerPosition="below">
             <mat-tab label="ingredients"></mat-tab>
@@ -22,16 +23,12 @@
         </mat-tab-group>
     </ng-template>
 
-    
-
 </header>
 
 <mat-divider></mat-divider>
 
 <!-- <button mat-raised-button (click)="openBottomSheet()">Open Component Bottom Sheet</button> 
 <button mat-raised-button (click)="openTemplateSheetMenu()">Open Template Bottom Sheet</button> -->
-
-
 
 <ng-template let-bottomSheetRef="bottomSheetRef" #templateBottomSheet>
     <button mat-mini-fab (click)="closeTemplateSheetMenu()">X</button>
@@ -108,7 +105,7 @@
         </div>
     </div>
 
-    <div class="recipe-tabs">
+    <div class="recipe-tabs" *ngIf="isLargeScreen">
         <div *ngIf="selectedTab === 'ingredients'">
             <h4>Ingredients</h4>
             <ul>
