@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 
 import { Recipe, ExtendedIngredient } from 'src/app/models/api-spoonacular.model';
 import { RecipesService } from '../../services/recipes.service';
+
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 
 @Component({
   selector: 'app-recipe',
@@ -16,9 +19,12 @@ export class RecipeComponent implements OnInit {
   id: number | string;
   extendedIngredients: ExtendedIngredient[] = [];
 
+  @ViewChild('templateBottomSheet') TemplateBottomSheet: TemplateRef<any>;
+
   constructor(
     private route: ActivatedRoute,
-    private recipesService: RecipesService
+    private recipesService: RecipesService,
+    private bottomSheet: MatBottomSheet
   ) {}
 
   ngOnInit(): void {
@@ -32,5 +38,17 @@ export class RecipeComponent implements OnInit {
         console.log(this.extendedIngredients);
       });
     
+  }
+
+  openBottomSheet() {
+    this.bottomSheet.open(BottomSheetComponent);
+  }
+
+  openTemplateSheetMenu() {
+    this.bottomSheet.open(this.TemplateBottomSheet);
+  }
+
+  closeTemplateSheetMenu() {
+    this.bottomSheet.dismiss();
   }
 }

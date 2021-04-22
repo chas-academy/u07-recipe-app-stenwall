@@ -1,0 +1,67 @@
+main {
+  box-sizing: border-box;
+  padding: 2rem;
+  margin: auto;
+  padding: 0;
+  align-self: center;
+}
+
+.recipe-wrapper {
+  padding: 2rem;
+  display: grid;
+  width: 100%;
+  // justify-items: center;
+}
+
+.header-wrapper {
+  padding: 0;
+  display: grid;
+  width: 100vw;
+  // justify-self: center;
+  // margin: auto;
+}
+
+// X-Small devices (portrait phones, less than 576px)
+// No media query for xs since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) { ... }
+
+// Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) {}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .recipe-wrapper {
+    width: 960px;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4rem;
+  }
+  .header-wrapper {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4rem;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .recipe-wrapper {
+    width: 1140px;
+    column-gap: 6rem;
+  }
+  .header-wrapper {
+    column-gap: 6rem;
+  }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+  .recipe-wrapper {
+    width: 1320px;
+  }
+  .header-wrapper {
+    max-width: 1400px;
+    justify-self: center;
+    margin: auto;
+  }
+}

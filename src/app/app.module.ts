@@ -17,6 +17,7 @@ import { AppetizersComponent } from './components/recipes/appetizers/appetizers.
 import { MainsComponent } from './components/recipes/mains/mains.component';
 import { DessertsComponent } from './components/recipes/desserts/desserts.component';
 import { SidesComponent } from './components/recipes/sides/sides.component';
+import { BottomSheetComponent } from './components/bottom-sheet/bottom-sheet.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SidesComponent } from './components/recipes/sides/sides.component';
     MainsComponent,
     DessertsComponent,
     SidesComponent,
+    BottomSheetComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { SidesComponent } from './components/recipes/sides/sides.component';
       multi: true,
     },
   ],
+  entryComponents: [BottomSheetComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
