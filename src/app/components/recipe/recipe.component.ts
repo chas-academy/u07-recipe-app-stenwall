@@ -7,7 +7,11 @@ import {
 } from 'src/app/models/api-spoonacular.model';
 import { RecipesService } from '../../services/recipes.service';
 
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import {
+  MatBottomSheet,
+  MatBottomSheetConfig,
+} from '@angular/material/bottom-sheet';
+import { Overlay } from '@angular/cdk/overlay';
 import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 
 @Component({
@@ -22,13 +26,20 @@ export class RecipeComponent implements OnInit {
   extendedIngredients: ExtendedIngredient[] = [];
   data;
   selectedTab = 'ingredients';
+  configBottomSheet: MatBottomSheetConfig = {
+    closeOnNavigation: true,
+    hasBackdrop: true,
+    // backdropClass: ,
+    direction: 'ltr',
+  };
 
   @ViewChild('templateBottomSheet') TemplateBottomSheet: TemplateRef<any>;
 
   constructor(
     private route: ActivatedRoute,
     private recipesService: RecipesService,
-    private bottomSheet: MatBottomSheet
+    private bottomSheet: MatBottomSheet,
+    private overlay: Overlay
   ) {}
 
   ngOnInit(): void {
@@ -59,17 +70,20 @@ export class RecipeComponent implements OnInit {
     }
   }
 
-  openBottomSheet() {
-    this.bottomSheet.open(BottomSheetComponent);
-  }
+  // openBottomSheet() {
+  //   const scrollStrategy = this.overlay.scrollStrategies.close();
+  //   this.bottomSheet.open(BottomSheetComponent, scrollStrategy);
+  // }
 
   openTemplateSheetMenu() {
-    this.bottomSheet.open(this.TemplateBottomSheet);
+    const scrollStrategy = this.overlay.scrollStrategies.reposition();
+    this.bottomSheet.open(this.TemplateBottomSheet, {scrollStrategy});
   }
 
   closeTemplateSheetMenu() {
     this.bottomSheet.dismiss();
   }
+
 }
 
 // sources to tab selection solution:
@@ -79,3 +93,7 @@ export class RecipeComponent implements OnInit {
 // https://stackoverflow.com/questions/50854238/angular-material-5-how-to-call-a-function-when-a-tab-is-selected-clicked
 // -----------------------------------------------------------------------
 // https://stackblitz.com/edit/angular-q2pgt1?file=app%2Ftabs-overview-example.ts
+
+// sources to bottom sheet on mobile:
+// -----------------------------------------------------------------------
+// https://stackoverflow.com/questions/49651320/how-to-use-scrollstrategy-in-matdialog

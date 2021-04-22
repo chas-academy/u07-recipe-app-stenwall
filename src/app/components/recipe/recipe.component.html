@@ -6,13 +6,6 @@
         </h2>
     </a>
 
-
-    <!-- <nav mat-tab-nav-bar mat-align-tabs="center">
-    <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link" [active]="activeLink == link">
-        {{link}}
-    </a>
-</nav> -->
-
     <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onChange($event)">
         <mat-tab label="ingredients"></mat-tab>
         <mat-tab label="instructions"></mat-tab>
@@ -22,21 +15,20 @@
 
 <mat-divider></mat-divider>
 
-<button mat-raised-button (click)="openBottomSheet()">Open Component Bottom Sheet</button>
+<!-- <button mat-raised-button (click)="openBottomSheet()">Open Component Bottom Sheet</button> -->
 
 <button mat-raised-button (click)="openTemplateSheetMenu()">Open Template Bottom Sheet</button>
 
-<mat-tab-group mat-align-tabs="center" (selectedTabChange)="onChange($event)" (click)="openTemplateSheetMenu()">
-    <mat-tab label="test 1"><a (click)="openTemplateSheetMenu()"></a></mat-tab>
+<mat-tab-group class="test-tabs" mat-align-tabs="center" (selectedTabChange)="onChange($event)" (click)="openTemplateSheetMenu()">
+    <mat-tab label="test 1"></mat-tab>
     <mat-tab label="test 2"></mat-tab>
 </mat-tab-group>
 
 <ng-template let-bottomSheetRef="bottomSheetRef" #templateBottomSheet>
-    <button mat-raised-button (click)="closeTemplateSheetMenu()">Dismiss Action Sheet</button>
-    <!-- <div *ngIf="selectedTab === 'instructions'"> -->
+    <button mat-mini-fab (click)="closeTemplateSheetMenu()">X</button>
+    <div *ngIf="selectedTab === 'test 2'">
     <h4>Instructions</h4>
     <!-- <div [innerHTML]="recipe.instructions"></div> -->
-    <div>
         Step 1.
         Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large
         tomatoes.
@@ -66,7 +58,55 @@
         Step 6.
         Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.
     </div>
-    <!-- </div> -->
+    <div *ngIf="selectedTab === 'test 1'">
+        <h4>Ingredients</h4>
+        <ul>
+            <!-- <li *ngFor="let extendedIngredient of extendedIngredients">{{ extendedIngredient.originalString }}</li> -->
+            <li>5 Cloves of Garlic</li>
+            <li>1 Red Chilli</li>
+            <li>Handful of Basil</li>
+            <li>4 Large Tomatoes</li>
+            <li>250g Cherry Tomatoes</li>
+            <li>1 Vegetable Stock Cube</li>
+            <li>500g Orzo</li>
+            <li>30g Parmesan</li>
+            <li>Salt</li>
+            <li>Pepper</li>
+            <li>Olive Oil</li>
+        </ul>
+    </div>
+    <div *ngIf="selectedTab === 'instructions'">
+        <h4>Instructions</h4>
+        <!-- <div [innerHTML]="recipe.instructions"></div> -->
+        <div>
+            Step 1.
+            Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large
+            tomatoes.
+    
+            Step 2.
+            Heat a little glug of olive oil in a frying pan. Add your sliced garlic and red chilli and gently fry
+            for a
+            couple
+            of
+            mins until fragrant.
+    
+            Step 3.
+            Tip your cherry tomatoes into the pan along with your quartered tomatoes and vegetable stock cube. Cook
+            for
+            10
+            mins,
+            smooshing with the back of your spoon to break down the tomatoes.
+    
+            Step 4.
+            Add your orzo and 800ml water. Give it a good stir, then simmer for 8 mins.
+    
+            Step 5.
+            Season with salt and pepper, then add your basil and stir to combine.
+    
+            Step 6.
+            Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.
+        </div>
+    </div>
 </ng-template>
 
 

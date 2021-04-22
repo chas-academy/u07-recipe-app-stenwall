@@ -6,7 +6,13 @@ import { CdkTreeModule } from '@angular/cdk/tree';
 import { PortalModule } from '@angular/cdk/portal';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatBottomSheetModule, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA} from '@angular/material/bottom-sheet';
+import {
+  MatBottomSheetModule,
+  MatBottomSheetRef,
+  MAT_BOTTOM_SHEET_DATA,
+  MatBottomSheetConfig,
+  MAT_BOTTOM_SHEET_DEFAULT_OPTIONS,
+} from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
@@ -79,6 +85,8 @@ const materialModules = [
   providers: [
     { provide: MatBottomSheetRef, useValue: {} },
     { provide: MAT_BOTTOM_SHEET_DATA, useValue: {} },
+    { provide: MatBottomSheetConfig, useValue: {} },
+    { provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {} },
   ],
 })
 export class AngularMaterialModule {}

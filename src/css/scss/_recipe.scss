@@ -17,3 +17,33 @@ h2.recipe-title {
 .mat-tab-header {
     border-bottom: none;
 }
+
+// container that holds all the overlay
+// only reach up to right below the recipe header
+.cdk-overlay-container {
+  height: 100%;
+  top: 10%;
+  bottom: 0;
+}
+
+// make the overlay pane cover the whole wrapper/container
+// and make it slightly see-through
+.cdk-overlay-pane {
+  height: 100%;
+  opacity: 0.9;
+}
+
+// .cdk-overlay-dark-backdrop {
+//   background-color: map-get($app-primary, default);;
+// }
+
+// .cdk-global-scrollblock {
+//     position: static;
+//     overflow-y: hidden;
+// }
+
+.test-tabs {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+}
