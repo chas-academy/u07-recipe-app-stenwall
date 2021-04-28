@@ -10,14 +10,14 @@
     </ng-container>
 
     <ng-template #largeScreen>
-        <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onChange($event)">
+        <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onTabChange($event)">
             <mat-tab label="ingredients"></mat-tab>
             <mat-tab label="instructions"></mat-tab>
         </mat-tab-group>
     </ng-template>
 
     <ng-template #smallScreen>
-        <mat-tab-group class="test-tabs" mat-align-tabs="center" (selectedTabChange)="onChange($event)" (click)="openTemplateSheetMenu()" headerPosition="below">
+        <mat-tab-group class="test-tabs" mat-align-tabs="center" (selectedTabChange)="onTabChangeBottomSheet($event)" (click)="openBottomSheet()" headerPosition="below">
             <mat-tab label="ingredients"></mat-tab>
             <mat-tab label="instructions"></mat-tab>
         </mat-tab-group>
@@ -31,7 +31,7 @@
 <button mat-raised-button (click)="openTemplateSheetMenu()">Open Template Bottom Sheet</button> -->
 
 <ng-template let-bottomSheetRef="bottomSheetRef" #templateBottomSheet>
-    <button mat-mini-fab (click)="closeTemplateSheetMenu()">X</button>
+    <button mat-mini-fab (click)="closeBottomSheet()">X</button>
     <div *ngIf="selectedTab === 'ingredients'">
         <h4>Ingredients</h4>
         <ul>
@@ -152,3 +152,9 @@
     </div>
 
 </main>
+
+<!-- 
+source to smooth ngIf solution:
+-----------------------------------------------------------------------
+https://ultimatecourses.com/blog/angular-ngif-else-then
+-->
