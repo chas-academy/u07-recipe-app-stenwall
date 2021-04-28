@@ -73,18 +73,6 @@ export class RecipeComponent implements OnInit {
         this.recipe = Recipe;
         this.extendedIngredients = Recipe.extendedIngredients;
       });
-
-    // run on init to make "ingredient" the deafult tab
-    // this.onTabChange();
-
-    // this.bottomSheetRef
-    //   .afterOpened()
-    //   .pipe(() => (this.bottomSheetRef = undefined));
-
-    // this.bottomSheetRef.afterOpened().subscribe((result) => {
-    //   this.isTabOpen = true;
-    //   console.log('widgetEditorModal has been opened!');
-    // });
   }
 
   onTabChange(event) {
@@ -126,56 +114,7 @@ export class RecipeComponent implements OnInit {
         this.isInstructionsOpen = false;
       }
     }
-
-
-
-      // if (!this.isIngredientsOpen && this.selectedTab === 'ingredients') {
-      //   this.bottomSheet.open(this.TemplateBottomSheet, { scrollStrategy });
-      //   this.isIngredientsOpen = true;
-      //   this.isInstructionsOpen = false;
-      //   console.log(`Ingredients-tab is ${this.isIngredientsOpen}, instructions-tab is ${this.isInstructionsOpen} and selected tab is ${this.selectedTab}`);
-      // } else if (this.isIngredientsOpen && this.selectedTab === 'ingredients') {
-      //   this.bottomSheet.dismiss();
-      //   this.isIngredientsOpen = false;
-      //   console.log(
-
-      // } else if (
-      //   this.isIngredientsOpen &&
-      //   this.selectedTab === 'instructions'
-      // ) {
-      //   this.isInstructionsOpen = true;
-      //   this.isIngredientsOpen = false;
-      //   console.log(
-
-      // } else if (
-      //   this.isInstructionsOpen &&
-      //   this.selectedTab === 'ingredients'
-      // ) {
-      //   this.isInstructionsOpen = false;
-      //   this.isIngredientsOpen = true;
-      //   console.log(
-
-      // } else if (
-      //   !this.isInstructionsOpen &&
-      //   this.selectedTab === 'instructions'
-      // ) {
-      //   this.bottomSheet.open(this.TemplateBottomSheet, { scrollStrategy });
-      //   this.isInstructionsOpen = true;
-      //   console.log(
-
-      // } else if (
-      //   this.isInstructionsOpen &&
-      //   this.selectedTab === 'instructions'
-      // ) {
-      //   this.bottomSheet.dismiss();
-      //   this.isInstructionsOpen = false;
-
-      //   );
-      // }
-  }
-
-  closeBottomSheet() {
-    this.bottomSheet.dismiss();
+    // console.log(`Ingredients-tab is ${this.isIngredientsOpen}, instructions-tab is {this.isInstructionsOpen} and selected tab is ${this.selectedTab}`);
   }
 }
 

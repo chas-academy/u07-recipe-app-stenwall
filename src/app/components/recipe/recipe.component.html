@@ -16,12 +16,10 @@
         </mat-tab-group>
     </ng-template>
 
-    <!-- (click)="openBottomSheetTest()" -->
-
     <ng-template #smallScreen>
         <mat-tab-group class="bottom-tabs" mat-align-tabs="center" (click)="openBottomSheet($event)" headerPosition="below">
-            <mat-tab label="ingredients" clickable></mat-tab>
-            <mat-tab label="instructions" clickable></mat-tab>
+            <mat-tab label="ingredients"></mat-tab>
+            <mat-tab label="instructions"></mat-tab>
         </mat-tab-group>
     </ng-template>
 
@@ -29,10 +27,7 @@
 
 <mat-divider></mat-divider>
 
-<!-- <button mat-raised-button (click)="openBottomSheet()">Open Component Bottom Sheet</button> 
-<button mat-raised-button (click)="openTemplateSheetMenu()">Open Template Bottom Sheet</button> -->
-
-<ng-template animationDuration="2000ms" let-bottomSheetRef="bottomSheetRef" #templateBottomSheet>
+<ng-template animationDuration="5000ms" let-bottomSheetRef="bottomSheetRef" #templateBottomSheet>
     <button mat-mini-fab (click)="closeBottomSheet()">X</button>
     <div *ngIf="selectedTab === 'ingredients'">
         <h4>Ingredients</h4>
