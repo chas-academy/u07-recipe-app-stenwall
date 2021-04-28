@@ -13,7 +13,7 @@ import {
   MatBottomSheetRef,
 } from '@angular/material/bottom-sheet';
 import { Overlay } from '@angular/cdk/overlay';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 import { Observable } from 'rxjs';
@@ -114,7 +114,13 @@ export class RecipeComponent implements OnInit {
         this.isInstructionsOpen = false;
       }
     }
-    // console.log(`Ingredients-tab is ${this.isIngredientsOpen}, instructions-tab is {this.isInstructionsOpen} and selected tab is ${this.selectedTab}`);
+    // console.log(`Ingredients-tab is ${this.isIngredientsOpen}, instructions-tab is ${this.isInstructionsOpen} and selected tab is ${this.selectedTab}`);
+  }
+
+  closeBottomSheet() {
+    this.bottomSheet.dismiss();
+    this.isIngredientsOpen = false;
+    this.isInstructionsOpen = false;
   }
 }
 
@@ -129,6 +135,13 @@ export class RecipeComponent implements OnInit {
 // sources to bottom sheet on mobile:
 // -----------------------------------------------------------------------
 // https://stackoverflow.com/questions/49651320/how-to-use-scrollstrategy-in-matdialog
+// https://stackblitz.com/edit/angular-kfpaa2?file=app%2Fbottom-sheet-overview-example.ts
+// https://material.angular.io/cdk/overlay/overview#scroll-strategies
+// https://github.com/angular/components/tree/master/src/material/bottom-sheet
+// https://netbasal.com/creating-powerful-components-with-angular-cdk-2cef53d81cea
+// https://blog.thoughtram.io/angular/2017/11/20/custom-overlays-with-angulars-cdk.html
+// https://stackoverflow.com/questions/47882427/how-do-i-add-a-position-strategy-to-an-angular-cdk-overlay
+// https://stackoverflow.com/questions/52432447/angular-cdk-understanding-the-overlay-position-system
 
 // sources to breakpoint-observer/solution:
 // -----------------------------------------------------------------------
