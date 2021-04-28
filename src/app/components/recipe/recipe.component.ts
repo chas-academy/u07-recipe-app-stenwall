@@ -50,11 +50,13 @@ export class RecipeComponent implements OnInit {
     public breakpointObserver: BreakpointObserver
   ) {
     // check the size of the screen
+    // if large screen, set default tab to "ingredients"
     breakpointObserver.observe(['(max-width: 719px)']).subscribe((result) => {
       if (result.matches) {
         this.isLargeScreen = false;
       } else {
         this.isLargeScreen = true;
+        this.selectedTab = "ingredients";
       }
     });
   }
@@ -85,15 +87,6 @@ export class RecipeComponent implements OnInit {
     // });
   }
 
-  // onTabChange(event) {
-  //   this.selectedTab = event.tab.textLabel;
-  //   this.onTabChange();
-  // }
-
-  setTab(event) {
-    console.log(event);
-  }
-
   onTabChange(event) {
     this.selectedTab = event.tab.textLabel;
     if (this.selectedTab == 'ingredients') {
@@ -103,32 +96,9 @@ export class RecipeComponent implements OnInit {
     }
   }
 
-
-  onChange() {
-    if (this.selectedTab == 'ingredients') {
-      this.isIngredientsOpen = true;
-    } else if (this.selectedTab == 'instructions') {
-      this.isInstructionsOpen = true;
-    }
-  }
-
-  openBottomSheet() {
-    const scrollStrategy = this.overlay.scrollStrategies.block();
-  }
-
-  // openBottomSheet() {
-  //   const scrollStrategy = this.overlay.scrollStrategies.close();
-  //   this.bottomSheet.open(BottomSheetComponent, scrollStrategy);
-  // }
-
-  openBottomSheetTest(event) {
-    console.log(event.target.innerText);
+  openBottomSheet(event) {
     this.selectedTab = event.target.innerText.toLowerCase();
-    console.log(this.selectedTab);
     const scrollStrategy = this.overlay.scrollStrategies.block();
-    console.log(
-      `Ingredients-tab is ${this.isIngredientsOpen}, instructions-tab is ${this.isInstructionsOpen} and selected tab is ${this.selectedTab}`
-    );
     // this.bottomSheetRef.afterOpened().subscribe((result) => {
     //   console.log(result);
     //   console.log('Bottom sheet has been opened.');
