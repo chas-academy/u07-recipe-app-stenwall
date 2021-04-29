@@ -27,8 +27,10 @@
 
 <mat-divider></mat-divider>
 
-<ng-template animationDuration="7000ms" let-bottomSheetRef="bottomSheetRef" #templateBottomSheet>
-    <button mat-mini-fab (click)="closeBottomSheet()">X</button>
+<ng-template let-bottomSheetRef="bottomSheetRef" #templateBottomSheet>
+    <button mat-flat-button class="close-btn" color="accent" (click)="closeBottomSheet()">
+        <mat-icon color="white">close</mat-icon> close
+    </button>
     <div *ngIf="selectedTab === 'ingredients'">
         <h4>Ingredients</h4>
         <ul>
