@@ -21,17 +21,56 @@ main {
   // margin: auto;
 }
 
-// X-Small devices (portrait phones, less than 576px)
-// No media query for xs since this is the default in Bootstrap
+// Breakpoints
 
-// Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) { ... }
+// X-Small devices (portrait phones, less than 599px)
+@media (max-width: 599px) {
+  #back-title {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-top: 0;
 
-// Medium devices (tablets, 768px and up)
-// @media (min-width: 768px) {}
+  .material-icons {
+    font-size: 1.5rem;
+  }
+}
+}
 
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
+// Small devices (landscape phones, portrait tablets, 600px and up)
+@media (min-width: 600px) {
+  .recipe-wrapper {
+    width: 590;
+    grid-template-columns: 1fr;
+  }
+  .header-wrapper {
+    grid-template-columns: 1fr;
+  }
+  #back-title {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-top: 0;
+
+  .material-icons {
+    font-size: 1.5rem;
+  }
+}
+}
+
+// Medium devices (landscape tablets, 720px and up)
+@media (min-width: 720px) {
+  .recipe-wrapper {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+  }
+  .header-wrapper {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+  }
+}
+
+// Large devices (laptops, 1024px and up)
+@media (min-width: 1024px) {
   .recipe-wrapper {
     width: 960px;
     grid-template-columns: 1fr 1fr;
@@ -41,27 +80,41 @@ main {
     grid-template-columns: 1fr 1fr;
     column-gap: 4rem;
   }
+  #back-title {
+    font-size: 2rem;
+    line-height: 2rem;
+    margin-top: 0.5rem;
+
+    .material-icons {
+      font-size: 2rem;
+    }
+  }
 }
 
-// X-Large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
+// X-Large devices (desktops, 1440px and up)
+@media (min-width: 1440px) {
   .recipe-wrapper {
     width: 1140px;
     column-gap: 6rem;
   }
   .header-wrapper {
+    max-width: 1200px;
     column-gap: 6rem;
+    justify-self: center;
+    margin: auto;
   }
 }
 
-// XX-Large devices (larger desktops, 1400px and up)
-@media (min-width: 1400px) {
+// XX-Large devices (large desktops, 1920px and up)
+@media (min-width: 1920px) {
   .recipe-wrapper {
     width: 1320px;
   }
   .header-wrapper {
     max-width: 1400px;
-    justify-self: center;
-    margin: auto;
   }
 }
+
+// sources for breakpoints:
+// -----------------------------------------------------------------------
+// https://material.io/design/layout/responsive-layout-grid.html#breakpoints
