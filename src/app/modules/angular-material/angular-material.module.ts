@@ -4,8 +4,16 @@ import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { PortalModule } from '@angular/cdk/portal';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {
+  MatBottomSheetModule,
+  MatBottomSheetRef,
+  MAT_BOTTOM_SHEET_DATA,
+  MatBottomSheetConfig,
+  MAT_BOTTOM_SHEET_DEFAULT_OPTIONS,
+} from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
@@ -38,6 +46,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 const materialModules = [
   CdkTreeModule,
   MatAutocompleteModule,
+  MatBottomSheetModule,
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
@@ -68,11 +77,18 @@ const materialModules = [
   MatRadioModule,
   MatDatepickerModule,
   MatTooltipModule,
+  LayoutModule,
 ];
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, ...materialModules],
   exports: [...materialModules],
+  providers: [
+    { provide: MatBottomSheetRef, useValue: {} },
+    { provide: MAT_BOTTOM_SHEET_DATA, useValue: {} },
+    { provide: MatBottomSheetConfig, useValue: {} },
+    { provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {} },
+  ],
 })
 export class AngularMaterialModule {}

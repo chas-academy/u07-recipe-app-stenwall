@@ -4,6 +4,10 @@ h2.recipe-title {
   margin: 1.5rem 0;
 }
 
+.mat-tab-labels {
+  background-color: $custom-background-color;
+}
+
 .mat-tab-label {
   opacity: 0.8;
   letter-spacing: 0.08rem;
@@ -15,5 +19,32 @@ h2.recipe-title {
 }
 
 .mat-tab-header {
-    border-bottom: none;
+  border-bottom: none;
+}
+
+// container that holds all the overlay
+// only reach down to right above the tabs
+.cdk-overlay-container {
+  height: calc(100% - 49px);
+}
+
+// make the overlay pane cover the whole wrapper/container
+// and make it slightly see-through
+.cdk-overlay-pane {
+  height: 100%;
+  opacity: 0.95;
+}
+
+// make sure bottom-sheet covers the whole cdk-overlay-container
+// remove box-shadow
+.mat-bottom-sheet-container {
+  height: 100%;
+  max-height: 100% !important;
+  box-shadow: none;
+}
+
+.bottom-tabs {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
 }
