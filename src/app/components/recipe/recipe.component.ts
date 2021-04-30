@@ -4,14 +4,15 @@ import { ActivatedRoute } from '@angular/router';
 import {
   Recipe,
   ExtendedIngredient,
+  AnalyzedInstruction,
+  Step,
+  Ingredient,
+  Equipment,
+  Length,
 } from 'src/app/models/api-spoonacular.model';
 import { RecipesService } from '../../services/recipes.service';
 
-import {
-  MatBottomSheet,
-  MatBottomSheetConfig,
-  MatBottomSheetRef,
-} from '@angular/material/bottom-sheet';
+import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
 import { Overlay } from '@angular/cdk/overlay';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
@@ -28,6 +29,9 @@ export class RecipeComponent implements OnInit {
   chosenRecipe;
   id: number | string;
   extendedIngredients: ExtendedIngredient[] = [];
+  analyzedInstructions: AnalyzedInstruction[] = [];
+  steps: Step[] = [];
+  instructionsSteps;
   data;
   selectedTab: string;
   configBottomSheet: MatBottomSheetConfig = {
@@ -45,7 +49,6 @@ export class RecipeComponent implements OnInit {
     private route: ActivatedRoute,
     private recipesService: RecipesService,
     private bottomSheet: MatBottomSheet,
-    private bottomSheetRef: MatBottomSheetRef<TemplateRef<any>>,
     private overlay: Overlay,
     public breakpointObserver: BreakpointObserver
   ) {
@@ -72,6 +75,9 @@ export class RecipeComponent implements OnInit {
       .subscribe((Recipe) => {
         this.recipe = Recipe;
         this.extendedIngredients = Recipe.extendedIngredients;
+        this.analyzedInstructions = Recipe.analyzedInstructions;
+        this.steps = Recipe.analyzedInstructions[0].steps;
+        console.log(this.analyzedInstructions);
       });
   }
 

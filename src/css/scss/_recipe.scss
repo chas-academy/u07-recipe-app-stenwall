@@ -6,7 +6,6 @@ h2.recipe-title {
 
 .mat-tab-labels {
   background-color: $custom-background-color;
-  // border-top: solid 1px map-get($app-primary, darker);
 }
 
 .mat-tab-label {
@@ -29,13 +28,6 @@ h2.recipe-title {
   height: calc(100% - 49px);
 }
 
-// .cdk-global-overlay-wrapper {
-//   height: 100vh;
-//   top: 10%;
-//   bottom: 10%;
-//   position: fixed;
-// }
-
 // make the overlay pane cover the whole wrapper/container
 // and make it slightly see-through
 .cdk-overlay-pane {
@@ -50,15 +42,6 @@ h2.recipe-title {
   max-height: 100% !important;
   box-shadow: none;
 }
-
-// .cdk-overlay-dark-backdrop {
-//   background-color: map-get($app-primary, default);;
-// }
-
-// .cdk-global-scrollblock {
-//     position: static;
-//     overflow-y: hidden;
-// }
 
 .bottom-tabs {
   position: fixed;
