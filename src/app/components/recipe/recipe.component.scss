@@ -12,6 +12,10 @@
   }
 }
 
+.recipe-info {
+  margin-bottom: 5rem;
+}
+
 .info-box {
   border: 2px dashed;
   padding: 1rem;
@@ -27,7 +31,9 @@
 img {
   width: 100%;
   height: auto;
+  max-height: 50vh;
   margin: auto;
+  object-fit: cover;
 }
 
 .chip-wrapper {
