@@ -19,6 +19,7 @@ import { ApiInterceptor } from '../app/interceptors/api-interceptor.interceptor'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
+import { DietaryPreferencesComponent } from './components/dietary-preferences/dietary-preferences.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
     DessertsComponent,
     SidesComponent,
     BottomSheetComponent,
+    DietaryPreferencesComponent,
   ],
   imports: [
     BrowserModule,
