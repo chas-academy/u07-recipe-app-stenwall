@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { RecipesService } from '../../services/recipes.service';
 
@@ -14,7 +14,7 @@ import {
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.scss'],
 })
-export class RecipesComponent implements OnInit {
+export class RecipesComponent implements OnInit, AfterContentChecked {
   showRecipes: Recipe[] = [];
   randomRecipes?;
   // spoonRecipes: SpoonRecipe[] = [];
@@ -22,6 +22,7 @@ export class RecipesComponent implements OnInit {
   spoonApiData: SpoonacularApiData;
   spoonacularRandomApiData: SpoonacularRandomApiData;
   selectedBtn?: string;
+  selectedTab: string;
 
   constructor(private recipesService: RecipesService) {}
 
@@ -47,12 +48,24 @@ export class RecipesComponent implements OnInit {
   // --- "sourceName": "Foodista"
   // --- "sourceName": "Pink When"
 
-
   // get recipes from edamam
   // this.recipesService.getRecipesEda().subscribe((EdamamApiData) => {
   //   this.recipes = EdamamApiData.hits.map((hit) => hit.recipe);
   //   console.log(this.recipes);
   // });
+
+  onSelectTab(event): any {
+    this.selectedTab = event.target.value;
+    this.recipesService
+      .getDishTypeRecipes(this.selectedTab)
+      .subscribe((SpoonacularApiData) => {
+        this.showRecipes = SpoonacularApiData.results;
+      });
+  }
+
+  ngAfterContentChecked(): void {
+    console.log(this.showRecipes);
+  }
 
   onSelect(event): any {
     this.selectedBtn = event.target.value;

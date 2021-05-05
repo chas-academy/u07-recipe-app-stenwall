@@ -21,6 +21,8 @@ export class RecipesService {
   private spoonApiUrl: string;
   private spoonApiKey: string;
 
+  defaultParams;
+
   constructor(private http: HttpClient) {
     // this.edaAppKey = environment.EDA_APP_KEY;
     // this.edaAppId = environment.EDA_APP_ID;
@@ -30,16 +32,42 @@ export class RecipesService {
     this.spoonApiKey = environment.SPOON_API_KEY;
   }
 
+  deafultParams = new HttpParams()
+    .append('query', 'foodista')
+    .append('diet', 'vegetarian')
+    .append('number', '30');
+
+  getDishTypeRecipes(dishType): Observable<SpoonacularApiData> {
+    return this.http.get<SpoonacularApiData>(
+      this.spoonApiUrl + 'complexSearch',
+      {
+        params: this.deafultParams
+          .append('type', dishType)
+          .append('apiKey', this.spoonApiKey),
+      }
+    );
+  }
+
+  getRandomRecipes(): Observable<SpoonacularRandomApiData> {
+    return this.http.get<SpoonacularRandomApiData>(
+      this.spoonApiUrl + 'random',
+      {
+        params: new HttpParams()
+          .append('query', 'foodista')
+          .append('tags', 'vegetarian')
+          .append('number', '30')
+          .append('apiKey', this.spoonApiKey),
+      }
+    );
+  }
+
   // get main courses from Spoonacular
   getRecipesMainsSpoon(): Observable<SpoonacularApiData> {
     return this.http.get<SpoonacularApiData>(
       this.spoonApiUrl + 'complexSearch',
       {
-        params: new HttpParams()
-          .append('query', 'foodista')
-          .append('diet', 'vegetarian')
+        params: this.deafultParams
           .append('type', 'main+course')
-          .append('number', '30')
           .append('apiKey', this.spoonApiKey),
       }
     );
@@ -50,11 +78,8 @@ export class RecipesService {
     return this.http.get<SpoonacularApiData>(
       this.spoonApiUrl + 'complexSearch',
       {
-        params: new HttpParams()
-          .append('query', 'foodista')
-          .append('diet', 'vegetarian')
+        params: this.deafultParams
           .append('type', 'appetizer')
-          .append('number', '30')
           .append('apiKey', this.spoonApiKey),
       }
     );
@@ -65,11 +90,8 @@ export class RecipesService {
     return this.http.get<SpoonacularApiData>(
       this.spoonApiUrl + 'complexSearch',
       {
-        params: new HttpParams()
-          .append('query', 'foodista')
-          .append('diet', 'vegetarian')
+        params: this.deafultParams
           .append('type', 'dessert')
-          .append('number', '30')
           .append('apiKey', this.spoonApiKey),
       }
     );
@@ -80,11 +102,8 @@ export class RecipesService {
     return this.http.get<SpoonacularApiData>(
       this.spoonApiUrl + 'complexSearch',
       {
-        params: new HttpParams()
-          .append('query', 'foodista')
-          .append('diet', 'vegetarian')
+        params: this.deafultParams
           .append('type', 'side+dish')
-          .append('number', '30')
           .append('apiKey', this.spoonApiKey),
       }
     );
@@ -104,10 +123,8 @@ export class RecipesService {
   }
 
   getDetailedRecipe(id: number | string): Observable<Recipe> {
-    return this.http.get<Recipe>(
-      this.spoonApiUrl + id + '/information', {
-      params: new HttpParams()
-        .append('apiKey', this.spoonApiKey),
+    return this.http.get<Recipe>(this.spoonApiUrl + id + '/information', {
+      params: new HttpParams().append('apiKey', this.spoonApiKey),
     });
   }
 
