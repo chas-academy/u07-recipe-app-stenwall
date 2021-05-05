@@ -3,7 +3,9 @@
 
 <main>
 
-    <mat-card class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]">
+    <router-outlet name="showRecipes"></router-outlet>
+
+    <!-- <mat-card class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]">
         <img mat-card-image src="{{ showRecipe.image }}">
         <mat-card-header>
             <mat-card-title>{{ showRecipe.title }}</mat-card-title>
@@ -11,6 +13,6 @@
                 <mat-icon>bookmark</mat-icon>
             </button>
         </mat-card-header>
-    </mat-card>
+    </mat-card> -->
 
 </main>

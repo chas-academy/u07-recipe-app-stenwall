@@ -10,11 +10,11 @@ import {
 } from 'src/app/models/api-spoonacular.model';
 
 @Component({
-  selector: 'app-recipes',
-  templateUrl: './recipes.component.html',
-  styleUrls: ['./recipes.component.scss'],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
-export class RecipesComponent implements OnInit, AfterContentChecked {
+export class HomeComponent implements OnInit, AfterContentChecked {
   showRecipes: Recipe[] = [];
   randomRecipes?;
   // spoonRecipes: SpoonRecipe[] = [];

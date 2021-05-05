@@ -4,11 +4,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { RecipesComponent } from './components/recipes/recipes.component';
+import { HomeComponent } from './components/home/home.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavTabBarComponent } from './components/nav-tab-bar/nav-tab-bar.component';
-import { AppetizersComponent } from './components/recipes/appetizers/appetizers.component';
+import { AppetizersComponent } from './components/appetizers/appetizers.component';
 import { MainsComponent } from './components/mains/mains.component';
 import { DessertsComponent } from './components/desserts/desserts.component';
 import { SidesComponent } from './components/sides/sides.component';
@@ -24,7 +24,7 @@ import { DietaryPreferencesComponent } from './components/dietary-preferences/di
 @NgModule({
   declarations: [
     AppComponent,
-    RecipesComponent,
+    HomeComponent,
     RecipeComponent,
     PageNotFoundComponent,
     HeaderComponent,
