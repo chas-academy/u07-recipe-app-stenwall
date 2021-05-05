@@ -7,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   title = 'Parsley & Sage';
-  message: string;
+  preferences: object;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  receiveMessage($event) {
-    this.message = $event;
+  receivePreferences(event) {
+    this.preferences = event;
+    console.log(this.preferences);
   }
 }

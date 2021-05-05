@@ -6,29 +6,23 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./dietary-preferences.component.scss'],
 })
 export class DietaryPreferencesComponent implements OnInit {
-  vegan: boolean;
-  dairyFree: boolean;
-  glutenFree: boolean;
-  message: string = '';
+  preferences: object = {
+    vegan: false,
+    dairyFree: false,
+    glutenFree: false,
+  };
 
-  @Output() messageEvent = new EventEmitter<string>();
+  @Output() slideEvent = new EventEmitter<object>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
   onChange(event) {
-    console.log(event);
-    console.log(event.checked);
-    console.log(event.source.id);
-    if (event.source.id === 'veganSlide' && event.checked) {
-      this.vegan = true;
-      console.log(this.vegan);
+    if (this.preferences.hasOwnProperty(event.source.name)) {
+      this.preferences[event.source.name] = event.checked;
     }
-  }
-
-  sendMessage() {
-    this.messageEvent.emit(this.message);
+    this.slideEvent.emit(this.preferences);
   }
 }
 

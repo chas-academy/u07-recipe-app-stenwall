@@ -1,6 +1,5 @@
 <a routerLink="/" routerLinkActive="active">
     <h1>{{ title }}</h1>
-    Message: {{message}}
 </a>
 <app-nav-tab-bar></app-nav-tab-bar>
-<app-dietary-preferences (messageEvent)="receiveMessage($event)"></app-dietary-preferences>
+<app-dietary-preferences (slideEvent)="receivePreferences($event)"></app-dietary-preferences>
