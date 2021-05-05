@@ -36,7 +36,7 @@ export class NavTabBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.events.subscribe((res) => {
+    this.router.events.subscribe(() => {
       this.activeLinkIndex = this.navLinks.indexOf(
         this.navLinks.find((tab) => tab.link === '.' + this.router.url)
       );
