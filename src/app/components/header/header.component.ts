@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   title = 'Parsley & Sage';
+  message: string;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  receiveMessage($event) {
+    this.message = $event;
+  }
 }
