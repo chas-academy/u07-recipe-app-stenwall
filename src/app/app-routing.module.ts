@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './components/home/home.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AppetizersComponent } from './components//appetizers/appetizers.component';
 import { MainsComponent } from './components/mains/mains.component';
 import { DessertsComponent } from './components/desserts/desserts.component';
 import { SidesComponent } from './components/sides/sides.component';
+import { RandomRecipesComponent } from './components/random-recipes/random-recipes.component';
 
 const routes: Routes = [
   {
@@ -15,19 +15,16 @@ const routes: Routes = [
     component: RecipeComponent,
     data: { title: 'Parsley & Sage' },
   },
-  { path: '', component: HomeComponent,
-    children: [
-      { path: 'appetizers', component: AppetizersComponent, outlet: 'showRecipes' },
-      { path: 'mains', component: MainsComponent, outlet: 'showRecipes' },
-      { path: 'desserts', component: DessertsComponent, outlet: 'showRecipes' },
-      { path: 'sides', component: SidesComponent, outlet: 'showRecipes' },
-    ],
-  }, 
+  { path: '', component: RandomRecipesComponent },
+  { path: 'appetizers', component: AppetizersComponent },
+  { path: 'mains', component: MainsComponent },
+  { path: 'desserts', component: DessertsComponent },
+  { path: 'sides', component: SidesComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

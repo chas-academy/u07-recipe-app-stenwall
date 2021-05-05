@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipesService } from '../../../services/recipes.service';
+import { RecipesService } from '../../services/recipes.service';
 
 import {
   SpoonacularApiData,
   Recipe,
-} from '../../../models/api-spoonacular.model';
+} from '../../models/api-spoonacular.model';
 
 @Component({
   selector: 'app-appetizers',

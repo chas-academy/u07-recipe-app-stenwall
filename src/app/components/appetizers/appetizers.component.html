@@ -3,15 +3,17 @@
 
     <mat-grid-tile class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]"
         [colspan]="1" [rowspan]="1"> -->
-        <mat-card class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]">
-            <img mat-card-image src="{{ showRecipe.image }}">
-            <mat-card-header>
-                <mat-card-title>{{ showRecipe.title }}</mat-card-title>
-                <button mat-mini-fab color="primary">
-                    <mat-icon>bookmark</mat-icon>
-                </button>
-            </mat-card-header>
-        </mat-card>
-    <!-- </mat-grid-tile>
+<main>
+    <mat-card class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]">
+        <img mat-card-image src="{{ showRecipe.image }}">
+        <mat-card-header>
+            <mat-card-title>{{ showRecipe.title }}</mat-card-title>
+            <button mat-mini-fab color="primary">
+                <mat-icon>bookmark</mat-icon>
+            </button>
+        </mat-card-header>
+    </mat-card>
+</main>
+<!-- </mat-grid-tile>
 
 </mat-grid-list> -->
