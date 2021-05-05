@@ -20,6 +20,7 @@ import { ApiInterceptor } from '../app/interceptors/api-interceptor.interceptor'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
 import { DietaryPreferencesComponent } from './components/dietary-preferences/dietary-preferences.component';
+import { RandomRecipesComponent } from './components/random-recipes/random-recipes.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DietaryPreferencesComponent } from './components/dietary-preferences/di
     SidesComponent,
     BottomSheetComponent,
     DietaryPreferencesComponent,
+    RandomRecipesComponent,
   ],
   imports: [
     BrowserModule,

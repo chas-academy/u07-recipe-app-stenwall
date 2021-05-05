@@ -3,11 +3,7 @@ import { HttpResponse } from '@angular/common/http';
 import { RecipesService } from '../../services/recipes.service';
 
 // import { EdamamApiData, Recipe } from '../../models/api-edamam.model';
-import {
-  SpoonacularApiData,
-  Recipe,
-  SpoonacularRandomApiData,
-} from 'src/app/models/api-spoonacular.model';
+import { SpoonacularApiData, Recipe } from 'src/app/models/api-spoonacular.model';
 
 @Component({
   selector: 'app-home',
@@ -16,23 +12,15 @@ import {
 })
 export class HomeComponent implements OnInit, AfterContentChecked {
   showRecipes: Recipe[] = [];
-  randomRecipes?;
   // spoonRecipes: SpoonRecipe[] = [];
   // edaApiData: EdamamApiData;
   spoonApiData: SpoonacularApiData;
-  spoonacularRandomApiData: SpoonacularRandomApiData;
   selectedBtn?: string;
   selectedTab: string;
 
   constructor(private recipesService: RecipesService) {}
 
-  ngOnInit(): void {
-    this.randomRecipes = this.recipesService
-      .getRandomRecipesSpoon()
-      .subscribe((SpoonacularRandomApiData) => {
-        this.showRecipes = SpoonacularRandomApiData.recipes;
-      });
-  }
+  ngOnInit(): void {}
 
   // ANVÄND SEN:
   // --- länka input fr parent till child component:
