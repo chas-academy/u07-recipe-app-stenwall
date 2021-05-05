@@ -1,6 +1,4 @@
-<p>mains works!</p>
 
-<section>
     <mat-card class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]">
         <img mat-card-image src="{{ showRecipe.image }}">
         <mat-card-header>
@@ -10,4 +8,3 @@
             </button>
         </mat-card-header>
     </mat-card>
-</section>

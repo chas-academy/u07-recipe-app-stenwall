@@ -9,9 +9,9 @@ import { RecipeComponent } from './components/recipe/recipe.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavTabBarComponent } from './components/nav-tab-bar/nav-tab-bar.component';
 import { AppetizersComponent } from './components/recipes/appetizers/appetizers.component';
-import { MainsComponent } from './components/recipes/mains/mains.component';
-import { DessertsComponent } from './components/recipes/desserts/desserts.component';
-import { SidesComponent } from './components/recipes/sides/sides.component';
+import { MainsComponent } from './components/mains/mains.component';
+import { DessertsComponent } from './components/desserts/desserts.component';
+import { SidesComponent } from './components/sides/sides.component';
 import { BottomSheetComponent } from './components/bottom-sheet/bottom-sheet.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 

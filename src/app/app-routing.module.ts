@@ -5,9 +5,9 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AppetizersComponent } from './components/recipes/appetizers/appetizers.component';
-import { MainsComponent } from './components/recipes/mains/mains.component';
-import { DessertsComponent } from './components/recipes/desserts/desserts.component';
-import { SidesComponent } from './components/recipes/sides/sides.component';
+import { MainsComponent } from './components/mains/mains.component';
+import { DessertsComponent } from './components/desserts/desserts.component';
+import { SidesComponent } from './components/sides/sides.component';
 
 const routes: Routes = [
   {
@@ -15,11 +15,14 @@ const routes: Routes = [
     component: RecipeComponent,
     data: { title: 'Parsley & Sage' },
   },
-  { path: '', component: RecipesComponent },
-  { path: 'appetizers', component: AppetizersComponent },
-  { path: 'mains', component: MainsComponent },
-  { path: 'desserts', component: DessertsComponent },
-  { path: 'sides', component: SidesComponent },
+  { path: '', component: RecipesComponent,
+    children: [
+      { path: 'appetizers', component: AppetizersComponent, outlet: 'showRecipes' },
+      { path: 'mains', component: MainsComponent, outlet: 'showRecipes' },
+      { path: 'desserts', component: DessertsComponent, outlet: 'showRecipes' },
+      { path: 'sides', component: SidesComponent, outlet: 'showRecipes' },
+    ],
+  }, 
   { path: '**', component: PageNotFoundComponent },
 ];
 

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipesService } from '../../../services/recipes.service';
+import { RecipesService } from '../../services/recipes.service';
 
 import {
   SpoonacularApiData,
   Recipe,
-} from '../../../models/api-spoonacular.model';
+} from '../../models/api-spoonacular.model';
 
 @Component({
-  selector: 'app-sides',
-  templateUrl: './sides.component.html',
-  styleUrls: ['./sides.component.scss'],
+  selector: 'app-desserts',
+  templateUrl: './desserts.component.html',
+  styleUrls: ['./desserts.component.scss'],
 })
-export class SidesComponent implements OnInit {
+export class DessertsComponent implements OnInit {
   showRecipes: Recipe[] = [];
   spoonApiData: SpoonacularApiData;
 
@@ -19,7 +19,7 @@ export class SidesComponent implements OnInit {
 
   ngOnInit(): void {
     this.recipesService
-      .getRecipesSidesSpoon()
+      .getRecipesDessertsSpoon()
       .subscribe((SpoonacularApiData) => {
         this.showRecipes = SpoonacularApiData.results;
       });

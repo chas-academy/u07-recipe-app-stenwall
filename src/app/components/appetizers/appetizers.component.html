@@ -1,9 +1,9 @@
-<p>appetizers works!</p>
+<!-- <p>appetizers works!</p>
 <mat-grid-list cols="4" rowHeight="100px">
 
     <mat-grid-tile class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]"
-        [colspan]="1" [rowspan]="1">
-        <mat-card>
+        [colspan]="1" [rowspan]="1"> -->
+        <mat-card class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]">
             <img mat-card-image src="{{ showRecipe.image }}">
             <mat-card-header>
                 <mat-card-title>{{ showRecipe.title }}</mat-card-title>
@@ -12,6 +12,6 @@
                 </button>
             </mat-card-header>
         </mat-card>
-    </mat-grid-tile>
+    <!-- </mat-grid-tile>
 
-</mat-grid-list>
+</mat-grid-list> -->
