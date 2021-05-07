@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 // import { EdamamApiData } from '../models/api-edamam.model';
@@ -38,7 +39,7 @@ export class RecipesService {
     .append('number', '30');
 
   getDishTypeRecipes(dishType: string, preferences: string): Observable<SpoonacularApiData> {
-    return this.http.get<SpoonacularApiData>(
+    const obs = this.http.get<SpoonacularApiData>(
       this.spoonApiUrl + 'complexSearch',
       {
         params: this.deafultParams
@@ -46,7 +47,10 @@ export class RecipesService {
           .append('tags', preferences)
           .append('apiKey', this.spoonApiKey),
       }
-    );
+    )
+    .pipe(share());
+    obs.subscribe(data => console.log(data));
+    return obs;
   }
 
   getRandomRecipes(preferences: string): Observable<SpoonacularRandomApiData> {
