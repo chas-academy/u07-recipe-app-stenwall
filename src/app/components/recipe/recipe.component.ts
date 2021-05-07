@@ -18,6 +18,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 
 import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 import { Observable } from 'rxjs';
+import { ListService } from 'src/app/services/list.service';
 
 @Component({
   selector: 'app-recipe',
@@ -50,7 +51,8 @@ export class RecipeComponent implements OnInit {
     private recipesService: RecipesService,
     private bottomSheet: MatBottomSheet,
     private overlay: Overlay,
-    public breakpointObserver: BreakpointObserver
+    public breakpointObserver: BreakpointObserver,
+    private listService: ListService
   ) {
     // check the size of the screen
     // if large screen, set default tab to "ingredients"
@@ -88,6 +90,10 @@ export class RecipeComponent implements OnInit {
     } else if (this.selectedTab == 'instructions') {
       this.isInstructionsOpen = false;
     }
+  }
+
+  addRecipeToList() {
+    this.listService.addToList(this.recipe.id, this.recipe.title, this.recipe.image);
   }
 
   openBottomSheet(event) {

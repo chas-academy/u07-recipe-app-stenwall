@@ -1,46 +1,49 @@
-<header class="header-wrapper">
-    <a [routerLink]="['/']">
-        <h2 id="back-title">
-            <span class="material-icons">arrow_back</span>
-            {{ data.title }}
-        </h2>
-    </a>
+<ng-container *ngIf="recipe">
+    <header class="header-wrapper">
+        <a [routerLink]="['/']">
+            <h2 id="back-title">
+                <span class="material-icons">arrow_back</span>
+                {{ data.title }}
+            </h2>
+        </a>
 
-    <ng-container *ngIf="isLargeScreen; then largeScreen; else smallScreen">
-    </ng-container>
+        <ng-container *ngIf="isLargeScreen; then largeScreen; else smallScreen">
+        </ng-container>
 
-    <ng-template #largeScreen>
-        <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onTabChange($event)">
-            <mat-tab label="ingredients"></mat-tab>
-            <mat-tab label="instructions"></mat-tab>
-        </mat-tab-group>
-    </ng-template>
+        <ng-template #largeScreen>
+            <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onTabChange($event)">
+                <mat-tab label="ingredients"></mat-tab>
+                <mat-tab label="instructions"></mat-tab>
+            </mat-tab-group>
+        </ng-template>
 
-    <ng-template #smallScreen>
-        <mat-tab-group class="bottom-tabs" mat-align-tabs="center" (click)="openBottomSheet($event)"
-            headerPosition="below">
-            <mat-tab label="ingredients"></mat-tab>
-            <mat-tab label="instructions"></mat-tab>
-        </mat-tab-group>
-    </ng-template>
+        <ng-template #smallScreen>
+            <mat-tab-group class="bottom-tabs" mat-align-tabs="center" (click)="openBottomSheet($event)"
+                headerPosition="below">
+                <mat-tab label="ingredients"></mat-tab>
+                <mat-tab label="instructions"></mat-tab>
+            </mat-tab-group>
+        </ng-template>
 
-</header>
+    </header>
 
-<mat-divider></mat-divider>
+    <mat-divider></mat-divider>
 
-<ng-template let-bottomSheetRef="bottomSheetRef" #templateBottomSheet>
-    <button mat-flat-button class="close-btn" color="accent" (click)="closeBottomSheet()">
-        <mat-icon color="white">close</mat-icon> close
-    </button>
+    <button (click)="addRecipeToList()">Lägg tilL!</button>
 
-    <mat-list *ngIf="selectedTab === 'ingredients'">
-        <mat-list-item *ngFor="let extendedIngredient of extendedIngredients" class="mat-list-item-word-wrap">
-            <mat-icon mat-list-icon>adjust</mat-icon>
-            <p mat-line>{{ extendedIngredient.originalString }}</p>
-        </mat-list-item>
-    </mat-list>
+    <ng-template let-bottomSheetRef="bottomSheetRef" #templateBottomSheet>
+        <button mat-flat-button class="close-btn" color="accent" (click)="closeBottomSheet()">
+            <mat-icon color="white">close</mat-icon> close
+        </button>
 
-    <!-- <ul>
+        <mat-list *ngIf="selectedTab === 'ingredients'">
+            <mat-list-item *ngFor="let extendedIngredient of extendedIngredients" class="mat-list-item-word-wrap">
+                <mat-icon mat-list-icon>adjust</mat-icon>
+                <p mat-line>{{ extendedIngredient.originalString }}</p>
+            </mat-list-item>
+        </mat-list>
+
+        <!-- <ul>
             <li>5 Cloves of Garlic</li>
             <li>1 Red Chilli</li>
             <li>Handful of Basil</li>
@@ -54,15 +57,15 @@
             <li>Olive Oil</li>
         </ul> -->
 
-    <mat-list *ngIf="selectedTab === 'instructions'">
-        <mat-list-item *ngFor="let step of steps" class="mat-list-item-word-wrap">
-            <mat-icon mat-list-icon>adjust</mat-icon>
-            <h4 mat-line>Step {{ step.number }}</h4>
-            <p mat-line>{{ step.step }}</p>
-        </mat-list-item>
-    </mat-list>
+        <mat-list *ngIf="selectedTab === 'instructions'">
+            <mat-list-item *ngFor="let step of steps" class="mat-list-item-word-wrap">
+                <mat-icon mat-list-icon>adjust</mat-icon>
+                <h4 mat-line>Step {{ step.number }}</h4>
+                <p mat-line>{{ step.step }}</p>
+            </mat-list-item>
+        </mat-list>
 
-    <!-- <p>Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large
+        <!-- <p>Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large
                 tomatoes.
             </p>
             <br>
@@ -86,45 +89,45 @@
             <br>
             <h4>Step 6.</h4>
             <p>Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.</p> -->
-</ng-template>
+    </ng-template>
 
 
-<main class="recipe-wrapper">
-    <div class="recipe-info">
-        <img src="{{ recipe.image }}" alt="the chosen dish when ready">
-        <!-- <img src="https://mobkitchen-objects.imgix.net/recipes/9K8A1613-1web.jpg?auto=format&crop=focalpoint&domain=mobkitchen-objects.imgix.net&fit=crop&fp-x=0.5&fp-y=0.5&h=1300&ixlib=php-3.3.0&q=82&w=1300&s=baa5b77d1c492375e4bf7c1b84f165ed"
+    <main class="recipe-wrapper">
+        <div class="recipe-info">
+            <img src="{{ recipe.image }}" alt="the chosen dish when ready">
+            <!-- <img src="https://mobkitchen-objects.imgix.net/recipes/9K8A1613-1web.jpg?auto=format&crop=focalpoint&domain=mobkitchen-objects.imgix.net&fit=crop&fp-x=0.5&fp-y=0.5&h=1300&ixlib=php-3.3.0&q=82&w=1300&s=baa5b77d1c492375e4bf7c1b84f165ed"
             alt="the chosen dish when ready"> -->
 
-        <h2 class="recipe-title">{{ recipe.title }}</h2>
-        <!-- <h2 class="recipe-title">Recipe title</h2> -->
+            <h2 class="recipe-title">{{ recipe.title }}</h2>
+            <!-- <h2 class="recipe-title">Recipe title</h2> -->
 
-        <div class="info-box">
-            <p class="ready-time">
-                <span class="material-icons">schedule</span>
-                Ready in: {{ recipe.readyInMinutes }} minutes
-                <!-- Ready in: 30 minutes -->
-            </p>
+            <div class="info-box">
+                <p class="ready-time">
+                    <span class="material-icons">schedule</span>
+                    Ready in: {{ recipe.readyInMinutes }} minutes
+                    <!-- Ready in: 30 minutes -->
+                </p>
 
-            <div class="chip-wrapper">
-                <p *ngIf="recipe.vegan">Vegan</p>
-                <p *ngIf="recipe.dairyFree">Dairy free</p>
-                <p *ngIf="recipe.glutenFree">Gluten free</p>
-                <!-- <p>Dairy Free</p>
+                <div class="chip-wrapper">
+                    <p *ngIf="recipe.vegan">Vegan</p>
+                    <p *ngIf="recipe.dairyFree">Dairy free</p>
+                    <p *ngIf="recipe.glutenFree">Gluten free</p>
+                    <!-- <p>Dairy Free</p>
                 <p>Gluten Free</p>
                 <p>Vegan</p> -->
+                </div>
             </div>
-        </div>
-        
-    </div>
 
-    <div class="recipe-tabs" *ngIf="isLargeScreen">
-        <mat-list *ngIf="selectedTab === 'ingredients'">
-            <mat-list-item *ngFor="let extendedIngredient of extendedIngredients" class="mat-list-item-word-wrap">
-                <mat-icon mat-list-icon>adjust</mat-icon>
-                <p mat-line>{{ extendedIngredient.originalString }}</p>
-            </mat-list-item>
-        </mat-list>
-        <!-- <div *ngIf="selectedTab === 'ingredients'">
+        </div>
+
+        <div class="recipe-tabs" *ngIf="isLargeScreen">
+            <mat-list *ngIf="selectedTab === 'ingredients'">
+                <mat-list-item *ngFor="let extendedIngredient of extendedIngredients" class="mat-list-item-word-wrap">
+                    <mat-icon mat-list-icon>adjust</mat-icon>
+                    <p mat-line>{{ extendedIngredient.originalString }}</p>
+                </mat-list-item>
+            </mat-list>
+            <!-- <div *ngIf="selectedTab === 'ingredients'">
             <h4>Ingredients</h4>
             <ul>
                 <li *ngFor="let extendedIngredient of extendedIngredients">{{ extendedIngredient.originalString }}</li>
@@ -141,14 +144,14 @@
                 <li>Olive Oil</li>
             </ul>
         </div> -->
-        <mat-list *ngIf="selectedTab === 'instructions'">
-            <mat-list-item *ngFor="let step of steps" class="mat-list-item-word-wrap">
-                <mat-icon mat-list-icon>adjust</mat-icon>
-                <h4 mat-line>Step {{ step.number }}</h4>
-                <p mat-line>{{ step.step }}</p>
-            </mat-list-item>
-        </mat-list>
-        <!-- <div *ngIf="selectedTab === 'instructions'">
+            <mat-list *ngIf="selectedTab === 'instructions'">
+                <mat-list-item *ngFor="let step of steps" class="mat-list-item-word-wrap">
+                    <mat-icon mat-list-icon>adjust</mat-icon>
+                    <h4 mat-line>Step {{ step.number }}</h4>
+                    <p mat-line>{{ step.step }}</p>
+                </mat-list-item>
+            </mat-list>
+            <!-- <div *ngIf="selectedTab === 'instructions'">
             <h4>Instructions</h4>
             <div [innerHTML]="recipe.instructions"></div>
             <h4>Step 1.</h4>
@@ -174,9 +177,10 @@
             <h4>Step 6.</h4>
             <p>Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.</p>
         </div> -->
-    </div>
+        </div>
 
-</main>
+    </main>
+</ng-container>
 
 <!-- 
 source to smooth ngIf solution:
