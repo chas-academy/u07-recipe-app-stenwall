@@ -24,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
 import { DietaryPreferencesComponent } from './components/dietary-preferences/dietary-preferences.component';
 import { RandomRecipesComponent } from './components/random-recipes/random-recipes.component';
+import { ListComponent } from './components/list/list.component';
+import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { RandomRecipesComponent } from './components/random-recipes/random-recip
     BottomSheetComponent,
     DietaryPreferencesComponent,
     RandomRecipesComponent,
+    ListComponent,
+    RecipeCardComponent,
   ],
   imports: [
     BrowserModule,
