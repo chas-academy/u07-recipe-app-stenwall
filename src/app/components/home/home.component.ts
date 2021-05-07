@@ -42,14 +42,14 @@ export class HomeComponent implements OnInit, AfterContentChecked {
   //   console.log(this.recipes);
   // });
 
-  onSelectTab(event): any {
-    this.selectedTab = event.target.value;
-    this.recipesService
-      .getDishTypeRecipes(this.selectedTab)
-      .subscribe((SpoonacularApiData) => {
-        this.showRecipes = SpoonacularApiData.results;
-      });
-  }
+  // onSelectTab(event): any {
+  //   this.selectedTab = event.target.value;
+  //   this.recipesService
+  //     .getDishTypeRecipes(this.selectedTab)
+  //     .subscribe((SpoonacularApiData) => {
+  //       this.showRecipes = SpoonacularApiData.results;
+  //     });
+  // }
 
   ngAfterContentChecked(): void {
     console.log(this.showRecipes);

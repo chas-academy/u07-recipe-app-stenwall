@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
+import { RecipesService } from '../app/services/recipes.service';
+import { EventService } from '../app/services/event.service';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
@@ -51,6 +54,8 @@ import { RandomRecipesComponent } from './components/random-recipes/random-recip
       useClass: ApiInterceptor,
       multi: true,
     },
+    EventService,
+    RecipesService,
   ],
   entryComponents: [BottomSheetComponent],
   bootstrap: [AppComponent],

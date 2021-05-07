@@ -37,24 +37,25 @@ export class RecipesService {
     .append('diet', 'vegetarian')
     .append('number', '30');
 
-  getDishTypeRecipes(dishType): Observable<SpoonacularApiData> {
+  getDishTypeRecipes(dishType: string, preferences: string): Observable<SpoonacularApiData> {
     return this.http.get<SpoonacularApiData>(
       this.spoonApiUrl + 'complexSearch',
       {
         params: this.deafultParams
           .append('type', dishType)
+          .append('tags', preferences)
           .append('apiKey', this.spoonApiKey),
       }
     );
   }
 
-  getRandomRecipes(): Observable<SpoonacularRandomApiData> {
+  getRandomRecipes(preferences: string): Observable<SpoonacularRandomApiData> {
     return this.http.get<SpoonacularRandomApiData>(
       this.spoonApiUrl + 'random',
       {
         params: new HttpParams()
           .append('query', 'foodista')
-          .append('tags', 'vegetarian')
+          .append('tags', `vegetarian,${preferences}`)
           .append('number', '30')
           .append('apiKey', this.spoonApiKey),
       }
