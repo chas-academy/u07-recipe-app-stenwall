@@ -12,10 +12,7 @@ import { Recipe, SpoonacularRandomApiData } from 'src/app/models/api-spoonacular
 })
 export class RandomRecipesComponent implements OnInit {
   showRecipes: Recipe[] = [];
-  // randomRecipes;
   spoonacularRandomApiData: SpoonacularRandomApiData;
-  preferences: object;
-  preferenceQuery: string;
   subscription: Subscription;
 
   constructor(
@@ -25,22 +22,19 @@ export class RandomRecipesComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscription = this.eventService.currentPreferenceQuery.subscribe(
-      (preferences) =>
-        (this.preferenceQuery = preferences)
+      (preferences) => {
+        this.updateRecipeList(preferences);
+      }
     );
 
-    // this.subscription = this.data.currentMessage.subscribe(
-    //   (message) => (this.message = message)
-    // );
+    this.updateRecipeList('');
+  }
 
-    console.log(this.preferenceQuery);
-
+  updateRecipeList(preferences) {
     this.recipesService
-      .getRandomRecipes(this.preferenceQuery)
+      .getRandomRecipes(preferences)
       .subscribe((SpoonacularRandomApiData) => {
         this.showRecipes = SpoonacularRandomApiData.recipes;
       });
-
-    console.log(this.preferenceQuery);
   }
 }
