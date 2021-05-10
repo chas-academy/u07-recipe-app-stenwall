@@ -43,6 +43,7 @@ export class RecipeComponent implements OnInit {
   isLargeScreen: boolean;
   isIngredientsOpen = false;
   isInstructionsOpen = false;
+  isRecipeInList = false;
 
   @ViewChild('templateBottomSheet') TemplateBottomSheet: TemplateRef<any>;
 
@@ -94,6 +95,10 @@ export class RecipeComponent implements OnInit {
 
   addRecipeToList() {
     this.listService.addToList(this.recipe.id, this.recipe.title, this.recipe.image);
+  }
+
+  removeRecipeFromList() {
+    this.listService.removeFromList(this.recipe.id);
   }
 
   openBottomSheet(event) {

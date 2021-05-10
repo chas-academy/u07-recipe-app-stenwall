@@ -29,7 +29,8 @@
 
     <mat-divider></mat-divider>
 
-    <button (click)="addRecipeToList()">Lägg tilL!</button>
+    <button (click)="addRecipeToList()">LÄGG TILL!</button>
+    <button (click)="removeRecipeFromList()">TA BORT!</button>
 
     <ng-template let-bottomSheetRef="bottomSheetRef" #templateBottomSheet>
         <button mat-flat-button class="close-btn" color="accent" (click)="closeBottomSheet()">

@@ -22,6 +22,15 @@ export class ListService {
     console.log(this.list);
   }
 
+  removeFromList(id: number) {
+    const position = this.list.findIndex((recipe) => recipe.id === id);
+    if (position >= 0) this.list.splice(position, 1);
+  }
+
+  checkIfRecipeInList() {
+    
+  }
+
 //   this.list.some(listItem => listItem[id] === id);
 // console.log(anyAdult); // true
 
