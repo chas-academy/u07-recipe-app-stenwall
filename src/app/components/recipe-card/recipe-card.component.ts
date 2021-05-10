@@ -1,29 +1,18 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges, OnInit,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/api-spoonacular.model';
 import { ListService } from '../../services/list.service';
-import { RecipesService } from '../../services/recipes.service';
 
 @Component({
   selector: 'app-recipe-card',
   templateUrl: './recipe-card.component.html',
   styleUrls: ['./recipe-card.component.scss'],
 })
-export class RecipeCardComponent implements OnInit {
-  @Input()
-  data: Recipe[];
-  // @Output() changePreferences = new EventEmitter<Recipe>();
+export class RecipeCardComponent implements OnInit, OnChanges {
+  @Input() data: Recipe[];
+
   showRecipes: Recipe[];
 
   constructor(
-    // private route: ActivatedRoute,
-    // private recipesService: RecipesService,
     private listService: ListService
   ) {}
 
@@ -32,7 +21,6 @@ export class RecipeCardComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // only run when property "data" changed
     if (changes['data']) {
       this.showRecipes = this.data;
     }
@@ -41,10 +29,6 @@ export class RecipeCardComponent implements OnInit {
   addRecipeToList(id, title, image) {
     this.listService.addToList(id, title, image);
   }
-
-  // onRecipePreferenceChange() {
-  //   this.changePreferences.emit(this.SelectedTimeZone);
-  // }
 }
 
 // source to getting input updates from parent:

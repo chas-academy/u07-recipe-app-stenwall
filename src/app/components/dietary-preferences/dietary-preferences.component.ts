@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { Subscription } from 'rxjs';
 
@@ -10,8 +10,6 @@ import { Subscription } from 'rxjs';
 export class DietaryPreferencesComponent implements OnInit {
   preferences: object;
   subscription: Subscription;
-
-  // @Output() slideEvent = new EventEmitter<object>();
 
   constructor(private eventService: EventService) {}
 
@@ -26,8 +24,6 @@ export class DietaryPreferencesComponent implements OnInit {
       this.preferences[event.source.name] = event.checked;
     }
       this.eventService.changePreferences(this.preferences);
-    // this.slideEvent.emit(this.preferences);
-    console.log(this.preferences);
   }
 }
 

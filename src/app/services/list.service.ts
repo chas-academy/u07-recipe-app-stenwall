@@ -11,7 +11,6 @@ export class ListService {
 
   addToList(id: number, title: string, image: string) {
     const idExists = this.list.some(listItem => listItem.id === id);
-    console.log(idExists);
     if (!idExists) {
       this.list.push({
         id,
@@ -25,6 +24,7 @@ export class ListService {
   removeFromList(id: number) {
     const position = this.list.findIndex((recipe) => recipe.id === id);
     if (position >= 0) this.list.splice(position, 1);
+    console.log(this.list); 
   }
 
   checkIfRecipeInList() {
