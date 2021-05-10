@@ -27,11 +27,10 @@ export class AppetizersComponent implements OnInit {
     this.subscription = this.eventService.currentPreferenceQuery.subscribe(
       (preferences) => {
         this.updateRecipeList(preferences);
-        console.log(preferences);
       }
     );
 
-    // this.updateRecipeList('');
+    this.updateRecipeList('');
   }
 
   updateRecipeList(preferences) {

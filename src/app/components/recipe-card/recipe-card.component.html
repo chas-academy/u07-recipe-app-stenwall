@@ -1,1 +1,14 @@
-<p>recipe-card works!</p>
+<ng-container *ngIf="showRecipes">
+    <main>
+        <mat-card class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]">
+            <img mat-card-image src="{{ showRecipe.image }}">
+            <mat-card-header>
+                <mat-card-title>{{ showRecipe.title }}</mat-card-title>
+                <button mat-mini-fab color="primary"
+                    (click)="addRecipeToList(showRecipe.id, showRecipe.title, showRecipe.image)">
+                    <mat-icon>heart</mat-icon>
+                </button>
+            </mat-card-header>
+        </mat-card>
+    </main>
+</ng-container>

@@ -1,11 +1,1 @@
-<main>
-    <mat-card class="recipe-card" *ngFor="let showRecipe of showRecipes" [routerLink]="['/recipe', showRecipe.id]">
-        <img mat-card-image src="{{ showRecipe.image }}">
-        <mat-card-header>
-            <mat-card-title>{{ showRecipe.title }}</mat-card-title>
-            <button mat-mini-fab color="primary">
-                <mat-icon>bookmark</mat-icon>
-            </button>
-        </mat-card-header>
-    </mat-card>
-</main>
+<app-recipe-card [data]="showRecipes"></app-recipe-card>

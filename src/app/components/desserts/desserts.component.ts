@@ -3,10 +3,7 @@ import { RecipesService } from '../../services/recipes.service';
 import { EventService } from '../../services/event.service';
 import { Subscription } from 'rxjs';
 
-import {
-  SpoonacularApiData,
-  Recipe,
-} from '../../models/api-spoonacular.model';
+import { SpoonacularApiData, Recipe } from '../../models/api-spoonacular.model';
 
 @Component({
   selector: 'app-desserts',
@@ -27,9 +24,10 @@ export class DessertsComponent implements OnInit {
     this.subscription = this.eventService.currentPreferenceQuery.subscribe(
       (preferences) => {
         this.updateRecipeList(preferences);
-        console.log(preferences);
       }
     );
+
+    this.updateRecipeList('');
   }
 
   updateRecipeList(preferences) {
