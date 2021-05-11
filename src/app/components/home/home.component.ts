@@ -10,7 +10,7 @@ import { SpoonacularApiData, Recipe } from 'src/app/models/api-spoonacular.model
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, AfterContentChecked {
+export class HomeComponent implements OnInit {
   showRecipes: Recipe[] = [];
   // spoonRecipes: SpoonRecipe[] = [];
   // edaApiData: EdamamApiData;
@@ -51,37 +51,37 @@ export class HomeComponent implements OnInit, AfterContentChecked {
   //     });
   // }
 
-  ngAfterContentChecked(): void {
-    console.log(this.showRecipes);
-  }
+  // ngAfterContentChecked(): void {
+  //   console.log(this.showRecipes);
+  // }
 
-  onSelect(event): any {
-    this.selectedBtn = event.target.value;
-    if (this.selectedBtn === 'appz') {
-      this.recipesService
-        .getRecipesAppzSpoon()
-        .subscribe((SpoonacularApiData) => {
-          this.showRecipes = SpoonacularApiData.results;
-        });
-    } else if (this.selectedBtn === 'mains') {
-      this.recipesService
-        .getRecipesMainsSpoon()
-        .subscribe((SpoonacularApiData) => {
-          this.showRecipes = SpoonacularApiData.results;
-        });
-    } else if (this.selectedBtn === 'desserts') {
-      this.recipesService
-        .getRecipesDessertsSpoon()
-        .subscribe((SpoonacularApiData) => {
-          this.showRecipes = SpoonacularApiData.results;
-        });
-    } else if (this.selectedBtn === 'sides') {
-      this.recipesService
-        .getRecipesSidesSpoon()
-        .subscribe((SpoonacularApiData) => {
-          this.showRecipes = SpoonacularApiData.results;
-        });
-    }
-    console.log(this.showRecipes);
-  }
+  // onSelect(event): any {
+  //   this.selectedBtn = event.target.value;
+  //   if (this.selectedBtn === 'appz') {
+  //     this.recipesService
+  //       .getRecipesAppzSpoon()
+  //       .subscribe((SpoonacularApiData) => {
+  //         this.showRecipes = SpoonacularApiData.results;
+  //       });
+  //   } else if (this.selectedBtn === 'mains') {
+  //     this.recipesService
+  //       .getRecipesMainsSpoon()
+  //       .subscribe((SpoonacularApiData) => {
+  //         this.showRecipes = SpoonacularApiData.results;
+  //       });
+  //   } else if (this.selectedBtn === 'desserts') {
+  //     this.recipesService
+  //       .getRecipesDessertsSpoon()
+  //       .subscribe((SpoonacularApiData) => {
+  //         this.showRecipes = SpoonacularApiData.results;
+  //       });
+  //   } else if (this.selectedBtn === 'sides') {
+  //     this.recipesService
+  //       .getRecipesSidesSpoon()
+  //       .subscribe((SpoonacularApiData) => {
+  //         this.showRecipes = SpoonacularApiData.results;
+  //       });
+  //   }
+  //   console.log(this.showRecipes);
+  // }
 }

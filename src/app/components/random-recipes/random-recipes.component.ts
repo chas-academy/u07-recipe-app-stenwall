@@ -27,7 +27,6 @@ export class RandomRecipesComponent implements OnInit {
       }
     );
 
-    this.updateRecipeList('');
   }
 
   updateRecipeList(preferences) {
@@ -35,6 +34,7 @@ export class RandomRecipesComponent implements OnInit {
       .getRandomRecipes(preferences)
       .subscribe((SpoonacularRandomApiData) => {
         this.showRecipes = SpoonacularRandomApiData.recipes;
+        console.log(preferences);
       });
   }
 }

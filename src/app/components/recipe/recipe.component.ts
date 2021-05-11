@@ -80,7 +80,6 @@ export class RecipeComponent implements OnInit {
         this.extendedIngredients = Recipe.extendedIngredients;
         this.analyzedInstructions = Recipe.analyzedInstructions;
         this.steps = Recipe.analyzedInstructions[0].steps;
-        console.log(this.analyzedInstructions);
       });
   }
 

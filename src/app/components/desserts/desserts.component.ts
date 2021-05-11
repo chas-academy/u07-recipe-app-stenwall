@@ -26,8 +26,7 @@ export class DessertsComponent implements OnInit {
         this.updateRecipeList(preferences);
       }
     );
-
-    this.updateRecipeList('');
+    
   }
 
   updateRecipeList(preferences) {

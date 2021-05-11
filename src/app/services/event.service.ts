@@ -28,25 +28,11 @@ export class EventService {
       preferenceQuery = 'vegan,';
     }
     if (preferences['dairyFree']) {
-      preferenceQuery += 'dairy+free';
+      preferenceQuery += 'dairy+free,';
     }
     if (preferences['glutenFree']) {
       preferenceQuery += 'gluten+free';
     }
     this.preferenceString.next(preferenceQuery);
   }
-
-  // subject: BehaviorSubject<any>;
-
-  // constructor() {
-  //   this.subject = new BehaviorSubject(null);
-  // }
-
-  // getObservable() {
-  //   return this.subject.asObservable();
-  // }
-
-  // updateValue(value) {
-  //   this.subject.next(value);
-  // }
 }
