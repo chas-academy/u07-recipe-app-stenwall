@@ -1,5 +1,10 @@
 <section>
-    <mat-slide-toggle labelPosition="before" (change)="onChange($event)" name="vegan">Vegan</mat-slide-toggle>
-    <mat-slide-toggle labelPosition="before" (change)="onChange($event)" name="dairyFree">Dairy Free</mat-slide-toggle>
-    <mat-slide-toggle labelPosition="before" (change)="onChange($event)" name="glutenFree">Gluten Free</mat-slide-toggle>
+    <h4 class="diet-title">Dietary Preferences:</h4>
+    <div class="toggle-wrapper">
+        <mat-slide-toggle (change)="onChange($event)" name="vegan">Vegan</mat-slide-toggle>
+        <mat-slide-toggle (change)="onChange($event)" name="dairyFree">Dairy Free
+        </mat-slide-toggle>
+        <mat-slide-toggle (change)="onChange($event)" name="glutenFree">Gluten Free
+        </mat-slide-toggle>
+    </div>
 </section>
