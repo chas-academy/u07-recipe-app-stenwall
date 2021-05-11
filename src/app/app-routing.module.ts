@@ -8,6 +8,7 @@ import { MainsComponent } from './components/mains/mains.component';
 import { DessertsComponent } from './components/desserts/desserts.component';
 import { SidesComponent } from './components/sides/sides.component';
 import { RandomRecipesComponent } from './components/random-recipes/random-recipes.component';
+import { ListComponent } from './components/list/list.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'mains', component: MainsComponent },
   { path: 'desserts', component: DessertsComponent },
   { path: 'sides', component: SidesComponent },
+  { path: 'list', component: ListComponent},
   { path: '**', component: PageNotFoundComponent },
 ];
 
