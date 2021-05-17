@@ -1,11 +1,28 @@
 #back-title-list {
   font-size: 1.5rem;
   line-height: 1.5rem;
-  margin-top: 1rem;
-  margin-left: 1rem;
+  padding: 1rem;
+  margin-bottom: 0;
+  letter-spacing: 0.2rem;
+  font-weight: 600;
 
   .material-icons {
+    font-weight: 500;
     font-size: 1.5rem;
     vertical-align: bottom;
+    margin: 0 0.5rem;
+  }
+}
+
+#back-title-recipe {
+  font-weight: 600;
+  padding: 1rem;
+  letter-spacing: 0.2rem;
+  margin-bottom: 0;
+
+  .material-icons {
+    font-weight: 500;
+    vertical-align: top;
+    margin: 0 0.5rem;
   }
 }
