@@ -1,1 +1,26 @@
-<p>list works!</p>
+<header class="header-wrapper">
+    <a [routerLink]="['/']">
+        <h2 id="back-title-list">
+            <span class="material-icons">arrow_back</span>
+            {{ data.title }}
+        </h2>
+    </a>
+</header>
+
+<mat-divider></mat-divider>
+
+<ng-container *ngIf="savedRecipes">
+
+    <main class="list-wrapper">
+        <mat-card class="list-card" *ngFor="let savedRecipe of savedRecipes" [routerLink]="['/recipe', savedRecipe.id]">
+            <img mat-card-image src="{{ savedRecipe.image }}" />
+            <mat-card-content>
+                <mat-card-title>{{ savedRecipe.title }}</mat-card-title>
+                <button mat-flat-button class="remove-btn" color="accent" (click)="removeRecipeFromList(savedRecipe.id)">
+                    <mat-icon color="white">close</mat-icon> Remove from list
+                </button>
+            </mat-card-content>
+        </mat-card>
+    </main>
+
+</ng-container>

@@ -10,30 +10,32 @@ main {
   padding: 2rem;
   display: grid;
   width: 100%;
-  // justify-items: center;
 }
 
 .header-wrapper {
   padding: 0;
   display: grid;
   width: 100vw;
-  // justify-self: center;
-  // margin: auto;
+}
+
+.list-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 // Breakpoints
 
 // X-Small devices (portrait phones, less than 599px)
 @media (max-width: 599px) {
-  #back-title {
-  font-size: 1.5rem;
-  line-height: 1.5rem;
-  margin-top: 0;
-
-  .material-icons {
+  #back-title-recipe {
     font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin-top: 0;
+
+    .material-icons {
+      font-size: 1.5rem;
+    }
   }
-}
 }
 
 // Small devices (landscape phones, portrait tablets, 600px and up)
@@ -45,15 +47,15 @@ main {
   .header-wrapper {
     grid-template-columns: 1fr;
   }
-  #back-title {
-  font-size: 1.5rem;
-  line-height: 1.5rem;
-  margin-top: 0;
-
-  .material-icons {
+  #back-title-recipe {
     font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin-top: 0;
+
+    .material-icons {
+      font-size: 1.5rem;
+    }
   }
-}
 }
 
 // Medium devices (landscape tablets, 720px and up)
@@ -66,6 +68,17 @@ main {
   .header-wrapper {
     grid-template-columns: 1fr 1fr;
     column-gap: 2rem;
+  }
+  .list-wrapper {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    .list-card.mat-card {
+      grid-template-columns: 30% auto;
+      max-width: 100%;
+      .mat-card-image {
+        height: auto;
+      }
+    }
   }
 }
 
@@ -80,7 +93,7 @@ main {
     grid-template-columns: 1fr 1fr;
     column-gap: 4rem;
   }
-  #back-title {
+  #back-title-recipe {
     font-size: 2rem;
     line-height: 2rem;
     margin-top: 0.5rem;
@@ -88,6 +101,10 @@ main {
     .material-icons {
       font-size: 2rem;
     }
+  }
+  .list-wrapper {
+    padding: 2rem;
+    row-gap: 1rem;
   }
 }
 
