@@ -12,9 +12,7 @@ export class RecipeCardComponent implements OnInit, OnChanges {
 
   showRecipes: Recipe[];
 
-  constructor(
-    private listService: ListService
-  ) {}
+  constructor(private listService: ListService) {}
 
   ngOnInit(): void {
     this.showRecipes = this.data;
@@ -29,6 +27,16 @@ export class RecipeCardComponent implements OnInit, OnChanges {
   addRecipeToList(event, id, title, image) {
     event.stopPropagation();
     this.listService.addToList(id, title, image);
+  }
+
+  removeRecipeFromList(event, id) {
+    event.stopPropagation();
+    this.listService.removeFromList(id);
+  }
+
+  isRecipeSaved(id: number): boolean {
+    console.log(this.listService.checkIfRecipeInList(id));
+    return this.listService.checkIfRecipeInList(id);
   }
 }
 

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { List } from '../models/list.model';
 
 @Injectable({
@@ -6,8 +7,13 @@ import { List } from '../models/list.model';
 })
 export class ListService {
   list: List[] = [];
+  isRecipeInList: boolean;
 
-  constructor() {}
+  recipeInListChange: Subject<boolean> = new Subject<boolean>();
+
+  constructor() {
+    this.recipeInListChange.subscribe((value) => (this.isRecipeInList = value));
+  }
 
   addToList(id: number, title: string, image: string) {
     const idExists = this.list.some(listItem => listItem.id === id);
@@ -22,35 +28,45 @@ export class ListService {
   }
 
   removeFromList(id: number) {
-    const position = this.list.findIndex((recipe) => recipe.id === id);
+    const position = this.list.findIndex(recipe => recipe.id === id);
     if (position >= 0) this.list.splice(position, 1);
-    console.log(this.list); 
+    console.log(this.list);
   }
 
-  checkIfRecipeInList() {
-    
+  // toggleRecipeInList() {
+  //   this.recipeInListChange.next(!this.isRecipeInList);
+  // }
+
+  checkIfRecipeInList(id: number): boolean {
+    const idExists = this.list.some((listItem) => listItem.id === id);
+    if (idExists) {
+      return true;
+    } else {
+      return false;
+      //   ? (this.isRecipeInList = true) : (this.isRecipeInList = false);
+      // return this.recipeInListChange.next(this.isRecipeInList);
+    }
   }
 
-//   this.list.some(listItem => listItem[id] === id);
-// console.log(anyAdult); // true
+  //   this.list.some(listItem => listItem[id] === id);
+  // console.log(anyAdult); // true
 
+  //   this.list.forEach((element, index, array) => {
+  //     console.log(element.x); // 100, 200, 300
+  //     console.log(index); // 0, 1, 2
+  //     console.log(array); // same myArray object 3 times
+  // });
 
-//   this.list.forEach((element, index, array) => {
-//     console.log(element.x); // 100, 200, 300
-//     console.log(index); // 0, 1, 2
-//     console.log(array); // same myArray object 3 times
-// });
+  //   this.list.forEach(
+  //     ((arrayItem) => {
+  //     var x = arrayItem.prop1 + 2;
+  //     console.log(x);
+  // });
+  //    (key) => { if (this.list[key] != id) {
 
-//   this.list.forEach(
-//     ((arrayItem) => {
-//     var x = arrayItem.prop1 + 2;
-//     console.log(x);
-// });
-//    (key) => { if (this.list[key] != id) {
-
-//     }
-//     // use val
-// });
+  //     }
+  //     // use val
+  // });
 
   // onChange(event) {
   //   if (this.preferences.hasOwnProperty(event.source.name)) {
