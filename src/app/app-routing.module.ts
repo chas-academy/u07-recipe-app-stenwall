@@ -14,15 +14,43 @@ const routes: Routes = [
   {
     path: 'recipe/:id',
     component: RecipeComponent,
-    data: { title: 'Parsley & Sage' },
+    data: { title: 'Parsley & Sage', header: false },
   },
-  { path: '', component: RandomRecipesComponent },
-  { path: 'appetizers', component: AppetizersComponent },
-  { path: 'mains', component: MainsComponent },
-  { path: 'desserts', component: DessertsComponent },
-  { path: 'sides', component: SidesComponent },
-  { path: 'list', component: ListComponent},
-  { path: '**', component: PageNotFoundComponent },
+  {
+    path: '',
+    component: RandomRecipesComponent,
+    data: { header: true },
+  },
+  {
+    path: 'appetizers',
+    component: AppetizersComponent,
+    data: { header: true },
+  },
+  {
+    path: 'mains',
+    component: MainsComponent,
+    data: { header: true },
+  },
+  {
+    path: 'desserts',
+    component: DessertsComponent,
+    data: { header: true },
+  },
+  {
+    path: 'sides',
+    component: SidesComponent,
+    data: { header: true },
+  },
+  {
+    path: 'list',
+    component: ListComponent,
+    data: { header: false },
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+    data: { header: false },
+  },
 ];
 
 @NgModule({
