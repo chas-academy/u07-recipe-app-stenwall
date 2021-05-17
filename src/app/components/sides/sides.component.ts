@@ -27,7 +27,6 @@ export class SidesComponent implements OnInit {
       }
     );
 
-    this.updateRecipeList('');
   }
 
   updateRecipeList(preferences) {

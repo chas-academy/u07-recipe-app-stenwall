@@ -29,7 +29,6 @@ export class AppetizersComponent implements OnInit {
         this.updateRecipeList(preferences);
       }
     );
-
   }
 
   updateRecipeList(preferences) {

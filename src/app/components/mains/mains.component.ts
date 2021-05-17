@@ -26,7 +26,6 @@ export class MainsComponent implements OnInit {
         this.updateRecipeList(preferences);
       }
     );
-
   }
 
   updateRecipeList(preferences) {
