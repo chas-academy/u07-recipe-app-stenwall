@@ -25,13 +25,13 @@ export class EventService {
   preferencesToString(preferences: object) {
     let preferenceQuery = '';
     if (preferences['vegan']) {
-      preferenceQuery = 'vegan,';
+      preferenceQuery += 'vegan,';
     }
     if (preferences['dairyFree']) {
       preferenceQuery += 'dairy+free,';
     }
     if (preferences['glutenFree']) {
-      preferenceQuery += 'gluten+free';
+      preferenceQuery += 'gluten+free,';
     }
     this.preferenceString.next(preferenceQuery);
   }
