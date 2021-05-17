@@ -16,9 +16,11 @@
             <img mat-card-image src="{{ savedRecipe.image }}" />
             <mat-card-content>
                 <mat-card-title>{{ savedRecipe.title }}</mat-card-title>
-                <button mat-flat-button class="remove-btn" color="accent" (click)="removeRecipeFromList(savedRecipe.id)">
-                    <mat-icon color="white">close</mat-icon> Remove from list
-                </button>
+                <mat-card-actions>
+                    <a mat-flat-button class="remove-btn" color="accent" (click)="removeRecipeFromList($event, savedRecipe.id)">
+                        <mat-icon color="white">close</mat-icon> Remove from list
+                    </a>
+                </mat-card-actions> 
             </mat-card-content>
         </mat-card>
     </main>

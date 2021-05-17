@@ -44,12 +44,12 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListComponent,
-    data: { header: false },
+    data: { title: 'Parsley & Sage', header: false },
   },
   {
     path: '**',
     component: PageNotFoundComponent,
-    data: { header: false },
+    data: { title: 'Parsley & Sage', header: false },
   },
 ];
 
