@@ -26,7 +26,8 @@ export class RecipeCardComponent implements OnInit, OnChanges {
     }
   }
 
-  addRecipeToList(id, title, image) {
+  addRecipeToList(event, id, title, image) {
+    event.stopPropagation();
     this.listService.addToList(id, title, image);
   }
 }

@@ -34,7 +34,6 @@ export class RandomRecipesComponent implements OnInit {
       .getRandomRecipes(preferences)
       .subscribe((SpoonacularRandomApiData) => {
         this.showRecipes = SpoonacularRandomApiData.recipes;
-        console.log(preferences);
       });
   }
 }

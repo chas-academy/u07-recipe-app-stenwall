@@ -53,3 +53,8 @@ export class ListComponent implements OnInit {
     this.router.navigate(['/list']);
   }
 }
+
+// sources for links within links:
+// -----------------------------------------------------------------------
+// https://stackoverflow.com/questions/43642250/how-to-make-a-link-inside-element-with-router-link-in-angular-2
+// https://stackoverflow.com/questions/50284714/using-routerlink-and-click-in-same-button/50285339
