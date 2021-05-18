@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecipesService } from '../../services/recipes.service';
 import { EventService } from '../../services/event.service';
 import { Subscription } from 'rxjs';
-
-import {
-  SpoonacularApiData,
-  Recipe,
-} from '../../models/api-spoonacular.model';
+import { SpoonacularApiData, Recipe } from '../../models/api-spoonacular.model';
 
 @Component({
   selector: 'app-appetizers',
@@ -31,7 +27,7 @@ export class AppetizersComponent implements OnInit {
     );
   }
 
-  updateRecipeList(preferences) {
+  updateRecipeList(preferences: string): void {
     this.recipesService
       .getDishTypeRecipes('appetizer', preferences)
       .subscribe((SpoonacularApiData) => {

@@ -28,7 +28,7 @@ export class DessertsComponent implements OnInit {
     );
   }
 
-  updateRecipeList(preferences) {
+  updateRecipeList(preferences: string): void {
     this.recipesService
       .getDishTypeRecipes('dessert', preferences)
       .subscribe((SpoonacularApiData) => {
