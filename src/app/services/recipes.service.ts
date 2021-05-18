@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { share } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
-import { SpoonacularApiData, SpoonacularRandomApiData, Recipe } from '../models/api-spoonacular.model';
+import {
+  SpoonacularApiData,
+  SpoonacularRandomApiData,
+  Recipe,
+} from '../models/api-spoonacular.model';
+import { share } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -13,41 +17,37 @@ export class RecipesService {
   private spoonApiUrl: string;
   private spoonApiKey: string;
 
-  defaultParams;
+  deafultParams = new HttpParams()
+    .append('query', 'foodista')
+    .append('number', '30');
 
   constructor(private http: HttpClient) {
     this.spoonApiUrl = environment.SPOON_API_URL;
     this.spoonApiKey = environment.SPOON_API_KEY;
   }
 
-  deafultParams = new HttpParams()
-    .append('query', 'foodista')
-    .append('diet', 'vegetarian')
-    .append('number', '30');
-
-  getDishTypeRecipes(dishType: string, preferences: string): Observable<SpoonacularApiData> {
-    const obs = this.http.get<SpoonacularApiData>(
-      this.spoonApiUrl + 'complexSearch',
-      {
+  getDishTypeRecipes(
+    dishType: string,
+    preferences: string
+  ): Observable<SpoonacularApiData> {
+    const observable = this.http
+      .get<SpoonacularApiData>(this.spoonApiUrl + 'complexSearch', {
         params: this.deafultParams
           .append('type', dishType)
-          .append('tags', preferences)
+          .append('diet', `vegetarian,${preferences}`)
           .append('apiKey', this.spoonApiKey),
-      }
-    )
-    .pipe(share());
-    obs.subscribe(data => console.log(data));
-    return obs;
+      })
+      .pipe(share());
+    // observable.subscribe((data) => console.log(data));
+    return observable;
   }
 
   getRandomRecipes(preferences: string): Observable<SpoonacularRandomApiData> {
     return this.http.get<SpoonacularRandomApiData>(
       this.spoonApiUrl + 'random',
       {
-        params: new HttpParams()
-          .append('query', 'foodista')
+        params: this.deafultParams
           .append('tags', `vegetarian,${preferences}`)
-          .append('number', '30')
           .append('apiKey', this.spoonApiKey),
       }
     );

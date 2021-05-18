@@ -1,4 +1,4 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -24,15 +24,11 @@ export class EventService {
 
   preferencesToString(preferences: object) {
     let preferenceQuery = '';
-    if (preferences['vegan']) {
-      preferenceQuery += 'vegan,';
-    }
-    if (preferences['dairyFree']) {
-      preferenceQuery += 'dairy+free,';
-    }
-    if (preferences['glutenFree']) {
-      preferenceQuery += 'gluten+free,';
-    }
+
+    preferences['vegan'] && (preferenceQuery = 'vegan,');
+    preferences['dairyFree'] && (preferenceQuery += 'dairy+free,');
+    preferences['glutenFree'] && (preferenceQuery += 'gluten+free');
+
     this.preferenceString.next(preferenceQuery);
   }
 }
