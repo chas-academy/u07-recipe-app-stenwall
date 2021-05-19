@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { RecipesService } from '../../services/recipes.service';
 import { EventService } from '../../services/event.service';
 import { Subscription } from 'rxjs';
-
-import { Recipe, SpoonacularRandomApiData } from 'src/app/models/api-spoonacular.model';
+import {
+  Recipe,
+  SpoonacularRandomApiData,
+} from 'src/app/models/api-spoonacular.model';
 
 @Component({
   selector: 'app-random-recipes',
@@ -26,10 +28,9 @@ export class RandomRecipesComponent implements OnInit {
         this.updateRecipeList(preferences);
       }
     );
-
   }
 
-  updateRecipeList(preferences) {
+  updateRecipeList(preferences: string): void {
     this.recipesService
       .getRandomRecipes(preferences)
       .subscribe((SpoonacularRandomApiData) => {
