@@ -26,3 +26,18 @@
     margin: 0 0.5rem;
   }
 }
+
+.remove-btn {
+  padding: 0.3rem 1.2rem 0.15rem 1rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: white;
+  border: none;
+  display: block;
+  min-width: fit-content;
+  .mat-icon {
+    margin-bottom: 3px;
+    font-weight: 500;
+  }
+}

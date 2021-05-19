@@ -10,29 +10,7 @@ import { ListService } from 'src/app/services/list.service';
 })
 export class ListComponent implements OnInit {
   savedRecipes: List[];
-  // savedRecipes = [
-  //   {
-  //     id: 798400,
-  //     image: 'https://spoonacular.com/recipeImages/798400-556x370.jpg',
-  //     title: 'Spicy Black-Eyed Pea Curry with Swiss Chard and Roasted Eggplant',
-  //   },
-  //   {
-  //     id: 663559,
-  //     image: 'https://spoonacular.com/recipeImages/663559-556x370.jpg',
-  //     title: 'Tomato and lentil soup',
-  //   },
-  //   {
-  //     id: 650751,
-  //     image: 'https://spoonacular.com/recipeImages/650751-556x370.jpg',
-  //     title: 'Mango Avocado Ice Cream',
-  //   },
-  //   {
-  //     id: 665016,
-  //     title: 'Watermelon Jalapeño Cocktail Cooler',
-  //     image: 'https://spoonacular.com/recipeImages/665016-556x370.jpg',
-  //   },
-  // ];
-  data;
+  data: any;
 
   constructor(
     private listService: ListService,
@@ -42,12 +20,10 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe((data) => (this.data = data));
-
     this.savedRecipes = this.listService.list;
-    console.log(this.savedRecipes);
   }
 
-  removeRecipeFromList(event, id) {
+  removeRecipeFromList(event: any, id: number): void {
     event.stopPropagation();
     this.listService.removeFromList(id);
     this.router.navigate(['/list']);
