@@ -1,1 +1,12 @@
-<p>oops, page not found!</p>
+<header class="header-wrapper">
+    <a [routerLink]="['/']">
+        <h2 id="back-title-not-found">
+            <span class="material-icons">arrow_back</span>
+            {{ data.title }}
+        </h2>
+    </a>
+</header>
+
+<mat-divider></mat-divider>
+
+<h1 class="oops-title" color="warn">Oops, page not found!</h1>
