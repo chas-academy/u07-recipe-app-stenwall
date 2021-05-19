@@ -85,3 +85,24 @@ img {
     margin: 0 0.5rem;
   }
 }
+
+.recipe-wrapper {
+  z-index: 1;
+}
+
+.cdk-overlay-container {
+  .cdk-global-overlay-wrapper {
+    .cdk-overlay-pane {
+      .mat-bottom-sheet-container {
+        z-index: 2;
+      }
+    }
+  }
+}
+.bottom-sheet {
+  z-index: 2;
+}
+
+.bottom-tabs {
+  z-index: 100;
+}
