@@ -15,17 +15,16 @@ import { AppetizersComponent } from './components/appetizers/appetizers.componen
 import { MainsComponent } from './components/mains/mains.component';
 import { DessertsComponent } from './components/desserts/desserts.component';
 import { SidesComponent } from './components/sides/sides.component';
-import { BottomSheetComponent } from './components/bottom-sheet/bottom-sheet.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DietaryPreferencesComponent } from './components/dietary-preferences/dietary-preferences.component';
+import { RandomRecipesComponent } from './components/random-recipes/random-recipes.component';
+import { ListComponent } from './components/list/list.component';
+import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 
 import { ApiInterceptor } from '../app/interceptors/api-interceptor.interceptor';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
-import { DietaryPreferencesComponent } from './components/dietary-preferences/dietary-preferences.component';
-import { RandomRecipesComponent } from './components/random-recipes/random-recipes.component';
-import { ListComponent } from './components/list/list.component';
-import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +38,6 @@ import { RecipeCardComponent } from './components/recipe-card/recipe-card.compon
     MainsComponent,
     DessertsComponent,
     SidesComponent,
-    BottomSheetComponent,
     DietaryPreferencesComponent,
     RandomRecipesComponent,
     ListComponent,
@@ -61,7 +59,6 @@ import { RecipeCardComponent } from './components/recipe-card/recipe-card.compon
     EventService,
     RecipesService,
   ],
-  entryComponents: [BottomSheetComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
