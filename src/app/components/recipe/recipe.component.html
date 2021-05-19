@@ -1,4 +1,5 @@
 <ng-container *ngIf="recipe">
+
     <header class="header-wrapper">
         <a [routerLink]="['/']">
             <h2 id="back-title-recipe">
@@ -24,40 +25,20 @@
                 <mat-tab label="instructions"></mat-tab>
             </mat-tab-group>
         </ng-template>
-
     </header>
 
     <mat-divider></mat-divider>
-
-    <button (click)="addRecipeToList()">LÄGG TILL!</button>
-    <button (click)="removeRecipeFromList()">TA BORT!</button>
 
     <ng-template let-bottomSheetRef="bottomSheetRef" #templateBottomSheet>
         <button mat-flat-button class="close-btn" color="accent" (click)="closeBottomSheet()">
             <mat-icon color="white">close</mat-icon> close
         </button>
-
         <mat-list *ngIf="selectedTab === 'ingredients'">
             <mat-list-item *ngFor="let extendedIngredient of extendedIngredients" class="mat-list-item-word-wrap">
                 <mat-icon mat-list-icon>adjust</mat-icon>
                 <p mat-line>{{ extendedIngredient.originalString }}</p>
             </mat-list-item>
         </mat-list>
-
-        <!-- <ul>
-            <li>5 Cloves of Garlic</li>
-            <li>1 Red Chilli</li>
-            <li>Handful of Basil</li>
-            <li>4 Large Tomatoes</li>
-            <li>250g Cherry Tomatoes</li>
-            <li>1 Vegetable Stock Cube</li>
-            <li>500g Orzo</li>
-            <li>30g Parmesan</li>
-            <li>Salt</li>
-            <li>Pepper</li>
-            <li>Olive Oil</li>
-        </ul> -->
-
         <mat-list *ngIf="selectedTab === 'instructions'">
             <mat-list-item *ngFor="let step of steps" class="mat-list-item-word-wrap">
                 <mat-icon mat-list-icon>adjust</mat-icon>
@@ -65,60 +46,31 @@
                 <p mat-line>{{ step.step }}</p>
             </mat-list-item>
         </mat-list>
-
-        <!-- <p>Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large
-                tomatoes.
-            </p>
-            <br>
-            <h4>Step 2.</h4>
-            <p>Heat a little glug of olive oil in a frying pan. Add your sliced garlic and red chilli and gently fry for
-                a
-                couple of
-                mins until fragrant.</p>
-            <br>
-            <h4>Step 3.</h4>
-            <p>Tip your cherry tomatoes into the pan along with your quartered tomatoes and vegetable stock cube. Cook
-                for
-                10 mins,
-                smooshing with the back of your spoon to break down the tomatoes.</p>
-            <br>
-            <h4>Step 4.</h4>
-            <p>Add your orzo and 800ml water. Give it a good stir, then simmer for 8 mins.</p>
-            <br>
-            <h4>Step 5.</h4>
-            <p>Season with salt and pepper, then add your basil and stir to combine.</p>
-            <br>
-            <h4>Step 6.</h4>
-            <p>Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.</p> -->
     </ng-template>
-
 
     <main class="recipe-wrapper">
         <div class="recipe-info">
-            <img src="{{ recipe.image }}" alt="the chosen dish when ready">
-            <!-- <img src="https://mobkitchen-objects.imgix.net/recipes/9K8A1613-1web.jpg?auto=format&crop=focalpoint&domain=mobkitchen-objects.imgix.net&fit=crop&fp-x=0.5&fp-y=0.5&h=1300&ixlib=php-3.3.0&q=82&w=1300&s=baa5b77d1c492375e4bf7c1b84f165ed"
-            alt="the chosen dish when ready"> -->
-
             <h2 class="recipe-title">{{ recipe.title }}</h2>
-            <!-- <h2 class="recipe-title">Recipe title</h2> -->
-
+            <img src="{{ recipe.image }}" alt="the chosen dish when ready">
+            <button *ngIf="!isRecipeSaved()" mat-flat-button class="list-btn" color="primary"
+                (click)="addRecipeToList()">
+                <mat-icon color="white">favorite</mat-icon> Add to list
+            </button>
+            <button *ngIf="isRecipeSaved()" mat-flat-button class="list-btn" color="accent"
+                (click)="removeRecipeFromList()">
+                <mat-icon color="white">close</mat-icon> Remove from list
+            </button>
             <div class="info-box">
                 <p class="ready-time">
                     <span class="material-icons">schedule</span>
                     Ready in: {{ recipe.readyInMinutes }} minutes
-                    <!-- Ready in: 30 minutes -->
                 </p>
-
                 <div class="chip-wrapper">
                     <p *ngIf="recipe.vegan">Vegan</p>
                     <p *ngIf="recipe.dairyFree">Dairy free</p>
                     <p *ngIf="recipe.glutenFree">Gluten free</p>
-                    <!-- <p>Dairy Free</p>
-                <p>Gluten Free</p>
-                <p>Vegan</p> -->
                 </div>
             </div>
-
         </div>
 
         <div class="recipe-tabs" *ngIf="isLargeScreen">
@@ -128,23 +80,6 @@
                     <p mat-line>{{ extendedIngredient.originalString }}</p>
                 </mat-list-item>
             </mat-list>
-            <!-- <div *ngIf="selectedTab === 'ingredients'">
-            <h4>Ingredients</h4>
-            <ul>
-                <li *ngFor="let extendedIngredient of extendedIngredients">{{ extendedIngredient.originalString }}</li>
-                <li>5 Cloves of Garlic</li>
-                <li>1 Red Chilli</li>
-                <li>Handful of Basil</li>
-                <li>4 Large Tomatoes</li>
-                <li>250g Cherry Tomatoes</li>
-                <li>1 Vegetable Stock Cube</li>
-                <li>500g Orzo</li>
-                <li>30g Parmesan</li>
-                <li>Salt</li>
-                <li>Pepper</li>
-                <li>Olive Oil</li>
-            </ul>
-        </div> -->
             <mat-list *ngIf="selectedTab === 'instructions'">
                 <mat-list-item *ngFor="let step of steps" class="mat-list-item-word-wrap">
                     <mat-icon mat-list-icon>adjust</mat-icon>
@@ -152,35 +87,9 @@
                     <p mat-line>{{ step.step }}</p>
                 </mat-list-item>
             </mat-list>
-            <!-- <div *ngIf="selectedTab === 'instructions'">
-            <h4>Instructions</h4>
-            <div [innerHTML]="recipe.instructions"></div>
-            <h4>Step 1.</h4>
-            <p>Finely slice your garlic. Dice up your red chilli and finely chop your basil. Quarter your large
-                tomatoes.</p>
-            <br>
-            <h4>Step 2.</h4>
-            <p>Heat a little glug of olive oil in a frying pan. Add your sliced garlic and red chilli and gently fry for
-                a couple of
-                mins until fragrant.</p>
-            <br>
-            <h4>Step 3.</h4>
-            <p>Tip your cherry tomatoes into the pan along with your quartered tomatoes and vegetable stock cube. Cook
-                for 10 mins,
-                smooshing with the back of your spoon to break down the tomatoes.</p>
-            <br>
-            <h4>Step 4.</h4>
-            <p>Add your orzo and 800ml water. Give it a good stir, then simmer for 8 mins.</p>
-            <br>
-            <h4>Step 5.</h4>
-            <p>Season with salt and pepper, then add your basil and stir to combine.</p>
-            <br>
-            <h4>Step 6.</h4>
-            <p>Spoon into bowls and sprinkle with parmesan and a drizzle of olive oil. Serve and enjoy.</p>
-        </div> -->
         </div>
-
     </main>
+
 </ng-container>
 
 <!-- 

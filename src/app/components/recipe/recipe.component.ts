@@ -1,23 +1,18 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import {
+  MatBottomSheet,
+  MatBottomSheetConfig,
+} from '@angular/material/bottom-sheet';
+import { Overlay } from '@angular/cdk/overlay';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   Recipe,
   ExtendedIngredient,
   AnalyzedInstruction,
   Step,
-  Ingredient,
-  Equipment,
-  Length,
 } from 'src/app/models/api-spoonacular.model';
 import { RecipesService } from '../../services/recipes.service';
-
-import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
-import { Overlay } from '@angular/cdk/overlay';
-import { BreakpointObserver } from '@angular/cdk/layout';
-
-import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
-import { Observable } from 'rxjs';
 import { ListService } from 'src/app/services/list.service';
 
 @Component({
@@ -32,7 +27,6 @@ export class RecipeComponent implements OnInit {
   extendedIngredients: ExtendedIngredient[] = [];
   analyzedInstructions: AnalyzedInstruction[] = [];
   steps: Step[] = [];
-  instructionsSteps;
   data;
   selectedTab: string;
   configBottomSheet: MatBottomSheetConfig = {
@@ -62,7 +56,7 @@ export class RecipeComponent implements OnInit {
         this.isLargeScreen = false;
       } else {
         this.isLargeScreen = true;
-        this.selectedTab = "ingredients";
+        this.selectedTab = 'ingredients';
       }
     });
   }
@@ -83,7 +77,7 @@ export class RecipeComponent implements OnInit {
       });
   }
 
-  onTabChange(event) {
+  onTabChange(event): void {
     this.selectedTab = event.tab.textLabel;
     if (this.selectedTab == 'ingredients') {
       this.isIngredientsOpen = true;
@@ -92,18 +86,25 @@ export class RecipeComponent implements OnInit {
     }
   }
 
-  addRecipeToList() {
-    this.listService.addToList(this.recipe.id, this.recipe.title, this.recipe.image);
+  isRecipeSaved(): boolean {
+    return this.listService.checkIfRecipeInList(this.recipe.id);
   }
 
-  removeRecipeFromList() {
+  addRecipeToList(): void {
+    this.listService.addToList(
+      this.recipe.id,
+      this.recipe.title,
+      this.recipe.image
+    );
+  }
+
+  removeRecipeFromList(): void {
     this.listService.removeFromList(this.recipe.id);
   }
 
-  openBottomSheet(event) {
+  openBottomSheet(event): void {
     this.selectedTab = event.target.innerText.toLowerCase();
     const scrollStrategy = this.overlay.scrollStrategies.block();
-
     if (!this.isIngredientsOpen && !this.isInstructionsOpen) {
       this.bottomSheet.open(this.TemplateBottomSheet, { scrollStrategy });
       if (this.selectedTab === 'ingredients') {
@@ -130,10 +131,9 @@ export class RecipeComponent implements OnInit {
         this.isInstructionsOpen = false;
       }
     }
-    // console.log(`Ingredients-tab is ${this.isIngredientsOpen}, instructions-tab is ${this.isInstructionsOpen} and selected tab is ${this.selectedTab}`);
   }
 
-  closeBottomSheet() {
+  closeBottomSheet(): void {
     this.bottomSheet.dismiss();
     this.isIngredientsOpen = false;
     this.isInstructionsOpen = false;
