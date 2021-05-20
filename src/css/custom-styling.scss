@@ -1,11 +1,11 @@
-@import 'scss/cards';
-@import 'scss/header';
-@import 'scss/recipe';
-@import 'scss/grid';
-@import 'scss/lists';
+@import "scss/cards";
+@import "scss/header";
+@import "scss/recipe";
+@import "scss/grid";
+@import "scss/lists";
 
-body {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }

@@ -1,7 +1,7 @@
 h2.recipe-title {
   color: map-get($app-accent, darker);
   font-weight: 700;
-  margin: 1.5rem 0;
+  margin-bottom: 1.5rem;
 }
 
 .mat-tab-labels {
@@ -26,6 +26,10 @@ h2.recipe-title {
 // only reach down to right above the tabs
 .cdk-overlay-container {
   height: calc(100% - 49px);
+  z-index: 2;
+  .cdk-global-overlay-wrapper {
+    z-index: 2;
+  }
 }
 
 // make the overlay pane cover the whole wrapper/container
@@ -33,6 +37,7 @@ h2.recipe-title {
 .cdk-overlay-pane {
   height: 100%;
   opacity: 0.95;
+  z-index: 2;
 }
 
 // make sure bottom-sheet covers the whole cdk-overlay-container

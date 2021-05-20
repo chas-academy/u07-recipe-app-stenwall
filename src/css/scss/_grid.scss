@@ -25,9 +25,23 @@ main {
   width: 100vw;
 }
 
+.main-header-wrapper {
+  display: grid;
+}
+
 .list-wrapper {
   display: grid;
   grid-template-columns: 1fr;
+}
+
+.sub-menu-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 // Breakpoints
@@ -91,6 +105,15 @@ main {
       }
     }
   }
+  .sub-menu-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+
+    .list-link-btn {
+      justify-self: normal;
+      align-self: center;
+    }
+  }
 }
 
 // Large devices (laptops, 1024px and up)
@@ -119,6 +142,9 @@ main {
   .list-wrapper {
     padding: 2rem;
     row-gap: 1rem;
+  }
+  .toggle-wrapper {
+    flex-direction: row;
   }
 }
 

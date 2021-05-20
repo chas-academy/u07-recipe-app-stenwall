@@ -5,7 +5,6 @@ a {
   h1 {
     text-align: center;
     padding: 3rem;
-    letter-spacing: 0.2rem;
   }
 
   &.mat-tab-link {
@@ -17,4 +16,9 @@ a {
       opacity: 0.9;
     }
   }
+}
+
+.mat-expansion-indicator {
+  margin-bottom: 0.5rem;
+  color: map-get($app-primary, darker);
 }
