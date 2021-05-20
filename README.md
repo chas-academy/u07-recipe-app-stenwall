@@ -1,39 +1,62 @@
-# U07RecipeApp
+# U07 Recipe App
 
-#### I denna uppgift ska du bygga en rudimentär applikation med ramverket Angular (version 11). Denna applikation ska fungera som en samling för recept som hämtas från ett externt API. För denna uppgift är det endast frontend och ingen backend som ska implementeras.
+School Assignment @ Chas Academy, class FWD20
 
-För inspiration se [Tasteline](https://www.tasteline.com/) och [Ica](https://www.ica.se/recept/).
+---
 
-## Som användare ska du:
+## Getting started
 
-- [ ] Kunna få en förslagslista med recept
-- [ ] Kunna filtrera förslagen av recept på måltidstyp och allergener:
-- [ ] Förrätt, huvudrätt eller dessert (minimum, fler måltidstyper får implementeras)
-- [ ] Allergener och dietval (t.ex. gluten, nötter, vegetarian osv.), minst tre ytterligare filtreringar ska finnas med förutom förrätt, huvudrätt och dessert  
-- [ ] Kunna klicka på ett recept för att se dess information (egen route)
-- [ ] Kunna spara recept i en lista (recepten behöver finnas tillgängliga så länge användaren är på webbplatsen, dock ej sparas i t ex localstorage)
-- [ ] Kunna visa sparade recept (egen route)
-- [ ] Kunna ta bort sparade recept ur listan
+Clone repo and run:
+```
+$ npm install
+$ npm start
+```
 
-## Krav
+## API
 
-- [ ] Frontend måste implementeras i ramverket Angular (version 11)
-- [ ] Nyttja ett externt API för att hämta recept-information vilken visas i applikationen, förslagsvis:
-    - https://developer.edamam.com/edamam-recipe-api
-    - https://www.themealdb.com/api.php
-- [ ] Måste fungera på en mobil enhet, det vill säga målen ovan måste gå att utföra även på en mobil enhet
+I'm using Spoonacular's API ([link](https://spoonacular.com/food-api/))
 
-Denna uppgift har inget krav på backend utan data hämtas från externt api, men  filtreringar och sparade recept skall finnas tillgängliga i applikationen under tiden användaren använder appen utan att stänga webbläsaren. Den användardata som genereras har inga krav på att sparas efter att användaren lämnar appen.
+## Requirements
 
-## Extra utmaning
+- [x] Be able to get a list of recipe suggestions
+- [x] Be able to filter the suggestions of recipes by dish type and allergens/preferences:
+  - [x] Starter, main course or dessert (minimum, more dish types may be implemented)
+  - [x] Allergens/dietary preferences (eg gluten, nuts, vegetarian, etc.), at least three additional filters must be included in addition to starter, main course and dessert
+- [x] Be able to click on a recipe to see its information (with its own route)
+- [x] Be able to save recipes in a list (the recipes need to be available as long as the user is on the website, but not saved in eg local storage)
+- [x] Be able to view saved recipes (with its own route)
+- [x] Be able to delete saved recipes from the list
+- [x] Frontend must be implemented in the Angular framework (version 11)
+- [x] Use an external API to retrieve recipe information which is displayed in the application
+- [x] Must work on a mobile device, ie the above goals must also be possible to perform on a mobile device
 
-- [ ] Användaren kan få recept från flera olika källor (API:er)
-- [ ] Användaren kan skapa egna recept
-- [ ] Användaren kan lägga till ingredienser från API
-- [ ] Användaren kan lägga till tillagningsinstruktioner
+This task has no backend requirements. Data is retrieved from an external API, but filterings and saved recipes must be available in the application while the user is using the app without closing the browser. The user data generated has no requirement to be saved after the user leaves the app.
 
-## Vänligen notera
+## Notes
 
-*Observera att du inte bedöms på estetik eller design. Prioritera därför inte denna del innan målen för uppgiften är klara. Du bedöms endast på koden och implementation av mål och krav.*
+### Design
+
+I know that we're not judged on design for this assignment, but I still wanted to make it pretty, and learn something new in the process.
+
+I decided to take the opportunity to learn [Angular Material](https://material.angular.io/) when doing the assigmnent, and I really tried to use it as far as I could. Eg, even if I knew I could fix something easier with just css or js, I tried to make it happen with Angular Material instead (sometimes with a bit of force).
+
+Also, as both an inspiration and an interesting extra challenge, I tried to copy the [Material Design example app Basil](https://material.io/design/material-studies/basil.html). Sometimes simplifying things, and sometimes adapting it to my liking (eg with the fonts). To be able to match Basil and use other colors than Angular Material could offer, I "hacked" my own theme with custom fonts and colors.
+
+If I had more time, I could have made it much better. Everything is kind of half done.
+
+### Notes
+
+I started this list, but it was just kind of depressing to continue. There is a lot of messy code in this project, and I'm really sorry about that. Especially the styling is a complete mess, I should have just used mixins. There are also some unused things left in the project as reference (the Edamam-model, the Interceptor and the HomeComponent).
+
+- Dish type components:
+    - I know I could have made these much more DRY by eg put the method `updateRecipeLIst()` in the service
+- RecipeComponent:
+    - I know that this whole component is a total mess and should probably be split up into several different components
+    - I had plans on putting the bottom sheet in its own component
+    - Same with the header (that I now have a copy of in the list-component), I know that it really should be in its own component
+    - I’m aware that the function `openbottomsheet()` is a complete mess and written really poorly
+
+---
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.7.
