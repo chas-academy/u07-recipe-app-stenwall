@@ -10,7 +10,6 @@
 <mat-divider></mat-divider>
 
 <ng-container *ngIf="savedRecipes">
-
     <main class="list-wrapper">
         <mat-card class="list-card" *ngFor="let savedRecipe of savedRecipes" [routerLink]="['/recipe', savedRecipe.id]">
             <img mat-card-image src="{{ savedRecipe.image }}" />
@@ -23,5 +22,4 @@
             </mat-card-content>
         </mat-card>
     </main>
-
 </ng-container>
