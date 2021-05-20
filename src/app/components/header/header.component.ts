@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-
 export class HeaderComponent implements OnInit {
   title = 'Parsley & Sage';
   preferences: object;
@@ -16,6 +15,5 @@ export class HeaderComponent implements OnInit {
 
   receivePreferences(event) {
     this.preferences = event;
-    console.log(this.preferences);
   }
 }

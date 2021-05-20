@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 export class DietaryPreferencesComponent implements OnInit {
   preferences: object;
   subscription: Subscription;
+  panelOpenState = false;
 
   constructor(private eventService: EventService) {}
 
@@ -19,11 +20,11 @@ export class DietaryPreferencesComponent implements OnInit {
     );
   }
 
-  onChange(event) {
+  onChange(event: any): void {
     if (this.preferences.hasOwnProperty(event.source.name)) {
       this.preferences[event.source.name] = event.checked;
     }
-      this.eventService.changePreferences(this.preferences);
+    this.eventService.changePreferences(this.preferences);
   }
 }
 
