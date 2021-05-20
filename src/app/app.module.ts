@@ -21,7 +21,7 @@ import { RandomRecipesComponent } from './components/random-recipes/random-recip
 import { ListComponent } from './components/list/list.component';
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 
-import { ApiInterceptor } from '../app/interceptors/api-interceptor.interceptor';
+// import { ApiInterceptor } from '../app/interceptors/api-interceptor.interceptor';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
@@ -51,11 +51,11 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
     AngularMaterialModule,
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ApiInterceptor,
-      multi: true,
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: ApiInterceptor,
+    //   multi: true,
+    // },
     EventService,
     RecipesService,
   ],
