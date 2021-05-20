@@ -32,6 +32,9 @@ I'm using Spoonacular's API ([link](https://spoonacular.com/food-api/))
 
 This task has no backend requirements. Data is retrieved from an external API, but filterings and saved recipes must be available in the application while the user is using the app without closing the browser. The user data generated has no requirement to be saved after the user leaves the app.
 
+## Deployment
+
+The site is deployed on Netlify: [parsley-and-sage.netlify.app](https://parsley-and-sage.netlify.app/)
 ## Notes
 
 ### Design
@@ -44,7 +47,7 @@ Also, as both an inspiration and an interesting extra challenge, I tried to copy
 
 If I had more time, I could have made it much better. Everything is kind of half done.
 
-### Notes
+### Other notes
 
 I started this list, but it was just kind of depressing to continue. There is a lot of messy code in this project, and I'm really sorry about that. Especially the styling is a complete mess, I should have just used mixins. There are also some unused things left in the project as reference (the Edamam-model, the Interceptor and the HomeComponent).
 
