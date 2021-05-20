@@ -1,3 +1,6 @@
+// THIS MODEL IS NOT USED!
+// I just kept it for reference
+
 // export interface EdamamApiData {
 //   hits: Hit[];
 // }

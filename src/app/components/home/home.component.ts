@@ -1,10 +1,12 @@
-import { Component, OnInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { RecipesService } from '../../services/recipes.service';
 
 // import { EdamamApiData, Recipe } from '../../models/api-edamam.model';
 import { SpoonacularApiData, Recipe } from 'src/app/models/api-spoonacular.model';
 
+// THIS COMPONENT IS NOT USED!
+// I just kept it for reference
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -42,6 +44,10 @@ export class HomeComponent implements OnInit {
   //   console.log(this.recipes);
   // });
 
+  // NICE SOLUTION FOR THE SUPER LONG METHOD BELOW
+  // I did'nt use it though because I wanted all the tabs in the menu
+  // to go to separate routes, so they're moved to different components
+
   // onSelectTab(event): any {
   //   this.selectedTab = event.target.value;
   //   this.recipesService
@@ -51,11 +57,9 @@ export class HomeComponent implements OnInit {
   //     });
   // }
 
-  // ngAfterContentChecked(): void {
-  //   console.log(this.showRecipes);
-  // }
+  // OLD UGLY METHOD
 
-  // onSelect(event): any {
+  // onSelectTab(event): any {
   //   this.selectedBtn = event.target.value;
   //   if (this.selectedBtn === 'appz') {
   //     this.recipesService

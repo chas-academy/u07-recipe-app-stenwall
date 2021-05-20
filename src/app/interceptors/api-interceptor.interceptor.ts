@@ -5,6 +5,9 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 
+// THIS COMPONENT IS NOT USED!
+// I just kept it for reference
+
 export class ApiInterceptor implements HttpInterceptor {
 
   constructor() {}

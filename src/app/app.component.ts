@@ -13,22 +13,27 @@ export class AppComponent implements OnInit {
 
   constructor(public router: Router, private activatedRoute: ActivatedRoute) {}
 
-  ngOnInit() {
-    this.router.events.pipe(
-      filter(events => events instanceof NavigationEnd),
-      map(evt => this.activatedRoute),
-      map(route => {
-        while(route.firstChild) {
-          route = route.firstChild;
-        }
-        return route;
-      })
+  ngOnInit(): void {
+    this.router.events
+      .pipe(
+        filter((events) => events instanceof NavigationEnd),
+        map((evt) => this.activatedRoute),
+        map((route) => {
+          while (route.firstChild) {
+            route = route.firstChild;
+          }
+          return route;
+        })
       )
-    .pipe(
-      filter(route => route.outlet === 'primary'),
-      mergeMap(route => route.data)
-    )
-    .subscribe(data => data.header === true ? this.visibility = true : this.visibility = false)
+      .pipe(
+        filter((route) => route.outlet === 'primary'),
+        mergeMap((route) => route.data)
+      )
+      .subscribe((data) =>
+        data.header === true
+          ? (this.visibility = true)
+          : (this.visibility = false)
+      );
   }
 }
 
