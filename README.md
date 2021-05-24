@@ -4,6 +4,8 @@ School Assignment @ Chas Academy, class FWD20
 
 ---
 
+>In this assignment, you will build a rudimentary application with the Angular framework (version 11). The application should act as a collection of recipes retrieved from an external API. Only the frontend and no backend are to be implemented.
+
 ## Getting started
 
 Clone repo and run:
