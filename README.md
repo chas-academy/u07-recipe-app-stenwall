@@ -16,7 +16,7 @@ $ npm start
 
 ## API
 
-I'm using Spoonacular's API ([link](https://spoonacular.com/food-api/))
+I'm using [Spoonacular's API](https://spoonacular.com/food-api/).
 
 ## Requirements
 
