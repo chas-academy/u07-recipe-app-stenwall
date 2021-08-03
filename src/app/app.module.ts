@@ -1,10 +1,11 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
-import { RecipesService } from '../app/services/recipes.service';
-import { EventService } from '../app/services/event.service';
+import { RecipesService } from './services/recipes.service';
+import { EventService } from './services/event.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -21,10 +22,14 @@ import { RandomRecipesComponent } from './components/random-recipes/random-recip
 import { ListComponent } from './components/list/list.component';
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 // import { ApiInterceptor } from '../app/interceptors/api-interceptor.interceptor';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
+import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -42,20 +47,25 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
     RandomRecipesComponent,
     ListComponent,
     RecipeCardComponent,
+    SigninComponent,
+    SignupComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
   ],
   providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: ApiInterceptor,
-    //   multi: true,
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     EventService,
     RecipesService,
   ],

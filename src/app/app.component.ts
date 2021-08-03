@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs/operators';
+import { TokenService } from './services/token.service';
+import { AuthStateService } from './services/auth-state.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +12,20 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   title: string = 'Parsley & Sage';
   visibility: boolean = false;
+  isSignedIn: boolean;
 
-  constructor(public router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    public router: Router,
+    public tokenService: TokenService,
+    private activatedRoute: ActivatedRoute,
+    private authStateService: AuthStateService
+  ) {}
 
   ngOnInit(): void {
+    this.authStateService.userAuthState.subscribe(val => {
+      this.isSignedIn = val;
+    });
+
     this.router.events
       .pipe(
         filter((events) => events instanceof NavigationEnd),
@@ -34,6 +46,13 @@ export class AppComponent implements OnInit {
           ? (this.visibility = true)
           : (this.visibility = false)
       );
+  }
+
+  // Signout
+  signOut() {
+    this.authStateService.setAuthState(false);
+    this.tokenService.removeToken();
+    this.router.navigate(['login']);
   }
 }
 
