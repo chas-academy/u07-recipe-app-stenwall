@@ -9,6 +9,9 @@ import { DessertsComponent } from './components/desserts/desserts.component';
 import { SidesComponent } from './components/sides/sides.component';
 import { RandomRecipesComponent } from './components/random-recipes/random-recipes.component';
 import { ListComponent } from './components/list/list.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -20,6 +23,18 @@ const routes: Routes = [
     path: '',
     component: RandomRecipesComponent,
     data: { header: true },
+  },
+  {
+    path: 'login',
+    component: SigninComponent
+  },
+  {
+    path: 'register',
+    component: SignupComponent
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent
   },
   {
     path: 'appetizers',
