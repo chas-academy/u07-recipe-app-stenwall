@@ -1,12 +1,13 @@
 <app-header *ngIf="visibility"></app-header>
 
-<div>
+<app-guest-view *ngIf="!isSignedIn"></app-guest-view>
+<!-- <div>
     <nav>
       <a routerLink="/profile" *ngIf="isSignedIn">User Profile</a>
       <a *ngIf="!isSignedIn" routerLink="/login">Log in</a>
       <a routerLink="/register">Register</a>
     </nav>
     <button (click)="signOut()" *ngIf="isSignedIn">Log out</button>
-</div>
+</div> -->
 
 <router-outlet></router-outlet>

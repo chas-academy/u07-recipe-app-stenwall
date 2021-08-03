@@ -30,6 +30,7 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { GuestViewComponent } from './components/guest-view/guest-view.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     SigninComponent,
     SignupComponent,
     UserProfileComponent,
+    GuestViewComponent,
   ],
   imports: [
     BrowserModule,
