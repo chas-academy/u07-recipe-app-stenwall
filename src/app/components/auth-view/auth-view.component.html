@@ -1,0 +1,11 @@
+<div class="auth-wrapper">
+    <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #profileMenu="matMenu" xPosition="before">
+        <span mat-menu-item>Hello, Karin!</span>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>Your Recipe Lists</button>
+        <button mat-menu-item (click)="signOut()" >Sign Out</button>
+      </mat-menu>
+</div>

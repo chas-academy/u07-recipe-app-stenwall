@@ -49,11 +49,11 @@ export class AppComponent implements OnInit {
   }
 
   // Signout
-  signOut() {
-    this.authStateService.setAuthState(false);
-    this.tokenService.removeToken();
-    this.router.navigate(['login']);
-  }
+  // signOut() {
+  //   this.authStateService.setAuthState(false);
+  //   this.tokenService.removeToken();
+  //   this.router.navigate(['login']);
+  // }
 }
 
 // source to showing header-component conditionally:

@@ -24,6 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const materialModules = [
   CdkTreeModule,
@@ -42,6 +44,8 @@ const materialModules = [
   OverlayModule,
   PortalModule,
   LayoutModule,
+  MatMenuModule,
+  MatSnackBarModule
 ];
 
 @NgModule({

@@ -1,0 +1,19 @@
+.auth-wrapper {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+
+  span {
+    padding: 0 16px;
+  }
+
+  button {
+    .mat-icon {
+      font-size: 3rem;
+    }
+
+    &:hover {
+      filter: brightness(85%);
+    }
+  }
+}
