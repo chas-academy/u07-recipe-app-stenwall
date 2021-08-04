@@ -22,19 +22,22 @@ const routes: Routes = [
   {
     path: '',
     component: RandomRecipesComponent,
-    data: { header: true },
+    data: { header: true, tabs: true },
   },
   {
     path: 'login',
-    component: SigninComponent
+    component: SigninComponent,
+    data: { header: true, tabs: false },
   },
   {
     path: 'register',
-    component: SignupComponent
+    component: SignupComponent,
+    data: { header: true, tabs: false },
   },
   {
     path: 'profile',
-    component: UserProfileComponent
+    component: UserProfileComponent,
+    data: { header: true, tabs: false },
   },
   {
     path: 'appetizers',

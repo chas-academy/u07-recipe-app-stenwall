@@ -3,15 +3,15 @@
         <h1>{{ title }}</h1>
     </a>
 
-    <app-nav-tab-bar></app-nav-tab-bar>
+    <app-nav-tab-bar *ngIf="visibleTabs"></app-nav-tab-bar>
 
     <mat-divider></mat-divider>
 
-    <section class="sub-menu-wrapper">
+    <!-- <section class="sub-menu-wrapper">
         <app-dietary-preferences></app-dietary-preferences>
         <button mat-button routerLink="/list" routerLinkActive="active" class="list-link-btn" color="accent">
             <mat-icon>favorite</mat-icon> Saved recipes
         </button>
-    </section>
+    </section> -->
 
 </div>

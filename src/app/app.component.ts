@@ -11,7 +11,7 @@ import { AuthStateService } from './services/auth-state.service';
 })
 export class AppComponent implements OnInit {
   title: string = 'Parsley & Sage';
-  visibility: boolean = false;
+  visibleHeader: boolean = false;
   isSignedIn: boolean;
 
   constructor(
@@ -43,8 +43,8 @@ export class AppComponent implements OnInit {
       )
       .subscribe((data) =>
         data.header === true
-          ? (this.visibility = true)
-          : (this.visibility = false)
+          ? (this.visibleHeader = true)
+          : (this.visibleHeader = false)
       );
   }
 
