@@ -26,6 +26,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 const materialModules = [
   CdkTreeModule,
@@ -45,7 +48,9 @@ const materialModules = [
   PortalModule,
   LayoutModule,
   MatMenuModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatFormFieldModule,
+  MatInputModule
 ];
 
 @NgModule({
