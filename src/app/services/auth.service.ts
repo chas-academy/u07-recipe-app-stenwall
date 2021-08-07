@@ -21,6 +21,11 @@ export class AuthService {
     return this.http.post<any>('http://u08-recipe-api.test/api/auth/login', user);
   }
 
+  // logout
+  logout(): Observable<any> {
+    return this.http.post('http://u08-recipe-api.test/api/auth/logout', '');
+  }
+
   // Access user profile
   profileUser(): Observable<any> {
     return this.http.get('http://u08-recipe-api.test/api/auth/user-profile');
