@@ -11,3 +11,9 @@ export class CustomErrorStateMatcher implements ErrorStateMatcher {
       return control.parent.errors && control.touched && ( invalidControl || invalidParent );
     }
 }
+
+// sources to validating password match:
+// -----------------------------------------------------------------------
+// https://youtu.be/yWw7CYFIDVw
+// https://stackoverflow.com/questions/51605737/confirm-password-validation-in-angular-6
+// https://stackblitz.com/edit/angular-yhbuqn-s5lmtv?file=app%2Finput-error-state-matcher-example.ts

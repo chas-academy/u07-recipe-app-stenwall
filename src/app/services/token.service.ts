@@ -8,7 +8,7 @@ export class TokenService {
 
   private issuer = {
     login: 'http://u08-recipe-api.test/api/auth/login',
-    register: 'http://u08-recipe-api.test/api/auth/register'
+    register: 'http://u08-recipe-api.test/guest/auth/register'
   }
 
   constructor() { }

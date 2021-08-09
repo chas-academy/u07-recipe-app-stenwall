@@ -64,3 +64,8 @@ export class SigninComponent implements OnInit {
     this.tokenService.handleData(data.access_token);
   }
 }
+
+
+// source to validation:
+// -----------------------------------------------------------------------
+// https://www.positronx.io/angular-7-reactive-forms-validation-tutorial/

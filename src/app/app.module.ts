@@ -32,6 +32,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { GuestViewComponent } from './components/guest-view/guest-view.component';
 import { AuthViewComponent } from './components/auth-view/auth-view.component';
+import { HeaderXsComponent } from './components/header-xs/header-xs.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AuthViewComponent } from './components/auth-view/auth-view.component';
     UserProfileComponent,
     GuestViewComponent,
     AuthViewComponent,
+    HeaderXsComponent,
   ],
   imports: [
     BrowserModule,

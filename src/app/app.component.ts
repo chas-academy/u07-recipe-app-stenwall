@@ -47,13 +47,6 @@ export class AppComponent implements OnInit {
           : (this.visibleHeader = false)
       );
   }
-
-  // Signout
-  // signOut() {
-  //   this.authStateService.setAuthState(false);
-  //   this.tokenService.removeToken();
-  //   this.router.navigate(['login']);
-  // }
 }
 
 // source to showing header-component conditionally:
