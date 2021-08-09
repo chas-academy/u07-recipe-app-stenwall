@@ -12,6 +12,7 @@ import { ListComponent } from './components/list/list.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AuthGuard } from './core/auth-guard.guard';
 
 const routes: Routes = [
   {
@@ -22,22 +23,22 @@ const routes: Routes = [
   {
     path: '',
     component: RandomRecipesComponent,
-    data: { header: true, tabs: true },
+    data: { header: true },
   },
   {
     path: 'login',
     component: SigninComponent,
-    data: { header: true, tabs: false },
+    data: { title: 'Parsley & Sage', header: false },
   },
   {
     path: 'register',
     component: SignupComponent,
-    data: { header: true, tabs: false },
+    data: { title: 'Parsley & Sage', header: false },
   },
   {
     path: 'profile',
     component: UserProfileComponent,
-    data: { header: true, tabs: false },
+    data: { header: true },
   },
   {
     path: 'appetizers',
@@ -63,6 +64,7 @@ const routes: Routes = [
     path: 'list',
     component: ListComponent,
     data: { title: 'Parsley & Sage', header: false },
+    // canActivate:[AuthGuard]
   },
   {
     path: '**',

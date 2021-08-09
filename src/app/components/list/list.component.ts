@@ -10,7 +10,7 @@ import { ListService } from 'src/app/services/list.service';
 })
 export class ListComponent implements OnInit {
   savedRecipes: List[];
-  data: any;
+  userId: number | string;
 
   constructor(
     private listService: ListService,
@@ -19,8 +19,8 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.data.subscribe((data) => (this.data = data));
     this.savedRecipes = this.listService.list;
+    this.userId = this.route.snapshot.paramMap.get('id');
   }
 
   removeRecipeFromList(event: any, id: number): void {
