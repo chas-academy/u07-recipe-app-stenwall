@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs';
-import { List, ListArray, ListData } from 'src/app/models/list.model';
+import { List } from 'src/app/models/list.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ListService } from 'src/app/services/list.service';
@@ -15,7 +15,7 @@ import { ListService } from 'src/app/services/list.service';
 export class ListsComponent implements OnInit {
   user: Observable<User>;
   listData: Observable<List[]>;
-  // recipeLists: Observable<List[]>;
+  recipeLists: Observable<List[]>;
   userId: number | string;
   subscription: Subscription;
 
@@ -32,9 +32,9 @@ export class ListsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listData = this.listService.getAllLists();
+    this.recipeLists = this.listService.getAllLists();
     this.user = this.authService.profileUser();
-    console.log(this.listData);
+    console.log(this.recipeLists);
     // this.recipeLists = this.listData.list;
 
     // this.userId = this.route.snapshot.paramMap.get('id');

@@ -7,6 +7,6 @@
 
     
     <ul>
-        <li *ngFor="let recipeList of (listData | async)?.list">{{ recipeList.title }}</li>
+        <li *ngFor="let recipeList of (recipeLists | async)?.list">{{ recipeList.title }}</li>
     </ul>
 
