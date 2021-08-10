@@ -13,6 +13,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AuthGuard } from './core/auth-guard.guard';
+import { ListsComponent } from './components/lists/lists.component';
 
 const routes: Routes = [
   {
@@ -61,8 +62,8 @@ const routes: Routes = [
     data: { header: true },
   },
   {
-    path: 'list',
-    component: ListComponent,
+    path: 'lists',
+    component: ListsComponent,
     data: { title: 'Parsley & Sage', header: false },
     // canActivate:[AuthGuard]
   },
