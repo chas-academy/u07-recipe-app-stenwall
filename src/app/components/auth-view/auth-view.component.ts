@@ -22,8 +22,8 @@ export class AuthViewComponent implements OnInit {
     public authService: AuthService,
     private snackBar: MatSnackBar
   ) {
-    this.authService.profileUser().subscribe((data:any) => {
-      this.user = data;
+    this.authService.profileUser().subscribe((user:any) => {
+      this.user = user;
     })
   }
 
