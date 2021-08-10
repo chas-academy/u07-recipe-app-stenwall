@@ -11,13 +11,16 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  // store the URL so we can redirect after logging in
+  redirectUrl: string | null = null;
+
   // User registration
   register(user: User): Observable<any> {
     return this.http.post('http://u08-recipe-api.test/api/auth/register', user);
   }
 
   // Login
-  signin(user: User): Observable<any> {
+  signin(user: User): Observable<User> {
     return this.http.post<any>('http://u08-recipe-api.test/api/auth/login', user);
   }
 
@@ -27,8 +30,8 @@ export class AuthService {
   }
 
   // Access user profile
-  profileUser(): Observable<any> {
-    return this.http.get('http://u08-recipe-api.test/api/auth/user-profile');
+  profileUser(): Observable<User> {
+    return this.http.get<User>('http://u08-recipe-api.test/api/auth/user-profile');
   }
 
 }
