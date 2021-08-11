@@ -2,6 +2,8 @@
 
 <mat-divider></mat-divider>
 
+<main class="profile-container">
+
     <h1>Hello, {{ (user | async)?.name }}!</h1>
     <p>Here are your saved recipe lists.</p>
 
@@ -10,3 +12,4 @@
         <li *ngFor="let recipeList of (recipeLists | async)?.list">{{ recipeList.title }}</li>
     </ul>
 
+</main>

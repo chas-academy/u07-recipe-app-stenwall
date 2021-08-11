@@ -45,6 +45,13 @@ main {
   flex-direction: column;
 }
 
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  margin: 0 auto;
+}
+
 // Breakpoints
 
 // X-Small devices (portrait phones, less than 599px)
@@ -57,6 +64,9 @@ main {
     .material-icons {
       font-size: 1.5rem;
     }
+  }
+  .profile-container {
+    width: 90vw;
   }
 }
 
@@ -78,6 +88,10 @@ main {
       font-size: 1.5rem;
     }
   }
+  .profile-container {
+    width: 500px;
+    padding: 2rem 0;
+  }
 }
 
 // Medium devices (landscape tablets, 720px and up)
@@ -94,6 +108,10 @@ main {
   .header-wrapper {
     grid-template-columns: 1fr 1fr;
     column-gap: 2rem;
+  }
+  .profile-container {
+    width: 680px;
+    padding: 3rem 0;
   }
   .list-wrapper {
     grid-template-columns: 1fr 1fr;
@@ -126,6 +144,10 @@ main {
     width: 960px;
     grid-template-columns: 1fr 1fr;
     column-gap: 4rem;
+  }
+  .profile-container {
+    width: 950px;
+    padding: 3rem 0;
   }
   .header-wrapper {
     grid-template-columns: 1fr 1fr;
@@ -162,7 +184,11 @@ main {
     max-width: 1200px;
     column-gap: 6rem;
     justify-self: center;
-    margin: auto;
+    margin: 0.5rem auto;
+  }
+  .profile-container {
+    width: 1140px;
+    padding: 4rem 0;
   }
 }
 
@@ -173,6 +199,9 @@ main {
   }
   .header-wrapper {
     max-width: 1400px;
+  }
+  .profile-container {
+    width: 1320px;
   }
 }
 
