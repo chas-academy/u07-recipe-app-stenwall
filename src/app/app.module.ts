@@ -34,6 +34,8 @@ import { GuestViewComponent } from './components/guest-view/guest-view.component
 import { AuthViewComponent } from './components/auth-view/auth-view.component';
 import { HeaderXsComponent } from './components/header-xs/header-xs.component';
 import { ListsComponent } from './components/lists/lists.component';
+import { AddListComponent } from './components/add-list/add-list.component';
+import { SaveListDialogComponent } from './components/save-list-dialog/save-list-dialog.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { ListsComponent } from './components/lists/lists.component';
     AuthViewComponent,
     HeaderXsComponent,
     ListsComponent,
+    AddListComponent,
+    SaveListDialogComponent,
   ],
   imports: [
     BrowserModule,

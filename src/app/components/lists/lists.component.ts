@@ -22,7 +22,7 @@ export class ListsComponent implements OnInit {
   constructor(
     private listService: ListService,
     public authService: AuthService,
-    private route: ActivatedRoute,
+    // private route: ActivatedRoute,
     public router: Router
   ) {
     // this.subscription = this.listService.getAllLists().subscribe((listData: ListData) => {
@@ -36,7 +36,6 @@ export class ListsComponent implements OnInit {
     this.user = this.authService.profileUser();
     console.log(this.recipeLists);
     // this.recipeLists = this.listData.list;
-
     // this.userId = this.route.snapshot.paramMap.get('id');
   }
 
