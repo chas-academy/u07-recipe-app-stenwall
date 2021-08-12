@@ -52,14 +52,14 @@
         <div class="recipe-info">
             <h2 class="recipe-title">{{ recipe.title }}</h2>
             <img src="{{ recipe.image }}" alt="the chosen dish when ready">
-            <button *ngIf="!isRecipeSaved()" mat-flat-button class="list-btn" color="primary"
+            <!-- <button *ngIf="!isRecipeSaved()" mat-flat-button class="list-btn" color="primary"
                 (click)="addRecipeToList()">
                 <mat-icon color="white">favorite</mat-icon> Add to list
             </button>
             <button *ngIf="isRecipeSaved()" mat-flat-button class="list-btn" color="accent"
                 (click)="removeRecipeFromList()">
                 <mat-icon color="white">close</mat-icon> Remove from list
-            </button>
+            </button> -->
             <div class="info-box">
                 <p class="ready-time">
                     <span class="material-icons">schedule</span>

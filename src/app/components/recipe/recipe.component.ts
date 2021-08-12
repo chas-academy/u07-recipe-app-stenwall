@@ -86,21 +86,22 @@ export class RecipeComponent implements OnInit {
     }
   }
 
-  isRecipeSaved(): boolean {
-    return this.listService.checkIfRecipeInList(this.recipe.id);
-  }
+  // isRecipeSaved(): boolean {
+  //   return this.listService.checkIfRecipeInList(this.recipe.id);
+  // }
 
-  addRecipeToList(): void {
-    this.listService.addToList(
-      this.recipe.id,
-      this.recipe.title,
-      this.recipe.image
-    );
-  }
+  // addRecipeToList(): void {
+  //   this.listService.addToList(
+  //     this.recipe.id,
+  //     this.recipe.user_id,
+  //     this.recipe.title,
+  //     this.recipe.image
+  //   );
+  // }
 
-  removeRecipeFromList(): void {
-    this.listService.removeFromList(this.recipe.id);
-  }
+  // removeRecipeFromList(): void {
+  //   this.listService.removeFromList(this.recipe.id);
+  // }
 
   openBottomSheet(event): void {
     this.selectedTab = event.target.innerText.toLowerCase();

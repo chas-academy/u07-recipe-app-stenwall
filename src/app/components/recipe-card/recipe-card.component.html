@@ -4,13 +4,16 @@
             <img mat-card-image src="{{ showRecipe.image }}">
             <mat-card-header>
                 <mat-card-title>{{ showRecipe.title }}</mat-card-title>
-                <button *ngIf="!isRecipeSaved(showRecipe.id)" mat-mini-fab color="primary"
+                <!-- <button *ngIf="!isRecipeSaved(showRecipe.id)" mat-mini-fab color="primary"
                     (click)="addRecipeToList($event, showRecipe.id, showRecipe.title, showRecipe.image)">
                     <mat-icon>favorite</mat-icon>
                 </button>
                 <button *ngIf="isRecipeSaved(showRecipe.id)" mat-mini-fab color="accent"
                     (click)="removeRecipeFromList($event, showRecipe.id)">
                     <mat-icon color="white">close</mat-icon>
+                </button> -->
+                <button mat-mini-fab (click)="openDialog($event)" color="primary">
+                    <mat-icon>favorite</mat-icon>
                 </button>
             </mat-card-header>
         </mat-card>
