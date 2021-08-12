@@ -37,4 +37,8 @@ export class RandomRecipesComponent implements OnInit {
         this.showRecipes = SpoonacularRandomApiData.recipes;
       });
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

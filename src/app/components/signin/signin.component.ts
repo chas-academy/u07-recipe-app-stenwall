@@ -25,13 +25,10 @@ export class SigninComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.loginForm = this.formBuilder.group({
-      email: [
-        '',
-        [
+      email: ['', [
           Validators.required,
           Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
-        ],
-      ],
+        ],], 
       password: ['', [Validators.required]],
     });
   }
@@ -64,7 +61,6 @@ export class SigninComponent implements OnInit {
     this.tokenService.handleData(data.access_token);
   }
 }
-
 
 // source to validation:
 // -----------------------------------------------------------------------
