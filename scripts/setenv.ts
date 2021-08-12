@@ -18,7 +18,8 @@ export const environment = {
    production: ${isProduction},
 
    SPOON_API_URL: "${process.env.SPOON_API_URL}",
-   SPOON_API_KEY: "${process.env.SPOON_API_KEY}"
+   SPOON_API_KEY: "${process.env.SPOON_API_KEY}",
+   U08_API_URL: "${process.env.U08_API_URL}"
 };
 `;
 

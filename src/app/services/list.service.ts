@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { environment } from '../../environments/environment';
 import { List, ListData } from '../models/list.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ListService {
+  private u08ApiUrl: string;
   lists: List[];
   list: List;
   isRecipeInList: boolean;
@@ -15,20 +17,25 @@ export class ListService {
   constructor(
     private http: HttpClient
   ) {
+    this.u08ApiUrl = environment.U08_API_URL;
     // this.recipeInListChange.subscribe((value) => (this.isRecipeInList = value));
   }
 
   getAllLists(): Observable<List[]> {
-    return this.http.get<ListData['list']>('http://u08-recipe-api.test/api/lists');
+    return this.http.get<ListData['list']>(`${this.u08ApiUrl}/api/lists`);
   }
 
   getList(id: number | string): Observable<List> {
-    return this.http.get<List>(`http://u08-recipe-api.test/api/lists/show/${id}`);
+    return this.http.get<List>(`${this.u08ApiUrl}/api/lists/${id}`);
   }
 
-  addNewList(title: string, user_id: number | string): Observable<any> {
-    return this.http.post('http://u08-recipe-api.test/api/lists/store', title);
+  addNewList(title: string): Observable<any> {
+    return this.http.post(`${this.u08ApiUrl}/api/lists`, title);
   }
+
+  // addNewList(title: string, user_id: number | string): Observable<any> {
+  //   return this.http.post('http://u08-recipe-api.test/api/lists/store', title);
+  // }
 
   // removeList(): Observable<any> {
   //   return this.http.get('http://u08-recipe-api.test/api/lists/store');
