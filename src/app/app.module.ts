@@ -36,6 +36,7 @@ import { HeaderXsComponent } from './components/header-xs/header-xs.component';
 import { ListsComponent } from './components/lists/lists.component';
 import { AddListComponent } from './components/add-list/add-list.component';
 import { SaveListDialogComponent } from './components/save-list-dialog/save-list-dialog.component';
+import { SelectListComponent } from './components/select-list/select-list.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { SaveListDialogComponent } from './components/save-list-dialog/save-list
     ListsComponent,
     AddListComponent,
     SaveListDialogComponent,
+    SelectListComponent,
   ],
   imports: [
     BrowserModule,

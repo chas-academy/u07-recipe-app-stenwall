@@ -1,0 +1,32 @@
+<!-- <mat-accordion> -->
+<!-- <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"> -->
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Save to list
+        </mat-panel-title>
+        <mat-panel-description>
+            <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Choose a list below to save recipe to</p>
+    <mat-form-field appearance="fill">
+        <mat-label>{{selectLists.value?.length >= 1 ? 'recipe saved in' : '-select list-'}}</mat-label>
+        <mat-select [formControl]="selectLists" multiple>
+            <mat-select-trigger>
+                {{selectLists.value ? selectLists.value[0] : ''}}
+                <span *ngIf="selectLists.value?.length > 1" class="example-additional-selection">
+                    (+{{selectLists.value.length - 1}} {{selectLists.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let recipeList of (recipeLists | async)?.list" [value]="recipeList.title">{{ recipeList.title }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- <button type="submit" mat-flat-button color="primary">Add new list</button> -->
+
+    <!-- <mat-action-row>
+                        <button mat-button color="primary" (click)="nextStep()">Next</button>
+                    </mat-action-row> -->
+</mat-expansion-panel>
+<!-- </mat-accordion> -->

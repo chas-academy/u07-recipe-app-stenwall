@@ -14,6 +14,8 @@ import {
 } from 'src/app/models/api-spoonacular.model';
 import { RecipesService } from '../../services/recipes.service';
 import { ListService } from 'src/app/services/list.service';
+import { Subscription } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-recipe',
