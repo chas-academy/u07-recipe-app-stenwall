@@ -20,7 +20,7 @@
                         'others'}})
                     </span>
                 </mat-select-trigger>
-                <mat-option *ngFor="let recipeList of (recipeLists | async)?.list" [value]="recipeList">{{ recipeList.title }}</mat-option>
+                <mat-option *ngFor="let recipeList of (recipeLists | async)?.list" [value]="recipeList" (onSelectionChange)="optionChange($event)">{{ recipeList.title }}</mat-option>
             </mat-select>
         </mat-form-field>
     </mat-expansion-panel>

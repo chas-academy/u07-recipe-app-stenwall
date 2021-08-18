@@ -49,87 +49,94 @@ export class SelectListComponent implements OnInit {
       img: this.data.image,
     };
 
-    this.selectedSubscription = this.listService.getListsWithRecipe(this.recipe.api_id).subscribe((ListData) => {
-      this.selectedLists = ListData['list'];
-      this.selectListsControl.setValue(this.selectedLists);
-      // console.log(this.selectedLists);
-    });
-
-    
+    this.selectedSubscription = this.listService
+      .getListsWithRecipe(this.recipe.api_id)
+      .subscribe((ListData) => {
+        this.selectedLists = ListData['list'];
+        this.selectListsControl.setValue(this.selectedLists);
+        // console.log(this.selectedLists);
+      });
   }
 
   comparer(recipeList: List, selectedList: List): boolean {
-    console.log(selectedList);
-    console.log(recipeList);
-    return recipeList && selectedList ? recipeList.id === selectedList.id : recipeList === selectedList;
+    // console.log(selectedList);
+    // console.log(recipeList);
+    return recipeList && selectedList
+      ? recipeList.id === selectedList.id
+      : recipeList === selectedList;
   }
 
   //(onSelectionChange)="optionChange($event)"
-  // optionChange(event) {
-  //   console.log(event);
-  //   console.log(event.source.value);
-  //   console.log(event.source.selected);
-  //   this.checkSubscription = this.listService
-  //     .checkIfRecipeInList(event.source.value.id, this.recipe.api_id)
-  //     .subscribe((result) => {
-  //       console.log(result);
-  //       this.isRecipeInList = result;
-  //     });
-  //   if (event.source.selected && !this.isRecipeInList) {
-  //     this.addSubscription = this.listService
-  //       .addRecipeToList(event.source.value.id, this.recipe)
-  //       .subscribe(
-  //         (result) => {
-  //           this.snackBar.open(result.message, '', {
-  //             duration: 2500,
-  //             verticalPosition: 'top',
-  //           });
-  //           this.recipe.id = result.recipe.id;
-  //           console.log(result);
-  //           console.log(result.recipe.id);
-  //           console.log(this.recipe);
-  //         },
-  //         (error) => {
-  //           this.errors = error.error;
-  //           this.snackBar.open(this.errors.error, '', {
-  //             duration: 2500,
-  //             verticalPosition: 'top',
-  //           });
-  //           console.log(error.error);
-  //         },
-  //         () => {
-  //           // this.addListForm.reset();
-  //           // this.reloadComponent();
-  //           // this.router.navigate(['']);
-  //         }
-  //       );
-  //   } else {
-  //     this.removeSubscription = this.listService
-  //       .removeRecipeFromList(event.source.value.id, this.recipe.id)
-  //       .subscribe(
-  //         (result) => {
-  //           this.snackBar.open(result.message, '', {
-  //             duration: 2500,
-  //             verticalPosition: 'top',
-  //           });
-  //           console.log(result);
-  //         },
-  //         (error) => {
-  //           this.errors = error.error;
-  //           this.snackBar.open(this.errors.error, '', {
-  //             duration: 2500,
-  //             verticalPosition: 'top',
-  //           });
-  //           console.log(error.error);
-  //         },
-  //         () => {
-  //           // this.addListForm.reset();
-  //           // this.reloadComponent();
-  //           // this.router.navigate(['']);
-  //         }
-  //       );
-  //   }
-  // }
+  optionChange(event) {
+    console.log(event);
+    console.log(event.source.value);
+    console.log('is option selected? ' + event.source.selected);
+    if (event.isUserInput) {
+      this.checkSubscription = this.listService
+        .checkIfRecipeInList(event.source.value.id, this.recipe.api_id)
+        .subscribe((result) => {
+          console.log('is recipe in list? ' + result.exists);
+          this.isRecipeInList = result.exists;
+
+          if (event.source.selected && !this.isRecipeInList) {
+            this.addSubscription = this.listService
+              .addRecipeToList(event.source.value.id, this.recipe)
+              .subscribe(
+                (result) => {
+                  this.snackBar.open(result.message, '', {
+                    duration: 2500,
+                    verticalPosition: 'top',
+                  });
+                  this.recipe.id = result.recipe.id;
+                  console.log(result);
+                  console.log(result.recipe.id);
+                  console.log(this.recipe);
+                },
+                (error) => {
+                  this.errors = error.error;
+                  this.snackBar.open(this.errors.error, '', {
+                    duration: 2500,
+                    verticalPosition: 'top',
+                  });
+                  console.log(error.error);
+                },
+                () => {
+                  // this.addListForm.reset();
+                  // this.reloadComponent();
+                  // this.router.navigate(['']);
+                }
+              );
+          } else {
+            this.recipe.id = result.recipe.id;
+
+            this.removeSubscription = this.listService
+              .removeRecipeFromList(event.source.value.id, this.recipe.id)
+              .subscribe(
+                (result) => {
+                  this.snackBar.open(result.message, '', {
+                    duration: 2500,
+                    verticalPosition: 'top',
+                  });
+                  console.log(result);
+                },
+                (error) => {
+                  this.errors = error.error;
+                  this.snackBar.open(this.errors.error, '', {
+                    duration: 2500,
+                    verticalPosition: 'top',
+                  });
+                  console.log(error.error);
+                },
+                () => {
+                  // this.addListForm.reset();
+                  // this.reloadComponent();
+                  // this.router.navigate(['']);
+                }
+              );
+          }
+        });
+    }
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['data']) {
