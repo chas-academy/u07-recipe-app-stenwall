@@ -15,7 +15,7 @@
             <mat-label>{{selectListsControl.value?.length >= 1 ? 'recipe saved in' : '-select list-'}}</mat-label>
             <mat-select [formControl]="selectListsControl" [compareWith]="comparer" multiple>
                 <mat-select-trigger>
-                    {{selectListsControl.value ? selectListsControl.value[0].title : ''}}
+                    {{selectListsControl.value?.length > 0 ? selectListsControl.value[0].title : ''}}
                     <span *ngIf="selectListsControl.value?.length > 1" class="example-additional-selection">
                         (+{{selectListsControl.value.length - 1}} {{selectListsControl.value?.length === 2 ? 'other' :
                         'others'}})
