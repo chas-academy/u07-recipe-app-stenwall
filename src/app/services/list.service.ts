@@ -53,7 +53,7 @@ export class ListService {
   }
 
   // add a new recipe to given list
-  addRecipeToList(id: number | string, listRecipe: ListRecipe): Observable<ListRecipe> {
+  addRecipeToList(id: number | string, listRecipe: ListRecipe): Observable<any> {
     return this.http.post<ListRecipe>(`${this.u08ApiUrl}/api/lists/${id}/recipes`, listRecipe);
   }
 
@@ -63,12 +63,13 @@ export class ListService {
   }
 
   // check if given recipe exists in given list
-  checkIfRecipeInList(listId: number | string, recipeId: number | string): Observable<any> {
-    return this.http.get<any>(`${this.u08ApiUrl}/api/lists/${listId}/recipes/${recipeId}`);
+  checkIfRecipeInList(listId: number | string, apiId: number | string): Observable<any> {
+    return this.http.get<any>(`${this.u08ApiUrl}/api/lists/${listId}/recipes/${apiId}`);
   }
 
-  isRecipeInList(id: number | string) {
-
+  // get all lists where given recipe exists
+  getListsWithRecipe(apiId: number | string): Observable<List[]> {
+    return this.http.get<ListData['list']>(`${this.u08ApiUrl}/api/lists/recipes/${apiId}`);
   }
 
   // {

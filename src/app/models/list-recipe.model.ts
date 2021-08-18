@@ -3,12 +3,8 @@ export interface ListRecipeData {
 }
 
 export interface ListRecipe {
-    id: number;
+    id?: number;
     api_id: number;
     title: string;
     img: string;
-    pivot: {
-          recipe_list_id: number;
-          recipe_id: number;
-    }
 }
