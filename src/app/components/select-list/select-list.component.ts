@@ -15,7 +15,7 @@ import { ListService } from 'src/app/services/list.service';
 export class SelectListComponent implements OnInit {
   @Input() data: Recipe;
 
-  listSubscription: Subscription;
+  // listSubscription: Subscription;
   selectedSubscription: Subscription;
   addSubscription: Subscription;
   removeSubscription: Subscription;
@@ -37,10 +37,10 @@ export class SelectListComponent implements OnInit {
   ngOnInit(): void {
     this.recipeLists = this.listService.getAllLists();
 
-    this.listSubscription = this.listService.getAllLists().subscribe((result) => {
-      // this.selectedLists = result;
-      console.log(result);
-    });
+    // this.listSubscription = this.listService.getAllLists().subscribe((result) => {
+    //   // this.selectedLists = result;
+    //   console.log(result);
+    // });
 
     this.recipe = {
       id: null,
@@ -52,17 +52,13 @@ export class SelectListComponent implements OnInit {
     this.selectedSubscription = this.listService.getListsWithRecipe(this.recipe.api_id).subscribe((ListData) => {
       this.selectedLists = ListData['list'];
       this.selectListsControl.setValue(this.selectedLists);
-      console.log(this.selectedLists);
+      // console.log(this.selectedLists);
     });
 
     
   }
 
-  // [(value)]="selectedLists"
-
-  // [compareWith]="comparer"
   comparer(recipeList: List, selectedList: List): boolean {
-    // if possible compare by object's name, and not by reference.
     console.log(selectedList);
     console.log(recipeList);
     return recipeList && selectedList ? recipeList.id === selectedList.id : recipeList === selectedList;
@@ -148,5 +144,15 @@ export class SelectListComponent implements OnInit {
   ngOnDestroy() {
     this.addSubscription.unsubscribe();
     this.removeSubscription.unsubscribe();
+    this.selectedSubscription.unsubscribe();
+    this.checkSubscription.unsubscribe();
   }
 }
+
+// sources to preselcting multiple values in mat-select with reactive form:
+// -----------------------------------------------------------------------
+// https://stackoverflow.com/a/57032590
+// https://stackoverflow.com/q/52078415
+// https://stackoverflow.com/q/60359271
+// https://stackoverflow.com/a/60359742
+// https://newbedev.com/angular-6-material-mat-select-multiple-set-default-value-using-form-control
