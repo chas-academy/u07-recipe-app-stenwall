@@ -74,67 +74,68 @@ export class SelectListComponent implements OnInit {
     if (event.isUserInput) {
       this.checkSubscription = this.listService
         .checkIfRecipeInList(event.source.value.id, this.recipe.api_id)
-        .subscribe((result) => {
-          console.log('is recipe in list? ' + result.exists);
-          this.isRecipeInList = result.exists;
+        .subscribe(
+          (result) => {
+            console.log('is recipe in list? ' + result.exists);
+            this.isRecipeInList = result.exists;
 
-          if (event.source.selected && !this.isRecipeInList) {
-            this.addSubscription = this.listService
-              .addRecipeToList(event.source.value.id, this.recipe)
-              .subscribe(
-                (result) => {
-                  this.snackBar.open(result.message, '', {
-                    duration: 2500,
-                    verticalPosition: 'top',
-                  });
-                  this.recipe.id = result.recipe.id;
-                  console.log(result);
-                  console.log(result.recipe.id);
-                  console.log(this.recipe);
-                },
-                (error) => {
-                  this.errors = error.error;
-                  this.snackBar.open(this.errors.error, '', {
-                    duration: 2500,
-                    verticalPosition: 'top',
-                  });
-                  console.log(error.error);
-                },
-                () => {
-                  // this.addListForm.reset();
-                  // this.reloadComponent();
-                  // this.router.navigate(['']);
-                }
-              );
-          } else {
-            this.recipe.id = result.recipe.id;
+            if (event.source.selected && !this.isRecipeInList) {
+              this.addSubscription = this.listService
+                .addRecipeToList(event.source.value.id, this.recipe)
+                .subscribe(
+                  (result) => {
+                    this.snackBar.open(result.message, '', {
+                      duration: 2500,
+                      verticalPosition: 'top',
+                    });
+                    this.recipe.id = result.recipe.id;
+                    console.log(result);
+                    console.log(result.recipe.id);
+                    console.log(this.recipe);
+                  },
+                  (error) => {
+                    this.errors = error.error;
+                    this.snackBar.open(this.errors.error, '', {
+                      duration: 2500,
+                      verticalPosition: 'top',
+                    });
+                    console.log(error.error);
+                  },
+                  () => {
+                    this.addSubscription.unsubscribe();
+                  }
+                );
+            } else {
+              this.recipe.id = result.recipe.id;
 
-            this.removeSubscription = this.listService
-              .removeRecipeFromList(event.source.value.id, this.recipe.id)
-              .subscribe(
-                (result) => {
-                  this.snackBar.open(result.message, '', {
-                    duration: 2500,
-                    verticalPosition: 'top',
-                  });
-                  console.log(result);
-                },
-                (error) => {
-                  this.errors = error.error;
-                  this.snackBar.open(this.errors.error, '', {
-                    duration: 2500,
-                    verticalPosition: 'top',
-                  });
-                  console.log(error.error);
-                },
-                () => {
-                  // this.addListForm.reset();
-                  // this.reloadComponent();
-                  // this.router.navigate(['']);
-                }
-              );
+              this.removeSubscription = this.listService
+                .removeRecipeFromList(event.source.value.id, this.recipe.id)
+                .subscribe(
+                  (result) => {
+                    this.snackBar.open(result.message, '', {
+                      duration: 2500,
+                      verticalPosition: 'top',
+                    });
+                    console.log(result);
+                  },
+                  (error) => {
+                    this.errors = error.error;
+                    this.snackBar.open(this.errors.error, '', {
+                      duration: 2500,
+                      verticalPosition: 'top',
+                    });
+                    console.log(error.error);
+                  },
+                  () => {
+                    this.removeSubscription.unsubscribe();
+                  }
+                );
+            }
+          },
+          () => {
+            this.checkSubscription.unsubscribe();
           }
-        });
+        );
     }
   }
 
@@ -149,10 +150,7 @@ export class SelectListComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.addSubscription.unsubscribe();
-    this.removeSubscription.unsubscribe();
     this.selectedSubscription.unsubscribe();
-    this.checkSubscription.unsubscribe();
   }
 }
 
