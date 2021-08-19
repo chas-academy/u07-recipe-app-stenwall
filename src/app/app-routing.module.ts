@@ -68,6 +68,12 @@ const routes: Routes = [
     // canActivate:[AuthGuard]
   },
   {
+    path: 'lists/:id',
+    component: ListComponent,
+    data: { title: 'Parsley & Sage', header: false },
+    // canActivate:[AuthGuard]
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
     data: { title: 'Parsley & Sage', header: false },

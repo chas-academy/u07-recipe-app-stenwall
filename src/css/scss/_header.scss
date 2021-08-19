@@ -18,7 +18,8 @@ a {
   }
 }
 
-.mat-expansion-indicator {
+.mat-expansion-indicator,
+.mat-expansion-indicator::after {
   margin-bottom: 0.5rem;
   color: map-get($app-primary, darker);
 }

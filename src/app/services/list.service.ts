@@ -48,8 +48,8 @@ export class ListService {
   }
 
   // get all recipes belonging to given list
-  getListRecipes(id: number | string): Observable<ListRecipeData> {
-    return this.http.get<ListRecipeData>(`${this.u08ApiUrl}/api/lists/${id}/recipes`);
+  getListRecipes(id: number | string): Observable<ListRecipe[]> {
+    return this.http.get<ListRecipeData['recipes']>(`${this.u08ApiUrl}/api/lists/${id}/recipes`);
   }
 
   // add a new recipe to given list
@@ -71,41 +71,4 @@ export class ListService {
   getListsWithRecipe(apiId: number | string): Observable<List[]> {
     return this.http.get<ListData['list']>(`${this.u08ApiUrl}/api/lists/recipes/${apiId}`);
   }
-
-  // {
-  //   "success": true,
-  //   "recipes": [
-  //     {
-  //       "id": 5,
-  //       "api_id": 654534,
-  //       "title": "Paneer Makhani",
-  //       "img": "https:\/\/spoonacular.com\/recipeImages\/654534-556x370.jpg",
-  //       "created_at": "2021-08-17T08:32:55.000000Z",
-  //       "updated_at": "2021-08-17T08:32:55.000000Z",
-  //       "pivot": {
-  //         "recipe_list_id": 6,
-  //         "recipe_id": 5
-  //       }
-  //     }
-  //   ]
-  // }
-
-  // isRecipeInList(listId: number | string, recipeId: number | string): any {
-  //   let test2;
-  //   const recipe = this.checkIfRecipeInList(listId, recipeId);
-  //   const test = this.checkIfRecipeInList(5, 5).subscribe((data) => {
-  //     test2 = data.exists;
-  //   })
-  //   console.log(test2);
-  //   console.log(test);
-  // }
-
-
-
-
-  // checkIfRecipeInList(id: number): boolean {
-  //   const idExists = this.list.some((listItem) => listItem.id === id);
-  //   if (idExists) return true;
-  //   else return false;
-  // }
 }

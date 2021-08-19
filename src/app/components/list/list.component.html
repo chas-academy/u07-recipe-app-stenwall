@@ -2,17 +2,15 @@
 
 <mat-divider></mat-divider>
 
-<!-- <ng-container *ngIf="savedRecipes">
-    <main class="list-wrapper">
-        <mat-card class="list-card" *ngFor="let savedRecipe of savedRecipes" [routerLink]="['/recipe', savedRecipe.id]">
-            <img mat-card-image src="{{ savedRecipe.image }}" />
-            <mat-card-content>
-                <mat-card-title>{{ savedRecipe.title }}</mat-card-title>
-                <a mat-flat-button class="remove-btn" color="accent"
-                    (click)="removeRecipeFromList($event, savedRecipe.id)">
-                    <mat-icon color="white">close</mat-icon> Remove from list
-                </a>
-            </mat-card-content>
-        </mat-card>
-    </main>
-</ng-container> -->
+<main class="list-wrapper">
+    <mat-card class="list-card" *ngFor="let listRecipe of (listRecipes | async)?.recipes"
+        [routerLink]="['/recipe', listRecipe.api_id]">
+        <img mat-card-image src="{{ listRecipe.img }}" />
+        <mat-card-content>
+            <mat-card-title>{{ listRecipe.title }}</mat-card-title>
+            <button mat-mini-fab (click)="removeRecipeFromList($event, listRecipe.id, listRecipe.title)" matTooltip="Remove from list" color="accent">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-card-content>
+    </mat-card>
+</main>
