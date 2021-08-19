@@ -1,22 +1,20 @@
 <section class="accordion">
-    <mat-accordion class="accordion">
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <h4 class="diet-title">Dietary Preferences</h4>
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="toggle-wrapper">
-                <mat-slide-toggle (change)="onChange($event)" name="vegan">
-                    Vegan
-                </mat-slide-toggle>
-                <mat-slide-toggle (change)="onChange($event)" name="dairyFree">
-                    Dairy Free
-                </mat-slide-toggle>
-                <mat-slide-toggle (change)="onChange($event)" name="glutenFree">
-                    Gluten Free
-                </mat-slide-toggle>
-            </div>
-        </mat-expansion-panel>
-    </mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Dietary Preferences
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="toggle-wrapper">
+            <mat-slide-toggle (change)="onChange($event)" name="vegan">
+                Vegan
+            </mat-slide-toggle>
+            <mat-slide-toggle (change)="onChange($event)" name="dairyFree">
+                Dairy Free
+            </mat-slide-toggle>
+            <mat-slide-toggle (change)="onChange($event)" name="glutenFree">
+                Gluten Free
+            </mat-slide-toggle>
+        </div>
+    </mat-expansion-panel>
 </section>

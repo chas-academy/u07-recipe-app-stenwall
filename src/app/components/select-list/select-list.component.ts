@@ -161,3 +161,7 @@ export class SelectListComponent implements OnInit {
 // https://stackoverflow.com/q/60359271
 // https://stackoverflow.com/a/60359742
 // https://newbedev.com/angular-6-material-mat-select-multiple-set-default-value-using-form-control
+
+// source to event listener on change for multiple select w angular material:
+// -----------------------------------------------------------------------
+// https://stackoverflow.com/questions/50614991/angular-mat-select-multiple-selectionchange-finding-which-option-was-changed

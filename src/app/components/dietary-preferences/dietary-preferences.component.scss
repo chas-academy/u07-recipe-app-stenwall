@@ -1,14 +1,14 @@
-.accordion {
-  margin: 0 1rem 0 1rem;
-  .diet-title {
-    padding-top: 1rem;
-    color: #ff8f00;
+.mat-expansion-panel {
+  box-shadow: none;
+  border: 2px dashed;
+  margin: 0;
+
+  .mat-expansion-panel-header-title {
+    color: #ff6f00;
     font-weight: 500;
-    font-size: large;
   }
 }
 
-.toggle-wrapper {
-  display: flex;
-  column-gap: 1rem;
+.accordion {
+  margin: 1rem;
 }

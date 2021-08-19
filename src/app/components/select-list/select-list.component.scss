@@ -1,3 +1,14 @@
+.mat-expansion-panel {
+  box-shadow: none;
+  border: 2px dashed;
+  margin: 1rem 0;
+
+  .mat-expansion-panel-header-title {
+    color: #ff6f00;
+    font-weight: 500;
+  }
+}
+
 .example-additional-selection {
   opacity: 0.75;
   font-size: 0.75em;
