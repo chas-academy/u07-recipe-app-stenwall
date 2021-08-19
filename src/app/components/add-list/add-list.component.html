@@ -3,10 +3,16 @@
     <mat-form-field appearance="fill">
         <mat-label>List title</mat-label>
         <input matInput type="text" formControlName="title" required>
-        <mat-error *ngIf="addListForm.hasError('required', 'title')">Please enter a title</mat-error>
-        <mat-error *ngIf="addListForm.hasError('pattern', 'title')">No special character allowed</mat-error>
+        <mat-error *ngIf="addListForm.hasError('required', 'title')">
+            Please enter a title
+        </mat-error>
+        <mat-error *ngIf="addListForm.hasError('pattern', 'title')">
+            No special character allowed
+        </mat-error>
     </mat-form-field>
 
-    <button type="submit" mat-flat-button color="primary">Add new list</button>
+    <button type="submit" mat-flat-button color="primary" class="add-btn">
+        Add new list
+    </button>
 
 </form>
