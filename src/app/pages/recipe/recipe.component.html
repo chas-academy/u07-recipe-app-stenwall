@@ -75,7 +75,7 @@
             <h2 class="recipe-title">{{ recipe.title }}</h2>
             <img src="{{ recipe.image }}" alt="the chosen dish when ready">
 
-            <app-select-list *ngIf="(isSignedIn | async) === true" [data]="recipe"></app-select-list>
+            <app-select-list *ngIf="(isSignedIn$ | async)" [data]="recipe"></app-select-list>
 
             <div class="info-box">
                 <p class="ready-time">
