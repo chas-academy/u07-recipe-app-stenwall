@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-header-xs',
@@ -9,10 +10,16 @@ import { ActivatedRoute } from '@angular/router';
 export class HeaderXsComponent implements OnInit {
   data: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private navigation: NavigationService
+  ) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe((data) => (this.data = data));
+    this.data = this.route.data;
   }
 
+  back(): void {
+    this.navigation.back();
+  }
 }
