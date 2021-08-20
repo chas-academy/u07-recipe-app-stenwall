@@ -1,9 +1,15 @@
+@import "../../../css/scss/colors";
+
 main.register-wrapper {
   .form-register {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
+
+    h2 {
+      color: $amber-900;
+    }
 
     .mat-form-field {
       min-width: 20rem;
