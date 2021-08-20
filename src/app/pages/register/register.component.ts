@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./register.component.scss']
 })
 
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   registerSubscription: Subscription;
   errorMatcher = new CustomErrorStateMatcher();
@@ -46,6 +46,8 @@ export class RegisterComponent {
       validators: this.checkPasswords
     });
   }
+
+  ngOnInit(): void { }
 
   checkPasswords(group: FormGroup) {
     const pass = group.controls.password.value;

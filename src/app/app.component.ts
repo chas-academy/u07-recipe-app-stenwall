@@ -19,13 +19,7 @@ export class AppComponent implements OnInit {
     public tokenService: TokenService,
     private activatedRoute: ActivatedRoute,
     private authStateService: AuthStateService
-  ) {}
-
-  ngOnInit(): void {
-    this.authStateService.userAuthState.subscribe(val => {
-      this.isSignedIn = val;
-    });
-
+  ) {
     this.router.events
       .pipe(
         filter((events) => events instanceof NavigationEnd),
@@ -46,6 +40,12 @@ export class AppComponent implements OnInit {
           ? (this.visibleHeader = true)
           : (this.visibleHeader = false)
       );
+  }
+
+  ngOnInit(): void {
+    this.authStateService.userAuthState.subscribe(val => {
+      this.isSignedIn = val;
+    });
   }
 }
 
