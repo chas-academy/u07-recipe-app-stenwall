@@ -1,82 +1,67 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {
-  MatBottomSheet,
-  MatBottomSheetConfig,
-} from '@angular/material/bottom-sheet';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Overlay } from '@angular/cdk/overlay';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import {
-  Recipe,
-  ExtendedIngredient,
-  AnalyzedInstruction,
-  Step,
-} from 'src/app/models/api-spoonacular.model';
+import { Recipe, ExtendedIngredient, AnalyzedInstruction, Step } from 'src/app/models/api-spoonacular.model';
 import { RecipesService } from '../../services/recipes.service';
-import { ListService } from 'src/app/services/list.service';
-import { Subscription } from 'rxjs';
-import { FormControl } from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.scss'],
 })
-export class RecipeComponent implements OnInit {
-  recipe: Recipe;
-  chosenRecipe;
+export class RecipeComponent implements OnInit, OnDestroy {
+  @ViewChild('templateBottomSheet') TemplateBottomSheet: TemplateRef<any>;
+
   id: number | string;
-  extendedIngredients: ExtendedIngredient[] = [];
-  analyzedInstructions: AnalyzedInstruction[] = [];
+  recipeSubscription: Subscription;
+  breakpointSubscription: Subscription;
+  // recipe: Recipe;
+  recipe$: Observable<Recipe>;
+  ingredients: ExtendedIngredient[] = [];
+  instructions: AnalyzedInstruction[] = [];
   steps: Step[] = [];
-  data;
+  data: any;
   selectedTab: string;
-  configBottomSheet: MatBottomSheetConfig = {
-    closeOnNavigation: true,
-    hasBackdrop: true,
-    direction: 'ltr',
-  };
   isLargeScreen: boolean;
   isIngredientsOpen = false;
   isInstructionsOpen = false;
-  isRecipeInList = false;
-
-  @ViewChild('templateBottomSheet') TemplateBottomSheet: TemplateRef<any>;
 
   constructor(
     private route: ActivatedRoute,
     private recipesService: RecipesService,
     private bottomSheet: MatBottomSheet,
     private overlay: Overlay,
-    public breakpointObserver: BreakpointObserver,
-    private listService: ListService
+    public breakpointObserver: BreakpointObserver
   ) {
-    // check the size of the screen
-    // if large screen, set default tab to "ingredients"
-    breakpointObserver.observe(['(max-width: 719px)']).subscribe((result) => {
-      if (result.matches) {
-        this.isLargeScreen = false;
-      } else {
-        this.isLargeScreen = true;
-        this.selectedTab = 'ingredients';
-      }
-    });
+    this.breakpointSubscription = this.breakpointObserver
+      .observe(['(max-width: 777px)'])
+      .subscribe((result) => {
+        if (result.matches) {
+          this.isLargeScreen = false;
+        } else {
+          this.isLargeScreen = true;
+          this.selectedTab = 'ingredients';
+        }
+      });
   }
 
   ngOnInit(): void {
-    // save id from get-params
     this.id = this.route.snapshot.paramMap.get('id');
-    this.route.data.subscribe((data) => (this.data = data));
+    this.data = this.route.data;
 
-    // save recipe details based on id
-    this.chosenRecipe = this.recipesService
-      .getDetailedRecipe(this.id)
-      .subscribe((Recipe) => {
-        this.recipe = Recipe;
-        this.extendedIngredients = Recipe.extendedIngredients;
-        this.analyzedInstructions = Recipe.analyzedInstructions;
-        this.steps = Recipe.analyzedInstructions[0].steps;
-      });
+    this.recipe$ = this.recipesService.getDetailedRecipe(this.id);
+
+    // this.recipeSubscription = this.recipesService
+    //   .getDetailedRecipe(this.id)
+    //   .subscribe((Recipe) => {
+    //     this.recipe = Recipe;
+    //     this.ingredients = Recipe.extendedIngredients;
+    //     this.instructions = Recipe.analyzedInstructions;
+    //     this.steps = Recipe.analyzedInstructions[0].steps;
+    //   });
   }
 
   onTabChange(event): void {
@@ -88,47 +73,39 @@ export class RecipeComponent implements OnInit {
     }
   }
 
-  // isRecipeSaved(): boolean {
-  //   return this.listService.checkIfRecipeInList(this.recipe.id);
-  // }
-
-  // addRecipeToList(): void {
-  //   this.listService.addToList(
-  //     this.recipe.id,
-  //     this.recipe.user_id,
-  //     this.recipe.title,
-  //     this.recipe.image
-  //   );
-  // }
-
-  // removeRecipeFromList(): void {
-  //   this.listService.removeFromList(this.recipe.id);
-  // }
-
   openBottomSheet(event): void {
     this.selectedTab = event.target.innerText.toLowerCase();
     const scrollStrategy = this.overlay.scrollStrategies.block();
+
     if (!this.isIngredientsOpen && !this.isInstructionsOpen) {
       this.bottomSheet.open(this.TemplateBottomSheet, { scrollStrategy });
+
       if (this.selectedTab === 'ingredients') {
         this.isIngredientsOpen = true;
         this.isInstructionsOpen = false;
+
       } else if (this.selectedTab === 'instructions') {
         this.isIngredientsOpen = false;
         this.isInstructionsOpen = true;
       }
+
     } else if (this.isIngredientsOpen) {
+
       if (this.selectedTab === 'ingredients') {
         this.bottomSheet.dismiss();
         this.isIngredientsOpen = false;
+
       } else if (this.selectedTab === 'instructions') {
         this.isIngredientsOpen = false;
         this.isInstructionsOpen = true;
       }
+
     } else if (this.isInstructionsOpen) {
+
       if (this.selectedTab === 'ingredients') {
         this.isIngredientsOpen = true;
         this.isInstructionsOpen = false;
+
       } else if (this.selectedTab === 'instructions') {
         this.bottomSheet.dismiss();
         this.isInstructionsOpen = false;
@@ -141,14 +118,18 @@ export class RecipeComponent implements OnInit {
     this.isIngredientsOpen = false;
     this.isInstructionsOpen = false;
   }
+
+  ngOnDestroy(): void {
+    this.bottomSheet.dismiss();
+    this.breakpointSubscription.unsubscribe();
+    this.recipeSubscription.unsubscribe();
+  }
 }
 
 // sources to tab selection solution:
 // -----------------------------------------------------------------------
 // https://stackoverflow.com/questions/61761665/angular-mattabchangeevent-does-not-trigger-on-page-load
-// -----------------------------------------------------------------------
 // https://stackoverflow.com/questions/50854238/angular-material-5-how-to-call-a-function-when-a-tab-is-selected-clicked
-// -----------------------------------------------------------------------
 // https://stackblitz.com/edit/angular-q2pgt1?file=app%2Ftabs-overview-example.ts
 
 // sources to bottom sheet on mobile:

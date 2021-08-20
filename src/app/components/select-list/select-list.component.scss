@@ -1,19 +1,23 @@
-.mat-expansion-panel {
-  box-shadow: none;
-  border: 2px dashed;
-  margin: 1rem 0;
+@import "../../../css/scss/colors";
 
-  .mat-expansion-panel-header-title {
-    color: #ff6f00;
-    font-weight: 500;
+div.list-select-wrapper {
+  .mat-expansion-panel {
+    box-shadow: none;
+    border: 2px dashed;
+    margin: 1rem 0;
+  
+    .mat-expansion-panel-header-title {
+      color: $amber-900;
+      font-weight: 500;
+    }
+
+    .mat-form-field {
+      min-width: 20rem;
+    
+      .additional-selection {
+        opacity: 0.75;
+        font-size: 0.75em;
+      }
+    }
   }
-}
-
-.example-additional-selection {
-  opacity: 0.75;
-  font-size: 0.75em;
-}
-
-.mat-form-field {
-  min-width: 20rem;
 }

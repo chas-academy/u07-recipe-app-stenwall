@@ -1,27 +1,44 @@
-<!-- <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"> -->
-<ng-container *ngIf="recipe && recipeLists && selectedLists">
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Save to list
-            </mat-panel-title>
-            <mat-panel-description>
-                <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>Choose a list below to save recipe to</p>
-        <mat-form-field appearance="fill">
-            <mat-label>{{selectListsControl.value?.length >= 1 ? 'recipe saved in' : '-select list-'}}</mat-label>
-            <mat-select [formControl]="selectListsControl" [compareWith]="comparer" multiple>
-                <mat-select-trigger>
-                    {{selectListsControl.value?.length > 0 ? selectListsControl.value[0].title : ''}}
-                    <span *ngIf="selectListsControl.value?.length > 1" class="example-additional-selection">
-                        (+{{selectListsControl.value.length - 1}} {{selectListsControl.value?.length === 2 ? 'other' :
-                        'others'}})
-                    </span>
-                </mat-select-trigger>
-                <mat-option *ngFor="let recipeList of (recipeLists | async)?.list" [value]="recipeList" (onSelectionChange)="optionChange($event)">{{ recipeList.title }}</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </mat-expansion-panel>
+<ng-container *ngIf="recipe && recipeLists$ && selectedLists$">
+
+    <div class="list-select-wrapper">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Save to list
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <p>Choose a list below to save recipe to</p>
+
+            <mat-form-field appearance="fill">
+                <mat-label>
+                    {{selectListsControl.value?.length >= 1 ? 'recipe saved in' : '-select list-'}}
+                </mat-label>
+
+                <mat-select
+                    [formControl]="selectListsControl"
+                    [compareWith]="comparer"
+                    multiple>
+                    <mat-select-trigger>
+                        {{selectListsControl.value?.length > 0 ? selectListsControl.value[0].title : ''}}
+                        <span *ngIf="selectListsControl.value?.length > 1"
+                            class="additional-selection">
+                            (+{{selectListsControl.value.length - 1}} {{selectListsControl.value?.length === 2 ? 'other'
+                            :
+                            'others'}})
+                        </span>
+                    </mat-select-trigger>
+
+                    <mat-option
+                        *ngFor="let recipeList of (recipeLists$ | async)?.list"
+                        [value]="recipeList"
+                        (onSelectionChange)="optionChange($event)">
+                        {{ recipeList.title }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </mat-expansion-panel>
+    </div>
+
 </ng-container>

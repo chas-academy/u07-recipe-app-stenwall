@@ -1,0 +1,102 @@
+<ng-container *ngIf="(recipe$ | async) as recipe">
+
+    <header class="header-wrapper">
+        <a [routerLink]="['/']">
+            <h1 class="back-title">
+                <span class="material-icons">arrow_back</span>
+                {{ (data | async)?.title }}
+            </h1>
+        </a>
+
+        <mat-tab-group *ngIf="isLargeScreen"
+            class="tabs-lg"
+            mat-align-tabs="center"
+            (selectedTabChange)="onTabChange($event)">
+            <mat-tab label="ingredients"></mat-tab>
+            <mat-tab label="instructions"></mat-tab>
+        </mat-tab-group>
+
+        <mat-tab-group *ngIf="!isLargeScreen"
+            class="tabs-sm"
+            mat-align-tabs="center"
+            (click)="openBottomSheet($event)"
+            headerPosition="below">
+            <mat-tab label="ingredients"></mat-tab>
+            <mat-tab label="instructions"></mat-tab>
+        </mat-tab-group>
+
+    </header>
+
+    <mat-divider></mat-divider>
+
+    <!-- templates for tab-lists -->
+    <ng-template #ingredientsList>
+        <mat-list>
+            <mat-list-item
+                *ngFor="let ingredient of recipe.extendedIngredients"
+                class="mat-list-item-word-wrap">
+                <mat-icon mat-list-icon>adjust</mat-icon>
+                <p mat-line>{{ ingredient.originalString }}</p>
+            </mat-list-item>
+        </mat-list>
+    </ng-template>
+    
+    <ng-template #instructionsList>
+        <mat-list *ngIf="selectedTab === 'instructions'">
+            <mat-list-item
+                *ngFor="let step of recipe.analyzedInstructions[0].steps"
+                class="mat-list-item-word-wrap">
+                <mat-icon mat-list-icon>adjust</mat-icon>
+                <h4 mat-line>Step {{ step.number }}</h4>
+                <p mat-line>{{ step.step }}</p>
+            </mat-list-item>
+            <p *ngIf="!recipe.analyzedInstructions">
+                Unfortunately there are no instructions available for this recipe.
+            </p>
+        </mat-list>
+    </ng-template>
+
+    <!-- template bottom-sheet w ingredients & instructions on small screens -->
+    <ng-template let-bottomSheetRef="bottomSheetRef"
+        #templateBottomSheet class="bottom-sheet">
+        <button mat-flat-button
+            class="close-btn" color="accent"
+            (click)="closeBottomSheet()">
+            <mat-icon color="white">close</mat-icon> close
+        </button>
+
+        <ng-container
+            *ngIf="selectedTab === 'ingredients' ? ingredientsList : selectedTab === 'instructions' ? instructionsList">
+        </ng-container>   
+    </ng-template>
+
+    <main class="recipe-wrapper">
+        <div class="recipe-info">
+            <h2 class="recipe-title">{{ recipe.title }}</h2>
+            <img src="recipe.image" alt="the chosen dish when ready">
+
+            <app-select-list [data]="recipe"></app-select-list>
+
+            <div class="info-box">
+                <p class="ready-time">
+                    <span class="material-icons">schedule</span>
+                    Ready in: {{ recipe.readyInMinutes }} minutes
+                </p>
+                <div class="chip-wrapper">
+                    <p *ngIf="recipe.vegan">Vegan</p>
+                    <p *ngIf="recipe.dairyFree">Dairy free</p>
+                    <p *ngIf="recipe.glutenFree">Gluten free</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- show tabs w ingredients & instructions on large screens -->
+        <div class="recipe-tabs" *ngIf="isLargeScreen">
+            <ng-container
+                *ngIf="selectedTab === 'ingredients' ? ingredientsList : selectedTab === 'instructions' ? instructionsList">
+            </ng-container>
+        </div>
+
+    </main>
+
+</ng-container>

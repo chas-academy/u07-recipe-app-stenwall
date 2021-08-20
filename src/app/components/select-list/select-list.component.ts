@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, OnDestroy, OnChanges} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, Subscription } from 'rxjs';
@@ -12,22 +12,20 @@ import { ListService } from 'src/app/services/list.service';
   templateUrl: './select-list.component.html',
   styleUrls: ['./select-list.component.scss'],
 })
-export class SelectListComponent implements OnInit {
+export class SelectListComponent implements OnInit, OnDestroy, OnChanges {
   @Input() data: Recipe;
 
-  // listSubscription: Subscription;
   selectedSubscription: Subscription;
   addSubscription: Subscription;
   removeSubscription: Subscription;
   checkSubscription: Subscription;
 
   selectListsControl = new FormControl();
-  recipeLists: Observable<List[]>;
-  selectedLists: Observable<List[]>;
+  recipeLists$: Observable<List[]>;
+  selectedLists$: Observable<List[]>;
   recipe: ListRecipe;
   errors = null;
   isRecipeInList: boolean;
-  list;
 
   constructor(
     private listService: ListService,
@@ -35,12 +33,7 @@ export class SelectListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.recipeLists = this.listService.getAllLists();
-
-    // this.listSubscription = this.listService.getAllLists().subscribe((result) => {
-    //   // this.selectedLists = result;
-    //   console.log(result);
-    // });
+    this.recipeLists$ = this.listService.getAllLists();
 
     this.recipe = {
       id: null,
@@ -51,32 +44,24 @@ export class SelectListComponent implements OnInit {
 
     this.selectedSubscription = this.listService
       .getListsWithRecipe(this.recipe.api_id)
-      .subscribe((ListData) => {
-        this.selectedLists = ListData['list'];
-        this.selectListsControl.setValue(this.selectedLists);
-        // console.log(this.selectedLists);
+      .subscribe((result) => {
+        this.selectedLists$ = result['list'];
+        this.selectListsControl.setValue(this.selectedLists$);
       });
   }
 
   comparer(recipeList: List, selectedList: List): boolean {
-    // console.log(selectedList);
-    // console.log(recipeList);
     return recipeList && selectedList
       ? recipeList.id === selectedList.id
       : recipeList === selectedList;
   }
 
-  //(onSelectionChange)="optionChange($event)"
-  optionChange(event) {
-    console.log(event);
-    console.log(event.source.value);
-    console.log('is option selected? ' + event.source.selected);
+  optionChange(event): void {
     if (event.isUserInput) {
       this.checkSubscription = this.listService
         .checkIfRecipeInList(event.source.value.id, this.recipe.api_id)
         .subscribe(
           (result) => {
-            console.log('is recipe in list? ' + result.exists);
             this.isRecipeInList = result.exists;
 
             if (event.source.selected && !this.isRecipeInList) {
@@ -89,9 +74,6 @@ export class SelectListComponent implements OnInit {
                       verticalPosition: 'top',
                     });
                     this.recipe.id = result.recipe.id;
-                    console.log(result);
-                    console.log(result.recipe.id);
-                    console.log(this.recipe);
                   },
                   (error) => {
                     this.errors = error.error;
@@ -99,7 +81,6 @@ export class SelectListComponent implements OnInit {
                       duration: 2500,
                       verticalPosition: 'top',
                     });
-                    console.log(error.error);
                   },
                   () => {
                     this.addSubscription.unsubscribe();
@@ -116,7 +97,6 @@ export class SelectListComponent implements OnInit {
                       duration: 2500,
                       verticalPosition: 'top',
                     });
-                    console.log(result);
                   },
                   (error) => {
                     this.errors = error.error;
@@ -124,7 +104,6 @@ export class SelectListComponent implements OnInit {
                       duration: 2500,
                       verticalPosition: 'top',
                     });
-                    console.log(error.error);
                   },
                   () => {
                     this.removeSubscription.unsubscribe();
@@ -149,7 +128,7 @@ export class SelectListComponent implements OnInit {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.selectedSubscription.unsubscribe();
   }
 }
