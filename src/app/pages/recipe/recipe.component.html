@@ -42,9 +42,9 @@
     </ng-template>
     
     <ng-template #instructionsList>
-        <mat-list *ngIf="selectedTab === 'instructions'">
+        <mat-list>
             <mat-list-item
-                *ngFor="let step of recipe.analyzedInstructions[0].steps"
+                *ngFor="let step of (recipe.analyzedInstructions[0].steps)"
                 class="mat-list-item-word-wrap">
                 <mat-icon mat-list-icon>adjust</mat-icon>
                 <h4 mat-line>Step {{ step.number }}</h4>
@@ -66,14 +66,14 @@
         </button>
 
         <ng-container
-            *ngIf="selectedTab === 'ingredients' ? ingredientsList : instructionsList">
-        </ng-container>   
+            *ngIf="selectedTab === 'ingredients'; then ingredientsList; else instructionsList">
+        </ng-container> 
     </ng-template>
 
     <main class="recipe-wrapper">
         <div class="recipe-info">
             <h2 class="recipe-title">{{ recipe.title }}</h2>
-            <img src="recipe.image" alt="the chosen dish when ready">
+            <img src="{{ recipe.image }}" alt="the chosen dish when ready">
 
             <app-select-list [data]="recipe"></app-select-list>
 
@@ -93,7 +93,7 @@
         <!-- show tabs w ingredients & instructions on large screens -->
         <div class="recipe-tabs" *ngIf="isLargeScreen">
             <ng-container
-                *ngIf="selectedTab === 'ingredients' ? ingredientsList : instructionsList">
+                *ngIf="selectedTab === 'ingredients'; then ingredientsList; else instructionsList">
             </ng-container>
         </div>
 

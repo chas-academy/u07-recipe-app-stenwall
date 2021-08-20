@@ -53,15 +53,6 @@ export class RecipeComponent implements OnInit, OnDestroy {
     this.data = this.route.data;
 
     this.recipe$ = this.recipesService.getDetailedRecipe(this.id);
-
-    // this.recipeSubscription = this.recipesService
-    //   .getDetailedRecipe(this.id)
-    //   .subscribe((Recipe) => {
-    //     this.recipe = Recipe;
-    //     this.ingredients = Recipe.extendedIngredients;
-    //     this.instructions = Recipe.analyzedInstructions;
-    //     this.steps = Recipe.analyzedInstructions[0].steps;
-    //   });
   }
 
   onTabChange(event): void {
@@ -122,7 +113,6 @@ export class RecipeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.bottomSheet.dismiss();
     this.breakpointSubscription.unsubscribe();
-    this.recipeSubscription.unsubscribe();
   }
 }
 
