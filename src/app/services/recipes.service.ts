@@ -3,11 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
-import {
-  SpoonacularApiData,
-  SpoonacularRandomApiData,
-  Recipe,
-} from '../models/api-spoonacular.model';
+import { SpoonacularApiData, SpoonacularRandomApiData, Recipe } from '../models/api-spoonacular.model';
 import { share } from 'rxjs/operators';
 
 @Injectable({
@@ -31,21 +27,19 @@ export class RecipesService {
     preferences: string
   ): Observable<SpoonacularApiData> {
     const observable = this.http
-      .get<SpoonacularApiData>(this.spoonApiUrl + 'complexSearch', {
+      .get<SpoonacularApiData>(`${this.spoonApiUrl}/complexSearch`, {
         params: this.deafultParams
           .append('type', dishType)
           .append('diet', `vegetarian,${preferences}`)
           .append('apiKey', this.spoonApiKey),
       })
       .pipe(share());
-    // observable.subscribe((data) => console.log(data));
     return observable;
   }
 
   getRandomRecipes(preferences: string): Observable<SpoonacularRandomApiData> {
-    return this.http.get<SpoonacularRandomApiData>(
-      this.spoonApiUrl + 'random',
-      {
+    return this.http
+      .get<SpoonacularRandomApiData>(`${this.spoonApiUrl}/random`, {
         params: this.deafultParams
           .append('tags', `vegetarian,${preferences}`)
           .append('apiKey', this.spoonApiKey),
@@ -54,7 +48,7 @@ export class RecipesService {
   }
 
   getDetailedRecipe(id: number | string): Observable<Recipe> {
-    return this.http.get<Recipe>(this.spoonApiUrl + id + '/information', {
+    return this.http.get<Recipe>(`${this.spoonApiUrl}/${id}/information`, {
       params: new HttpParams().append('apiKey', this.spoonApiKey),
     });
   }

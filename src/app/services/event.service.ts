@@ -17,12 +17,12 @@ export class EventService {
 
   constructor() {}
 
-  changePreferences(preferences: object) {
+  changePreferences(preferences: object): void {
     this.preferencesToString(preferences);
     this.preferencesSource.next(preferences);
   }
 
-  preferencesToString(preferences: object) {
+  preferencesToString(preferences: object): void {
     let preferenceQuery = '';
 
     preferences['vegan'] && (preferenceQuery = 'vegan,');

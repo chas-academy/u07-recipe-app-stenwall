@@ -10,21 +10,11 @@ import { ListRecipe, ListRecipeData } from '../models/list-recipe.model';
 })
 export class ListService {
   private u08ApiUrl: string;
-  lists: List[];
-  list: List;
-  // isRecipeInList;
-  // recipeInListChange;
-  // recipeInListChange: Subject<any> = new Subject<any>();
+  // lists: List[];
+  // list: List;
 
-  constructor(
-    private http: HttpClient
-  ) {
+  constructor(private http: HttpClient) {
     this.u08ApiUrl = environment.U08_API_URL;
-    // this.recipeInListChange.subscribe((data) => (this.checkIfRecipeInList(5, 5) = data.exists));
-    // this.recipeInListChange = this.checkIfRecipeInList(5, 2).subscribe((data) => {
-    //   this.isRecipeInList = data;
-    //   console.log(this.isRecipeInList);
-    // })
   }
 
   // get all lists belonging to logged in user

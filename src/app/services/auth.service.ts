@@ -18,12 +18,12 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl: string | null = null;
 
-  // User registration
+  // registrate new user
   register(user: User): Observable<any> {
     return this.http.post<any>(`${this.u08ApiUrl}/api/auth/register`, user);
   }
 
-  // Login
+  // login
   signin(user: User): Observable<any> {
     return this.http.post<any>(`${this.u08ApiUrl}/api/auth/login`, user);
   }
@@ -33,9 +33,8 @@ export class AuthService {
     return this.http.post<any>(`${this.u08ApiUrl}/api/auth/logout`, '');
   }
 
-  // Access user profile
+  // access user information
   profileUser(): Observable<User> {
     return this.http.get<User>(`${this.u08ApiUrl}/api/auth/user-profile`);
   }
-
 }

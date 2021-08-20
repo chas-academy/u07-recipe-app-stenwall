@@ -1,28 +1,32 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class TokenService {
+  private issuer: object;
+  private u08ApiUrl: string;
 
-  private issuer = {
-    login: 'http://u08-recipe-api.test/api/auth/login',
-    register: 'http://u08-recipe-api.test/guest/auth/register'
+  constructor() {
+    this.u08ApiUrl = environment.U08_API_URL;
+
+    this.issuer = {
+      login: `${this.u08ApiUrl}/api/auth/login`,
+      register: `${this.u08ApiUrl}/guest/auth/register`
+    }
   }
 
-  constructor() { }
-
-  handleData(token){
+  handleData(token): void {
     localStorage.setItem('auth_token', token);
   }
 
-  getToken(){
+  getToken(): any {
     return localStorage.getItem('auth_token');
   }
 
-  // Verify the token
-  isValidToken(){
+  isValidToken(): boolean {
      const token = this.getToken();
 
      if(token){
@@ -35,19 +39,18 @@ export class TokenService {
      }
   }
 
-  payload(token) {
+  payload(token): any {
     const jwtPayload = token.split('.')[1];
     return JSON.parse(atob(jwtPayload));
   }
 
-  // User state based on valid token
-  isLoggedIn() {
+  // user state based on valid token
+  isLoggedIn(): any {
     return this.isValidToken();
   }
 
-  // Remove token
-  removeToken(){
+  // remove token
+  removeToken(): void {
     localStorage.removeItem('auth_token');
   }
-
 }

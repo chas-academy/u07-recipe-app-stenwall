@@ -1,10 +1,10 @@
 export interface ListRecipeData {
-    recipes: ListRecipe[];
+  recipes: ListRecipe[];
 }
 
 export interface ListRecipe {
-    id?: number;
-    api_id: number;
-    title: string;
-    img: string;
+  id?: number;
+  api_id: number;
+  title: string;
+  img: string;
 }
