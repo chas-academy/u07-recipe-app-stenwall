@@ -1,14 +1,14 @@
-<div class="main-header-wrapper">
+<header class="main-header-wrapper">
     <a routerLink="/" routerLinkActive="active">
-        <h1>{{ title }}</h1>
+        <h1>{{ (data | async)?.title }}</h1>
     </a>
 
     <app-nav-tab-bar></app-nav-tab-bar>
 
     <mat-divider></mat-divider>
 
-    <section class="sub-menu-wrapper">
+    <!-- <section class="sub-menu-wrapper"> -->
         <app-dietary-preferences></app-dietary-preferences>
-    </section>
+    <!-- </section> -->
 
-</div>
+</header>

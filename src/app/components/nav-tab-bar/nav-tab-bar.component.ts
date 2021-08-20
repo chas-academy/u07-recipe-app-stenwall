@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nav-tab-bar',
   templateUrl: './nav-tab-bar.component.html',
   styleUrls: ['./nav-tab-bar.component.scss'],
 })
-export class NavTabBarComponent implements OnInit {
+export class NavTabBarComponent implements OnInit, OnDestroy {
   navLinks: any[];
   activeLinkIndex = -1;
+  routerSubscription: Subscription;
 
   constructor(private router: Router) {
     this.navLinks = [
@@ -36,11 +38,15 @@ export class NavTabBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.events.subscribe(() => {
+    this.routerSubscription = this.router.events.subscribe(() => {
       this.activeLinkIndex = this.navLinks.indexOf(
         this.navLinks.find((tab) => tab.link === '.' + this.router.url)
       );
     });
+  }
+
+  ngOnDestroy(): void {
+    this.routerSubscription.unsubscribe();
   }
 }
 

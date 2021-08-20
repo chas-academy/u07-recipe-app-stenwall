@@ -1,3 +1,15 @@
-.mat-tab-nav-bar {
+@import "../../../css/scss/colors";
+
+nav.mat-tab-nav-bar {
   width: 100vw;
+
+  a.mat-tab-link {
+    opacity: 0.8;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    :hover {
+      color: $teal-900;
+      opacity: 0.9;
+    }
+  }
 }

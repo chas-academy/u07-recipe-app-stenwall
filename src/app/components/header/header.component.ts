@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,16 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  title = 'Parsley & Sage';
-  preferences: object;
+  data: any;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-
+    this.data = this.route.data;
   }
 
-  receivePreferences(event) {
-    this.preferences = event;
-  }
+  // DELETE IF WORKING:
+  // receivePreferences(event) {
+  //   this.preferences = event;
+  // }
+
+  // consts:
+  // title = 'Parsley & Sage';
+  // preferences: object;
 }

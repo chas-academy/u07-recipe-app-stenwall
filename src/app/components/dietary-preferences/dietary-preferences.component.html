@@ -1,10 +1,12 @@
 <section class="accordion">
     <mat-expansion-panel>
+
         <mat-expansion-panel-header>
             <mat-panel-title>
                 Dietary Preferences
             </mat-panel-title>
         </mat-expansion-panel-header>
+
         <div class="toggle-wrapper">
             <mat-slide-toggle (change)="onChange($event)" name="vegan">
                 Vegan
@@ -16,5 +18,6 @@
                 Gluten Free
             </mat-slide-toggle>
         </div>
+
     </mat-expansion-panel>
 </section>

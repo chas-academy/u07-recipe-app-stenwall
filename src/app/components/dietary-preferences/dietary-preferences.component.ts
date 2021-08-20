@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { Subscription } from 'rxjs';
 
@@ -7,17 +7,15 @@ import { Subscription } from 'rxjs';
   templateUrl: './dietary-preferences.component.html',
   styleUrls: ['./dietary-preferences.component.scss'],
 })
-export class DietaryPreferencesComponent implements OnInit {
+export class DietaryPreferencesComponent implements OnInit, OnDestroy {
   preferences: object;
-  subscription: Subscription;
-  panelOpenState = false;
+  prefSubscription: Subscription;
 
   constructor(private eventService: EventService) {}
 
   ngOnInit(): void {
-    this.subscription = this.eventService.currentPreferences.subscribe(
-      (preferences) => (this.preferences = preferences)
-    );
+    this.prefSubscription = this.eventService.currentPreferences
+      .subscribe((preferences) => (this.preferences = preferences));
   }
 
   onChange(event: any): void {
@@ -25,6 +23,10 @@ export class DietaryPreferencesComponent implements OnInit {
       this.preferences[event.source.name] = event.checked;
     }
     this.eventService.changePreferences(this.preferences);
+  }
+
+  ngOnDestroy(): void {
+    this.prefSubscription.unsubscribe();
   }
 }
 
