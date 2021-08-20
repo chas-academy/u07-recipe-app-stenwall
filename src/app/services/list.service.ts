@@ -59,6 +59,6 @@ export class ListService {
 
   // get all lists where given recipe exists
   getListsWithRecipe(apiId: number | string): Observable<List[]> {
-    return this.http.get<ListData['list']>(`${this.u08ApiUrl}/api/lists/recipes/${apiId}`);
+    return this.http.get<ListData['list']>(`${this.u08ApiUrl}/api/lists/${apiId}`);
   }
 }
