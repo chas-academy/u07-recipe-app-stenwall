@@ -26,7 +26,7 @@ const routes: Routes = [
     path: 'lists/:id',
     component: ListComponent,
     data: { title, header: false },
-    // canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: '',
@@ -67,7 +67,7 @@ const routes: Routes = [
     path: 'lists',
     component: ListsComponent,
     data: { title, header: false },
-    // canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
