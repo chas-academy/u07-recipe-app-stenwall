@@ -3,8 +3,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { ListRecipe } from 'src/app/models/list-recipe.model';
-import { List } from 'src/app/models/list.model';
-import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ListService } from 'src/app/services/list.service';
 
@@ -14,7 +12,6 @@ import { ListService } from 'src/app/services/list.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  user: User[];
   listRecipes: Observable<ListRecipe[]>;
   removeSubscription: Subscription;
   listId: number | string;
@@ -26,11 +23,7 @@ export class ListComponent implements OnInit {
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
     public router: Router
-  ) {
-    this.authService.profileUser().subscribe((user:any) => {
-      this.user = user;
-    })
-  }
+  ) { }
 
   ngOnInit(): void {
     this.listId = this.route.snapshot.paramMap.get('id');
@@ -39,7 +32,7 @@ export class ListComponent implements OnInit {
 
   removeRecipeFromList(event: any, recipeId: number | string, recipeTitle: string, ): void {
     event.stopPropagation();
-    let result = confirm(`Are you sure you want to remove recipe "${recipeTitle}"?`);
+    let result = confirm(`Are you sure you want to remove recipe "${recipeTitle}"?`); 
     if (result) {
       this.removeSubscription = this.listService.removeRecipeFromList(this.listId, recipeId).subscribe(
         (result) => {
@@ -65,7 +58,7 @@ export class ListComponent implements OnInit {
     }
   }
 
-  reloadComponent() {
+  reloadComponent(): void {
     let currentUrl = this.router.url;
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
