@@ -1,0 +1,93 @@
+<app-header-xs></app-header-xs>
+
+<main class="register-wrapper">
+    <form class="form-register"
+        [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()">
+
+        <h2>Register User</h2>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput
+                type="text"
+                formControlName="name"
+                required>
+            <mat-error *ngIf="registerForm.hasError('required', 'name')">
+                Please enter your name
+            </mat-error>
+            <mat-error *ngIf="registerForm.hasError('minLength', 'name')">
+                Must be at least 2 characters long
+            </mat-error>
+            <mat-error *ngIf="registerForm.hasError('pattern', 'name')">
+                No special character allowed
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput
+                type="email"
+                formControlName="email"
+                required>
+            <mat-error *ngIf="registerForm.hasError('required', 'email')">
+                Please enter your email
+            </mat-error>
+            <mat-error *ngIf="registerForm.hasError('pattern', 'email')">
+                Please enter a valid email
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput
+                [type]="hide ? 'password' : 'text'"
+                formControlName="password"
+                minlength="6"
+                required>
+            <button mat-icon-button matSuffix 
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>
+                    {{hide ? 'visibility_off' : 'visibility'}}
+                </mat-icon>
+            </button>
+            <mat-error *ngIf="registerForm.hasError('required', 'password')">
+                Please enter a password
+            </mat-error>
+            <mat-error *ngIf="registerForm.hasError('minLength', 'password')">
+                Password must be 6 characters long
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput
+                [errorStateMatcher]="errorMatcher"
+                [type]="hide ? 'password' : 'text'"
+                formControlName="password_confirmation"
+                required>
+            <button mat-icon-button matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>
+                    {{hide ? 'visibility_off' : 'visibility'}}
+                </mat-icon>
+            </button>
+            <mat-error *ngIf="registerForm.hasError('required', 'password_confirmation')">
+                Please confirm your password
+            </mat-error>
+            <mat-error *ngIf="registerForm.hasError('notSame')">
+                Password does not match
+            </mat-error>
+        </mat-form-field>
+
+        <button type="submit" mat-flat-button color="primary">
+            Register User
+        </button>
+
+    </form>
+</main>

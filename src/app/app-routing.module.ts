@@ -10,7 +10,7 @@ import { DessertsComponent } from './pages/desserts/desserts.component';
 import { SidesComponent } from './pages/sides/sides.component';
 import { ListComponent } from './pages/list/list.component';
 import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
+import { RegisterComponent } from './pages/register/register.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ListsComponent } from './pages/lists/lists.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -41,7 +41,7 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: SignupComponent,
+    component: RegisterComponent,
     data: { title, header: false },
   },
   {
