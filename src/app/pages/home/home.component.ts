@@ -5,9 +5,8 @@ import { Subscription } from 'rxjs';
 import { Recipe } from 'src/app/models/api-spoonacular.model';
 
 @Component({
-  selector: 'app-random-recipes',
-  templateUrl: './random-recipes.component.html',
-  styleUrls: ['./random-recipes.component.scss'],
+  selector: 'app-home',
+  template: '<app-recipe-card [data]="recipes"></app-recipe-card>',
 })
 export class HomeComponent implements OnInit, OnDestroy {
   recipes: Recipe[] = [];
@@ -34,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.prefSubscription.unsubscribe();
   }
 }

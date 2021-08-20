@@ -1,18 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RecipesService } from '../../services/recipes.service';
 import { EventService } from '../../services/event.service';
 import { Subscription } from 'rxjs';
-import { SpoonacularApiData, Recipe } from '../../models/api-spoonacular.model';
+import { Recipe } from '../../models/api-spoonacular.model';
 
 @Component({
   selector: 'app-appetizers',
-  templateUrl: './appetizers.component.html',
-  styleUrls: ['./appetizers.component.scss'],
+  template: '<app-recipe-card [data]="recipes"></app-recipe-card>',
 })
-export class AppetizersComponent implements OnInit {
-  showRecipes: Recipe[] = [];
-  spoonApiData: SpoonacularApiData;
-  subscription: Subscription;
+export class AppetizersComponent implements OnInit, OnDestroy {
+  recipes: Recipe[] = [];
+  prefSubscription: Subscription;
 
   constructor(
     private recipesService: RecipesService,
@@ -20,7 +18,7 @@ export class AppetizersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.eventService.currentPreferenceQuery.subscribe(
+    this.prefSubscription = this.eventService.currentPreferenceQuery.subscribe(
       (preferences) => {
         this.updateRecipeList(preferences);
       }
@@ -30,8 +28,12 @@ export class AppetizersComponent implements OnInit {
   updateRecipeList(preferences: string): void {
     this.recipesService
       .getDishTypeRecipes('appetizer', preferences)
-      .subscribe((SpoonacularApiData) => {
-        this.showRecipes = SpoonacularApiData.results;
+      .subscribe((result) => {
+        this.recipes = result.results;
       });
+  }
+
+  ngOnDestroy(): void {
+    this.prefSubscription.unsubscribe();
   }
 }
