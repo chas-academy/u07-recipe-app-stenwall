@@ -1,14 +1,14 @@
 <div class="auth-wrapper">
 
-    <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+    <button mat-icon-button [matMenuTriggerFor]="authMenu">
         <mat-icon>account_circle</mat-icon>
-      </button>
+    </button>
 
-      <mat-menu #profileMenu="matMenu" xPosition="before">
-        <span mat-menu-item>Hello, {{ user?.name }}!</span>
+    <mat-menu #authMenu="matMenu" xPosition="before">
+        <span mat-menu-item>Hello, {{ (user$ | async)?.name }}!</span>
         <mat-divider></mat-divider>
         <a mat-menu-item [routerLink]="['/lists']">Your Recipe Lists</a>
         <button mat-menu-item (click)="signOut()">Sign Out</button>
-      </mat-menu>
+    </mat-menu>
 
 </div>

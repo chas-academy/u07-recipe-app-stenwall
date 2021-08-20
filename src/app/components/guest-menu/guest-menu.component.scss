@@ -1,7 +1,22 @@
-.guest-wrapper {
+@import "../../../css/scss/colors";
+
+div.guest-wrapper {
   position: absolute;
   top: 1rem;
   right: 1rem;
+
+  button {
+    .mat-icon {
+      font-size: 3rem;
+      line-height: 3rem;
+      height: 3rem;
+      width: 3rem;
+    }
+
+    &:hover {
+      filter: brightness(85%);
+    }
+  }
 
   a {
     display: inline-block;
@@ -15,8 +30,8 @@
 
     &.login-btn {
       letter-spacing: 0.05rem;
-      color: #004D40;
-      background-color: #f9fbe7;
+      color: $teal-900;
+      background-color: $lime-50;
       margin-right: 0.5rem;
     }
 
@@ -24,7 +39,7 @@
       letter-spacing: 0.1rem;
       color: white;
       font-weight:normal;
-      background-color: #004D40;
+      background-color: $teal-900;
     }
   }
 }

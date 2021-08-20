@@ -29,8 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { GuestViewComponent } from './components/guest-view/guest-view.component';
-import { AuthViewComponent } from './components/auth-view/auth-view.component';
+import { GuestMenuComponent } from './components/guest-menu/guest-menu.component';
+import { AuthMenuComponent } from './components/auth-menu/auth-menu.component';
 import { HeaderXsComponent } from './components/header-xs/header-xs.component';
 import { ListsComponent } from './pages/lists/lists.component';
 import { AddListComponent } from './components/add-list/add-list.component';
@@ -59,8 +59,8 @@ import { TokenService } from './services/token.service';
     RecipeCardComponent,
     LoginComponent,
     RegisterComponent,
-    GuestViewComponent,
-    AuthViewComponent,
+    GuestMenuComponent,
+    AuthMenuComponent,
     HeaderXsComponent,
     ListsComponent,
     AddListComponent,
