@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { ListService } from 'src/app/services/list.service';
   templateUrl: './add-list.component.html',
   styleUrls: ['./add-list.component.scss'],
 })
-export class AddListComponent implements OnInit {
+export class AddListComponent {
   addListForm: FormGroup;
   formSubscription: Subscription;
   errors = null;
@@ -32,9 +32,7 @@ export class AddListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
-  onSubmit() {
+  onSubmit(): any {
     if (!this.addListForm.valid) {
       alert('Please fill in a valid title to add a new list!');
       return false;
@@ -62,7 +60,7 @@ export class AddListComponent implements OnInit {
       );
   }
 
-  reloadComponent() {
+  reloadComponent(): void {
     let currentUrl = this.router.url;
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
