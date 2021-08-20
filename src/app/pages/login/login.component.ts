@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TokenService } from '../../services/token.service';
 import { AuthStateService } from '../../services/auth-state.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class SigninComponent implements OnInit {
+export class LoginComponent {
   loginForm: FormGroup;
+  loginSubscription: Subscription;
   errors = null;
   hide = true;
 
@@ -21,7 +23,7 @@ export class SigninComponent implements OnInit {
     public formBuilder: FormBuilder,
     public authService: AuthService,
     private tokenService: TokenService,
-    private authState: AuthStateService,
+    private authStateService: AuthStateService,
     private snackBar: MatSnackBar
   ) {
     this.loginForm = this.formBuilder.group({
@@ -33,10 +35,8 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
-
   onSubmit() {
-    this.authService.signin(this.loginForm.value).subscribe(
+    this.loginSubscription = this.authService.signin(this.loginForm.value).subscribe(
       (result) => {
         this.responseHandler(result);
       },
@@ -46,17 +46,16 @@ export class SigninComponent implements OnInit {
           duration: 2500,
           verticalPosition: 'top'
         });
-        console.log(error.error);
       },
       () => {
-        this.authState.setAuthState(true);
+        this.authStateService.setAuthState(true);
+        this.loginSubscription.unsubscribe();
         this.loginForm.reset();
-        this.router.navigate(['']);
+        this.router.navigate(['/']);
       }
     );
   }
 
-  // Handle response
   responseHandler(data) {
     this.tokenService.handleData(data.access_token);
   }

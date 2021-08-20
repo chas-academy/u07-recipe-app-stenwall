@@ -1,8 +1,6 @@
 <app-header-xs></app-header-xs>
 
-<mat-divider></mat-divider>
-
-<div class="login-wrapper">
+<main class="login-wrapper">
     <form class="form-login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
         <h2>Sign in</h2>
@@ -27,4 +25,4 @@
         <button type="submit" mat-flat-button color="primary">Log in</button>
 
     </form>
-</div>
+</main>

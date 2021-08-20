@@ -9,7 +9,7 @@ import { MainsComponent } from './pages/mains/mains.component';
 import { DessertsComponent } from './pages/desserts/desserts.component';
 import { SidesComponent } from './pages/sides/sides.component';
 import { ListComponent } from './pages/list/list.component';
-import { SigninComponent } from './pages/signin/signin.component';
+import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ListsComponent } from './pages/lists/lists.component';
@@ -36,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: SigninComponent,
+    component: LoginComponent,
     data: { title, header: false },
   },
   {
