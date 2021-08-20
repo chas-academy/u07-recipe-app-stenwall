@@ -1,21 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RecipesService } from '../../services/recipes.service';
 import { EventService } from '../../services/event.service';
 import { Subscription } from 'rxjs';
-import {
-  Recipe,
-  SpoonacularRandomApiData,
-} from 'src/app/models/api-spoonacular.model';
+import { Recipe } from 'src/app/models/api-spoonacular.model';
 
 @Component({
   selector: 'app-random-recipes',
   templateUrl: './random-recipes.component.html',
   styleUrls: ['./random-recipes.component.scss'],
 })
-export class RandomRecipesComponent implements OnInit {
-  showRecipes: Recipe[] = [];
-  spoonacularRandomApiData: SpoonacularRandomApiData;
-  subscription: Subscription;
+export class HomeComponent implements OnInit, OnDestroy {
+  recipes: Recipe[] = [];
+  prefSubscription: Subscription;
 
   constructor(
     private recipesService: RecipesService,
@@ -23,7 +19,7 @@ export class RandomRecipesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.eventService.currentPreferenceQuery.subscribe(
+    this.prefSubscription = this.eventService.currentPreferenceQuery.subscribe(
       (preferences) => {
         this.updateRecipeList(preferences);
       }
@@ -33,12 +29,12 @@ export class RandomRecipesComponent implements OnInit {
   updateRecipeList(preferences: string): void {
     this.recipesService
       .getRandomRecipes(preferences)
-      .subscribe((SpoonacularRandomApiData) => {
-        this.showRecipes = SpoonacularRandomApiData.recipes;
+      .subscribe((result) => {
+        this.recipes = result.recipes;
       });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.prefSubscription.unsubscribe();
   }
 }

@@ -1,82 +1,84 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { RecipeComponent } from './components/recipe/recipe.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { AppetizersComponent } from './components//appetizers/appetizers.component';
-import { MainsComponent } from './components/mains/mains.component';
-import { DessertsComponent } from './components/desserts/desserts.component';
-import { SidesComponent } from './components/sides/sides.component';
-import { RandomRecipesComponent } from './components/random-recipes/random-recipes.component';
-import { ListComponent } from './components/list/list.component';
-import { SigninComponent } from './components/signin/signin.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AuthGuard } from './core/auth-guard.guard';
-import { ListsComponent } from './components/lists/lists.component';
+
+import { RecipeComponent } from './pages/recipe/recipe.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { AppetizersComponent } from './pages/appetizers/appetizers.component';
+import { MainsComponent } from './pages/mains/mains.component';
+import { DessertsComponent } from './pages/desserts/desserts.component';
+import { SidesComponent } from './pages/sides/sides.component';
+import { ListComponent } from './pages/list/list.component';
+import { SigninComponent } from './pages/signin/signin.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { ListsComponent } from './pages/lists/lists.component';
+import { HomeComponent } from './pages/home/home.component';
+
+const title: string = 'Parsley & Sage';
 
 const routes: Routes = [
   {
     path: 'recipe/:id',
     component: RecipeComponent,
-    data: { title: 'Parsley & Sage', header: false },
-  },
-  {
-    path: '',
-    component: RandomRecipesComponent,
-    data: { header: true },
-  },
-  {
-    path: 'login',
-    component: SigninComponent,
-    data: { title: 'Parsley & Sage', header: false },
-  },
-  {
-    path: 'register',
-    component: SignupComponent,
-    data: { title: 'Parsley & Sage', header: false },
-  },
-  {
-    path: 'profile',
-    component: UserProfileComponent,
-    data: { header: true },
-  },
-  {
-    path: 'appetizers',
-    component: AppetizersComponent,
-    data: { header: true },
-  },
-  {
-    path: 'mains',
-    component: MainsComponent,
-    data: { header: true },
-  },
-  {
-    path: 'desserts',
-    component: DessertsComponent,
-    data: { header: true },
-  },
-  {
-    path: 'sides',
-    component: SidesComponent,
-    data: { header: true },
-  },
-  {
-    path: 'lists',
-    component: ListsComponent,
-    data: { title: 'Parsley & Sage', header: false },
-    // canActivate:[AuthGuard]
+    data: { title, header: false },
   },
   {
     path: 'lists/:id',
     component: ListComponent,
-    data: { title: 'Parsley & Sage', header: false },
+    data: { title, header: false },
+    // canActivate:[AuthGuard]
+  },
+  {
+    path: '',
+    component: HomeComponent,
+    data: { title, header: true },
+  },
+  {
+    path: 'login',
+    component: SigninComponent,
+    data: { title, header: false },
+  },
+  {
+    path: 'register',
+    component: SignupComponent,
+    data: { title, header: false },
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
+    data: { title, header: true },
+  },
+  {
+    path: 'appetizers',
+    component: AppetizersComponent,
+    data: { title, header: true },
+  },
+  {
+    path: 'mains',
+    component: MainsComponent,
+    data: { title, header: true },
+  },
+  {
+    path: 'desserts',
+    component: DessertsComponent,
+    data: { title, header: true },
+  },
+  {
+    path: 'sides',
+    component: SidesComponent,
+    data: { title, header: true },
+  },
+  {
+    path: 'lists',
+    component: ListsComponent,
+    data: { title, header: false },
     // canActivate:[AuthGuard]
   },
   {
     path: '**',
     component: PageNotFoundComponent,
-    data: { title: 'Parsley & Sage', header: false },
+    data: { title, header: false },
   },
 ];
 
