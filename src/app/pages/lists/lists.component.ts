@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Observable } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { List } from 'src/app/models/list.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -31,7 +30,7 @@ export class ListsComponent implements OnInit {
     this.user = this.authService.profileUser();
   }
 
-  deleteList(listId: number | string, listTitle: string) {
+  deleteList(listId: number | string, listTitle: string): void {
     let result = confirm(`Are you sure you want to delete the list "${listTitle}"?`);
     if (result) {
       this.deleteSubscription = this.listService.deleteList(listId).subscribe(
@@ -56,7 +55,7 @@ export class ListsComponent implements OnInit {
     }
   }
 
-  reloadComponent() {
+  reloadComponent(): void {
     let currentUrl = this.router.url;
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';

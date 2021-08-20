@@ -1,6 +1,8 @@
-.profile-container {
-  h1 {
-    color: #ff6f00;
+main.lists-wrapper {
+  h2 {
+    font-size: 6rem;
+    font-weight: 700;
+    color: $amber-900;
   }
 
   .mat-mini-fab {
@@ -13,5 +15,4 @@
   .mat-nav-list {
     margin: 2rem 0;
   }
-
 }

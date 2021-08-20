@@ -1,10 +1,8 @@
 <app-header-xs></app-header-xs>
 
-<mat-divider></mat-divider>
+<main class="lists-wrapper">
 
-<main class="profile-container">
-
-    <h1>Hello, {{ (user | async)?.name }}!</h1>
+    <h2>Hello, {{ (user | async)?.name }}!</h2>
     <h3>Here are your saved recipe lists. Click on the the title so see all your saved recipes!</h3>
 
     <app-add-list></app-add-list>
@@ -14,7 +12,10 @@
             <a matLine [routerLink]="['/lists', recipeList.id]">
                 {{ recipeList.title }}
             </a>
-            <button mat-mini-fab (click)="deleteList(recipeList.id, recipeList.title)" matTooltip="Delete list" color="accent">
+            <button mat-mini-fab
+                (click)="deleteList(recipeList.id, recipeList.title)"
+                matTooltip="Delete list"
+                color="accent">
                 <mat-icon>close</mat-icon>
             </button>
         </mat-list-item>
