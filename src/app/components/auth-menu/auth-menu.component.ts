@@ -35,8 +35,6 @@ export class AuthMenuComponent implements OnInit {
           duration: 2500,
           verticalPosition: 'top'
         });
-      },
-      () => {
         this.authStateService.setAuthState(false);
         this.tokenService.removeToken();
         this.router.navigate(['/']);

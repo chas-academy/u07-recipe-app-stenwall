@@ -25,7 +25,7 @@ export class AddListComponent {
       title: ['', {
           validators: [
             Validators.required,
-            Validators.pattern('^[_A-z0-9 -s]$')
+            Validators.pattern('^[_A-z0-9- \s]+$')
           ],
           updateOn: 'blur',
       }]

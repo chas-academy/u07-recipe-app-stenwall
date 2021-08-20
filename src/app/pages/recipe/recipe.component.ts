@@ -6,6 +6,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Recipe, ExtendedIngredient, AnalyzedInstruction, Step } from 'src/app/models/api-spoonacular.model';
 import { RecipesService } from '../../services/recipes.service';
 import { Observable, Subscription } from 'rxjs';
+import { AuthStateService } from 'src/app/services/auth-state.service';
 
 @Component({
   selector: 'app-recipe',
@@ -23,6 +24,7 @@ export class RecipeComponent implements OnInit, OnDestroy {
   ingredients: ExtendedIngredient[] = [];
   instructions: AnalyzedInstruction[] = [];
   steps: Step[] = [];
+  isSignedIn$: Observable<boolean>;
   data: any;
   selectedTab: string;
   isLargeScreen: boolean;
@@ -32,6 +34,7 @@ export class RecipeComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private recipesService: RecipesService,
+    private authStateService: AuthStateService,
     private bottomSheet: MatBottomSheet,
     private overlay: Overlay,
     public breakpointObserver: BreakpointObserver
@@ -53,6 +56,8 @@ export class RecipeComponent implements OnInit, OnDestroy {
     this.data = this.route.data;
 
     this.recipe$ = this.recipesService.getDetailedRecipe(this.id);
+
+    this.isSignedIn$ = this.authStateService.userAuthState;
   }
 
   onTabChange(event): void {
