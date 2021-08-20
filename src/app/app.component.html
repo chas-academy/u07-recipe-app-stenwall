@@ -1,4 +1,4 @@
-<app-header *ngIf="visibleHeader"></app-header>
+<app-header *ngIf="visibleHeader" [data]="title"></app-header>
 
 <app-guest-menu *ngIf="!isSignedIn"></app-guest-menu>
 <app-auth-menu *ngIf="isSignedIn"></app-auth-menu>

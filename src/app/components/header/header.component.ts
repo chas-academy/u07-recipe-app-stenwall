@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,20 +7,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  data: any;
+  @Input() data: any;
+  title: any;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.data = this.route.data;
+    this.title = this.data;
   }
-
-  // DELETE IF WORKING:
-  // receivePreferences(event) {
-  //   this.preferences = event;
-  // }
-
-  // consts:
-  // title = 'Parsley & Sage';
-  // preferences: object;
 }

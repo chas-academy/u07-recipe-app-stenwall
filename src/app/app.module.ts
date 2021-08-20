@@ -18,12 +18,10 @@ import { DessertsComponent } from './pages/desserts/desserts.component';
 import { SidesComponent } from './pages/sides/sides.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { DietaryPreferencesComponent } from './components/dietary-preferences/dietary-preferences.component';
-import { RandomRecipesComponent } from './pages/random-recipes/random-recipes.component';
 import { ListComponent } from './pages/list/list.component';
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-// import { ApiInterceptor } from '../app/interceptors/api-interceptor.interceptor';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
@@ -54,7 +52,6 @@ import { TokenService } from './services/token.service';
     DessertsComponent,
     SidesComponent,
     DietaryPreferencesComponent,
-    RandomRecipesComponent,
     ListComponent,
     RecipeCardComponent,
     LoginComponent,
