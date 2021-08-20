@@ -1,3 +1,8 @@
+# ** NOTE **
+
+*This repo's main branch is now the frontend for the backend assignment [U08](https://github.com/chas-academy/u08-recipe-api-stenwall), including the deploy. To see the repo described below, please go to [branch U07](https://github.com/chas-academy/u07-recipe-app-stenwall/tree/u07).*
+
+
 # U07 Recipe App
 
 School Assignment @ Chas Academy, class FWD20
@@ -37,6 +42,10 @@ This task has no backend requirements. Data is retrieved from an external API, b
 ## Deployment
 
 The site is deployed on Netlify: [parsley-and-sage.netlify.app](https://parsley-and-sage.netlify.app/)
+
+### ** NOTE **
+
+*The deployment above is for the main branch, and the assignment [U08](https://github.com/chas-academy/u08-recipe-api-stenwall) (see above). The branch for this assignment is not currently deployed.*
 ## Notes
 
 ### Design
