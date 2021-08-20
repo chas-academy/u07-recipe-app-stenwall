@@ -1,29 +1,12 @@
-h2.recipe-title {
-  color: map-get($app-accent, darker);
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-}
-
-.mat-tab-labels {
-  background-color: $custom-background-color;
-}
-
-.mat-tab-label {
-  opacity: 0.8;
-  letter-spacing: 0.08rem;
-  text-transform: uppercase;
-  &:hover {
-    opacity: 0.9;
-    color: map-get($app-primary, darker);
-  }
-}
-
-.mat-tab-header {
-  border-bottom: none;
+// arrows in expansion panels
+.mat-expansion-indicator,
+.mat-expansion-indicator::after {
+  margin-bottom: 0.5rem;
+  color: map-get($app-primary, darker);
 }
 
 // container that holds all the overlay
-// only reach down to right above the tabs
+// only reach down to right above the tabs in recipe-page
 .cdk-overlay-container {
   height: calc(100% - 49px);
   z-index: 2;
@@ -35,7 +18,7 @@ h2.recipe-title {
 // make the overlay pane cover the whole wrapper/container
 // and make it slightly see-through
 .cdk-overlay-pane {
-  // height: 100%;
+  // height: 100%; // had to remove this for menu to work
   opacity: 0.95;
   z-index: 2;
 }
@@ -48,10 +31,24 @@ h2.recipe-title {
   box-shadow: none;
 }
 
-.bottom-tabs {
-  position: fixed;
-  width: 100vw;
-  bottom: 0;
+// make bottom tabs bg non see-through
+.mat-tab-labels {
+  background-color: $custom-background-color;
+}
+
+// styling for tabs
+.mat-tab-header {
+  border-bottom: none;
+
+  .mat-tab-label {
+    opacity: 0.8;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+    &:hover {
+      opacity: 0.9;
+      color: map-get($app-primary, darker);
+    }
+  }
 }
 
 // make span in profile-menu not change bg on hover/focus
@@ -66,11 +63,11 @@ h2.recipe-title {
     &.cdk-keyboard-focused:not([disabled]),
     &.mat-menu-item-highlighted:not([disabled]) 
      {
-      background-color: transparent;
+      background-color: transparent !important;
     }
 
     &.cdk-focused, &.cdk-keyboard-focused, &.cdk-mouse-focused, &.cdk-program-focused, &.mat-focus-indicator, &.mat-menu-item-highlighted {
-      background-color: transparent;
+      background-color: transparent !important;
     }
   }
 }

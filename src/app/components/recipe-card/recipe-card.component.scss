@@ -1,6 +1,33 @@
-.mat-mini-fab {
-  box-shadow: none;
-  color: white;
-  transform: none;
-  transition: none;
+@import "../../../css/scss/colors";
+
+main.card-wrapper {
+  .recipe-card {
+    &.mat-card {
+      max-width: 20rem;
+      height: 100%;
+      cursor: pointer;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+
+      .mat-card-image {
+        overflow: hidden;
+      }
+
+      .mat-card-header {
+        display: flex;
+        justify-content: space-between;
+
+        .mat-card-title {
+          color: $amber-900;
+          line-height: 1.5rem;
+          font-weight: 700;
+          font-size: 1.5rem;
+        }
+
+        .mat-mini-fab {
+          box-shadow: none;
+        }
+      }
+    }
+  }
 }

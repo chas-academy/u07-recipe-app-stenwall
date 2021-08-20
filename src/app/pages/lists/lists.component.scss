@@ -2,9 +2,11 @@
 
 main.lists-wrapper {
   h2 {
-    font-size: 6rem;
-    font-weight: 700;
+    padding: 1rem 0;
+    font-size: 4rem;
+    font-weight: 600;
     color: $amber-900;
+    letter-spacing: normal;
   }
 
   .mat-mini-fab {
