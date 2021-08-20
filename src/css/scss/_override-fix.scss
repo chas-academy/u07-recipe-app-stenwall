@@ -31,9 +31,11 @@
   box-shadow: none;
 }
 
-// make bottom tabs bg non see-through
-.mat-tab-labels {
-  background-color: $custom-background-color;
+// make bottom tabs bg non see-through on small screens
+@media (max-width: 777px) {
+  .mat-tab-labels {
+    background-color: $custom-background-color;
+  }
 }
 
 // styling for tabs
@@ -61,12 +63,16 @@
     &.cdk-program-focused:not([disabled]),
     &.cdk-mouse-focused:not([disabled]),
     &.cdk-keyboard-focused:not([disabled]),
-    &.mat-menu-item-highlighted:not([disabled]) 
-     {
+    &.mat-menu-item-highlighted:not([disabled]) {
       background-color: transparent !important;
     }
 
-    &.cdk-focused, &.cdk-keyboard-focused, &.cdk-mouse-focused, &.cdk-program-focused, &.mat-focus-indicator, &.mat-menu-item-highlighted {
+    &.cdk-focused,
+    &.cdk-keyboard-focused,
+    &.cdk-mouse-focused,
+    &.cdk-program-focused,
+    &.mat-focus-indicator,
+    &.mat-menu-item-highlighted {
       background-color: transparent !important;
     }
   }
